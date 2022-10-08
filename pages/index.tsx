@@ -1,6 +1,13 @@
 import Head from "next/head";
 import Image from "next/image";
+import styled from "@emotion/styled";
+
 import styles from "../styles/Home.module.css";
+
+// emotion styled div tag
+const StyledDiv = styled.div`
+  color: red;
+`;
 
 function Home() {
   return (
@@ -12,9 +19,9 @@ function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <StyledDiv className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        </StyledDiv>
 
         <p className={styles.description}>
           Get started by editing{" "}

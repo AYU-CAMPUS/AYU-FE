@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import MainLayout from "../../components/Layout/MainLayout";
-import LoginForm from "../../components/Login/LoginForm";
+import MainLayout from "../../../components/Layout/MainLayout";
+import LoginForm from "../../../components/Login/LoginForm";
 
 const Container = styled.div`
   display: flex;

@@ -40,7 +40,7 @@ module.exports = {
 
   rules: {
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "error",
+    // "@typescript-eslint/no-explicit-any": "error",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [
       1,
@@ -57,6 +57,14 @@ module.exports = {
         jsx: "never",
         ts: "never",
         tsx: "never",
+      },
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        labelComponents: ["label"],
+        labelAttributes: ["htmlFor"],
+        controlComponents: ["input"],
       },
     ],
     "jsx-a11y/anchor-is-valid": [

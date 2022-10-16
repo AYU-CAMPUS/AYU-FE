@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import ErrorMessage from "../GuideMessage/GuideMessage";
 
 import * as Styled from "./SignUpForm.style";
 

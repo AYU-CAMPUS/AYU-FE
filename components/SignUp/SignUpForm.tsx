@@ -1,21 +1,23 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import GuideMessage from "../GuideMessage/GuideMessage";
 
 import * as Styled from "./SignUpForm.style";
 
 interface Inputs {
-  userName: string;
-  studentNumber: string;
+  userId: string;
+  nickname: string;
+  password: string;
+  passwordConfirm: string;
 }
 
 function SignUpForm() {
   const [inputs, setInputs] = useState<Inputs>({
-    userName: "",
-    studentNumber: "",
+    userId: "",
+    nickname: "",
+    password: "",
+    passwordConfirm: "",
   });
-  // 인증번호 받는 중임을 나타내는 상태
-  const [isAuthenticating, setIsAuthenticating] = useState(false);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name } = event.target;
@@ -25,83 +27,102 @@ function SignUpForm() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsAuthenticating(true);
   };
 
   return (
     <Styled.Container>
-      <Styled.Heading>학교 웹메일 인증</Styled.Heading>
+      <Styled.Heading>회원가입</Styled.Heading>
       <Styled.Form onSubmit={handleSubmit}>
-        <Styled.Label htmlFor="user-id">
-          이름
+        <Styled.CertificationNumberInputContainer>
+          <Styled.Label htmlFor="user-id">
+            아이디
+            <Styled.Input
+              type="text"
+              name="userId"
+              value={inputs.userId || ""}
+              id="user-id"
+              onChange={handleChange}
+              placeholder="아이디를 입력해주세요"
+              width="327px"
+              height="65px"
+              marginRight="10px"
+            />
+          </Styled.Label>
+          <Styled.Button type="submit" width="116px" height="65px">
+            중복확인
+          </Styled.Button>
+        </Styled.CertificationNumberInputContainer>
+        <Styled.GuideMsgContainer>
+          <GuideMessage
+            errMsg="잘못된 아이디입니다."
+            okMsg="사용가능한 아이디입니다."
+          />
+        </Styled.GuideMsgContainer>
+
+        <Styled.Label htmlFor="nickname">
+          비밀번호
           <Styled.Input
             type="text"
-            name="userName"
-            id="user-id"
-            value={inputs.userName || ""}
+            name="nickname"
+            value={inputs.nickname || ""}
             onChange={handleChange}
-            placeholder="이름을 입력해주세요"
+            placeholder="특수문자 포함 숫자 9~15자 입력해주세요."
           />
         </Styled.Label>
         <Styled.ErrMsgContainer>
-          {/* TODO: ErrorMessageContainer안에서 메시지만 토글하는 방식으로 변경 */}
-          <ErrorMessage msg="잘못된 이름입니다." />
+          <GuideMessage
+            errMsg="잘못된 비밀번호입니다."
+            okMsg="올바른 비밀번호입니다."
+          />
         </Styled.ErrMsgContainer>
 
-        <Styled.Label htmlFor="studentNumber">
-          학번
+        <Styled.Label htmlFor="nickname">
+          비밀번호 확인
           <Styled.Input
             type="text"
-            name="studentNumber"
-            value={inputs.studentNumber || ""}
+            name="nickname"
+            value={inputs.nickname || ""}
             onChange={handleChange}
-            placeholder="학번을 입력해주세요"
+            placeholder="비밀번호를 다시 입력해주세요"
           />
         </Styled.Label>
-        <Styled.ErrMsgContainer last={!isAuthenticating}>
-          <ErrorMessage msg="잘못된 학번입니다." />
+        <Styled.ErrMsgContainer>
+          <GuideMessage
+            errMsg="비밀번호가 일치하지 않습니다."
+            okMsg="비밀번호가 일치합니다."
+          />
         </Styled.ErrMsgContainer>
 
-        {isAuthenticating && (
-          <>
-            <Styled.CertificationNumberInputContainer>
-              <Styled.Label htmlFor="studentNumber">
-                인증번호
-                <Styled.Input
-                  type="text"
-                  name="studentNumber"
-                  value={inputs.studentNumber || ""}
-                  onChange={handleChange}
-                  placeholder="학번을 입력해주세요"
-                  width="327px"
-                  height="65px"
-                  marginRight="10px"
-                />
-                <Styled.RemainingTime>00:00</Styled.RemainingTime>
-              </Styled.Label>
-              <Styled.Button type="submit" width="116px" height="65px">
-                재발송
-              </Styled.Button>
-            </Styled.CertificationNumberInputContainer>
-            <Styled.ErrMsgContainer last>
-              <ErrorMessage msg="잘못된 인증번호입니다." />
-            </Styled.ErrMsgContainer>
+        <Styled.CertificationNumberInputContainer>
+          <Styled.Label htmlFor="nickname">
+            닉네임
+            <Styled.Input
+              type="text"
+              name="nickname"
+              value={inputs.nickname || ""}
+              onChange={handleChange}
+              placeholder="닉네임을 입력해주세요"
+              width="327px"
+              height="65px"
+              marginRight="10px"
+            />
+          </Styled.Label>
+          <Styled.Button type="submit" width="116px" height="65px">
+            중복확인
+          </Styled.Button>
+        </Styled.CertificationNumberInputContainer>
+        <Styled.ErrMsgContainer last>
+          <GuideMessage
+            errMsg="중복된 닉네임입니다."
+            okMsg="사용가능한 닉네임입니다."
+          />
+        </Styled.ErrMsgContainer>
 
-            <Styled.SignUpBtnContainer>
-              <Styled.Button primary disabled type="submit">
-                확인
-              </Styled.Button>
-            </Styled.SignUpBtnContainer>
-          </>
-        )}
-
-        {!isAuthenticating && (
-          <Styled.SignUpBtnContainer>
-            <Styled.Button primary type="submit">
-              인증번호 받기
-            </Styled.Button>
-          </Styled.SignUpBtnContainer>
-        )}
+        <Styled.SignUpBtnContainer>
+          <Styled.Button primary type="submit">
+            가입하기
+          </Styled.Button>
+        </Styled.SignUpBtnContainer>
       </Styled.Form>
     </Styled.Container>
   );

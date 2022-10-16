@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import Link from "next/link";
 
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import GuideMessage from "../GuideMessage/GuideMessage";
 
 import * as Styled from "./LoginForm.style";
 
@@ -40,7 +40,7 @@ function LoginForm() {
           />
         </Styled.Label>
         <Styled.ErrMsgContainer>
-          <ErrorMessage msg="잘못된 아이디입니다." />
+          <GuideMessage msg="잘못된 아이디입니다." />
         </Styled.ErrMsgContainer>
 
         <Styled.Label htmlFor="password">
@@ -54,7 +54,7 @@ function LoginForm() {
           />
         </Styled.Label>
         <Styled.ErrMsgContainer>
-          <ErrorMessage msg="잘못된 비밀번호입니다." />
+          <GuideMessage msg="잘못된 비밀번호입니다." />
         </Styled.ErrMsgContainer>
 
         <Styled.ForgotLinkContainer>

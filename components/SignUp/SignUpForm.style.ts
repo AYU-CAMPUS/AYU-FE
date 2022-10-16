@@ -70,6 +70,16 @@ export const ErrMsgContainer = styled("div")<ErrMsgContainerProps>`
   height: 40px;
 `;
 
+interface GuideMsgContainerProps {
+  last?: boolean;
+}
+
+export const GuideMsgContainer = styled("div")<GuideMsgContainerProps>`
+  padding-top: 10px;
+  margin-bottom: ${props => (props.last ? "40px" : "0")};
+  height: 40px;
+`;
+
 export const ForgotLinkContainer = styled.section`
   text-align: right;
   padding: 15px 0;

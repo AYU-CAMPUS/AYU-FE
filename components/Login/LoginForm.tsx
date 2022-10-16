@@ -1,14 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import Link from "next/link";
-import {
-  Button,
-  Container,
-  ForgotLinkContainer,
-  Form,
-  Heading,
-  Label,
-  LoginButtonContainer,
-} from "./LoginForm.style";
+
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+
+import * as Styled from "./LoginForm.style";
 
 interface Inputs {
   userId?: string;
@@ -30,10 +25,10 @@ function LoginForm() {
   };
 
   return (
-    <Container>
-      <Heading>로그인</Heading>
-      <Form onSubmit={handleSubmit}>
-        <Label htmlFor="user-id">
+    <Styled.Container>
+      <Styled.Heading>로그인</Styled.Heading>
+      <Styled.Form onSubmit={handleSubmit}>
+        <Styled.Label htmlFor="user-id">
           아이디
           <input
             type="text"
@@ -43,8 +38,12 @@ function LoginForm() {
             onChange={handleChange}
             placeholder="아이디를 입력해주세요"
           />
-        </Label>
-        <Label htmlFor="password">
+        </Styled.Label>
+        <Styled.ErrMsgContainer>
+          <ErrorMessage msg="잘못된 아이디입니다." />
+        </Styled.ErrMsgContainer>
+
+        <Styled.Label htmlFor="password">
           비밀번호
           <input
             type="password"
@@ -53,23 +52,27 @@ function LoginForm() {
             onChange={handleChange}
             placeholder="비밀번호를 입력해주세요"
           />
-        </Label>
-        <ForgotLinkContainer>
+        </Styled.Label>
+        <Styled.ErrMsgContainer>
+          <ErrorMessage msg="잘못된 비밀번호입니다." />
+        </Styled.ErrMsgContainer>
+
+        <Styled.ForgotLinkContainer>
           <Link href="/forget-id">
             <a>아이디 찾기</a>
           </Link>
           <Link href="/forget-possword">
             <a>비밀번호 찾기</a>
           </Link>
-        </ForgotLinkContainer>
-        <LoginButtonContainer>
-          <Button primary type="submit">
+        </Styled.ForgotLinkContainer>
+        <Styled.LoginBtnContainer>
+          <Styled.Button primary type="submit">
             로그인
-          </Button>
-        </LoginButtonContainer>
-        <Button type="button">회원가입</Button>
-      </Form>
-    </Container>
+          </Styled.Button>
+        </Styled.LoginBtnContainer>
+        <Styled.Button type="button">회원가입</Styled.Button>
+      </Styled.Form>
+    </Styled.Container>
   );
 }
 

@@ -55,6 +55,10 @@ export const Label = styled.label`
   }
 `;
 
+export const ErrMsgContainer = styled.div`
+  padding-top: 10px;
+`;
+
 export const ForgotLinkContainer = styled.section`
   text-align: right;
   padding: 15px 0;
@@ -72,7 +76,7 @@ export const ForgotLinkContainer = styled.section`
   }
 `;
 
-export const LoginButtonContainer = styled.div`
+export const LoginBtnContainer = styled.div`
   margin-top: 25px;
 `;
 

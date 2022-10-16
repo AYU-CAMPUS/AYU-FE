@@ -37,21 +37,25 @@ export const Label = styled.label`
   font-weight: 400;
   font-size: 16px;
   color: #333333;
+`;
 
-  input {
-    margin-top: 5px;
-    display: block;
-    width: 453px;
-    height: 65px;
-    font-weight: 400;
-    font-size: 18px;
-    padding-left: 15px;
-    border: 1px solid #dcddde;
-    border-radius: 5px;
+interface InputProps {
+  inline?: boolean;
+}
 
-    &:focus {
-      border: 1px solid #333333;
-    }
+export const Input = styled("input")<InputProps>`
+  margin-top: 5px;
+  display: ${props => (props.inline ? "inline-block" : "block")};
+  width: 453px;
+  height: 65px;
+  font-weight: 400;
+  font-size: 18px;
+  padding-left: 15px;
+  border: 1px solid #dcddde;
+  border-radius: 5px;
+
+  &:focus {
+    border: 1px solid #333333;
   }
 `;
 

@@ -30,7 +30,7 @@ function LoginForm() {
       <Styled.Form onSubmit={handleSubmit}>
         <Styled.Label htmlFor="user-id">
           아이디
-          <input
+          <Styled.Input
             type="text"
             name="userId"
             id="user-id"
@@ -45,7 +45,7 @@ function LoginForm() {
 
         <Styled.Label htmlFor="password">
           비밀번호
-          <input
+          <Styled.Input
             type="password"
             name="password"
             value={inputs.password || ""}

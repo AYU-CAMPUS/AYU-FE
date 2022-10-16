@@ -7,12 +7,14 @@ import * as Styled from "./SignUpForm.style";
 interface Inputs {
   userName: string;
   studentNumber: string;
+  certificationNumber: string;
 }
 
-function SignUpForm() {
+function MailAuthForm() {
   const [inputs, setInputs] = useState<Inputs>({
     userName: "",
     studentNumber: "",
+    certificationNumber: "",
   });
   // 인증번호 받는 중임을 나타내는 상태
   const [isAuthenticating, setIsAuthenticating] = useState(false);
@@ -32,12 +34,12 @@ function SignUpForm() {
     <Styled.Container>
       <Styled.Heading>학교 웹메일 인증</Styled.Heading>
       <Styled.Form onSubmit={handleSubmit}>
-        <Styled.Label htmlFor="user-id">
+        <Styled.Label htmlFor="user-name">
           이름
           <Styled.Input
             type="text"
             name="userName"
-            id="user-id"
+            id="user-name"
             value={inputs.userName || ""}
             onChange={handleChange}
             placeholder="이름을 입력해주세요"
@@ -65,14 +67,14 @@ function SignUpForm() {
         {isAuthenticating && (
           <>
             <Styled.CertificationNumberInputContainer>
-              <Styled.Label htmlFor="studentNumber">
+              <Styled.Label htmlFor="certificationNumber">
                 인증번호
                 <Styled.Input
                   type="text"
-                  name="studentNumber"
-                  value={inputs.studentNumber || ""}
+                  name="certificationNumber"
+                  value={inputs.certificationNumber || ""}
                   onChange={handleChange}
-                  placeholder="학번을 입력해주세요"
+                  placeholder="인증번호를 입력해주세요"
                   width="327px"
                   height="65px"
                   marginRight="10px"
@@ -86,12 +88,12 @@ function SignUpForm() {
             <Styled.ErrMsgContainer last>
               <ErrorMessage msg="잘못된 인증번호입니다." />
             </Styled.ErrMsgContainer>
-
             <Styled.SignUpBtnContainer>
               <Styled.Button primary disabled type="submit">
                 확인
               </Styled.Button>
             </Styled.SignUpBtnContainer>
+            ``
           </>
         )}
 
@@ -107,4 +109,4 @@ function SignUpForm() {
   );
 }
 
-export default SignUpForm;
+export default MailAuthForm;

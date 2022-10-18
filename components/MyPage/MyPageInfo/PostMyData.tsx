@@ -4,37 +4,30 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import * as Styled from "./style";
+import * as Styled from "./TableContainer.style";
+import * as S from "./MyPageInfo.style";
+
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
 
-function createData(
-  registrationDate: string,
-  subject: string,
-  dataName: string,
-  edit: any
-) {
-  return { registrationDate, subject, dataName, edit };
-}
-
 const rows = [
-  createData(
-    "2022.09.22",
-    "특수교육학개론",
-    " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원1",
-    <Image src="/images/EditBtn.png" width="20px" height="20px" />
-  ),
-  createData(
-    "2022.09.23",
-    "교육심리학",
-    " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원2 ",
-    <Image src="/images/EditBtn.png" width="20px" height="20px" />
-  ),
-  createData(
-    "2022.09.24",
-    "특수교육학개론",
-    " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원3 ",
-    <Image src="/images/EditBtn.png" width="20px" height="20px" />
-  ),
+  {
+    registrationDate: "22.10.12",
+    subject: "특수교육학개론",
+    dataName: " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원1",
+    id: 0,
+  },
+  {
+    registrationDate: "22.10.13",
+    subject: "특수교육학개론2",
+    dataName: " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원2",
+    id: 1,
+  },
+  {
+    registrationDate: "22.10.14",
+    subject: "특수교육학개론3",
+    dataName: " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원3",
+    id: 2,
+  },
 ];
 
 export default function PostMyData() {
@@ -42,9 +35,10 @@ export default function PostMyData() {
   const description = "회원님이 등록한 자료를 볼 수 있습니다.";
 
   return (
-    <Styled.MyPageInfo>
+    <S.MyPageInfo>
       <TitleDescription title={title} description={description} />
-      <Styled.BoundaryLine />
+      <S.BoundaryLine />
+
       <Styled.TableContainer>
         <Table aria-label="simple table">
           <TableHead>
@@ -63,6 +57,7 @@ export default function PostMyData() {
               </TableCell>
             </TableRow>
           </TableHead>
+
           <TableBody>
             {rows.map(row => (
               <TableRow key={row.registrationDate}>
@@ -75,12 +70,14 @@ export default function PostMyData() {
                 <TableCell align="center" className="dataNameData">
                   {row.dataName}
                 </TableCell>
-                <TableCell align="center">{row.edit}</TableCell>
+                <TableCell align="center">
+                  <Image src="/images/EditBtn.png" width="20px" height="20px" />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </Styled.TableContainer>
-    </Styled.MyPageInfo>
+    </S.MyPageInfo>
   );
 }

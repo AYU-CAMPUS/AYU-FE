@@ -3,29 +3,29 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import * as Styled from "./style";
+import * as Styled from "./TableContainer.style";
+import * as S from "./MyPageInfo.style";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
 
-function createData(subject: string, dataName: string, writer: string) {
-  return { writer, subject, dataName };
-}
-
 const rows = [
-  createData(
-    "특수교육학개론",
-    " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원1",
-    "이무성"
-  ),
-  createData(
-    "특수교육학개론2",
-    " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원2",
-    "이무성2"
-  ),
-  createData(
-    "특수교육학개론3",
-    " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원3",
-    "이무성3"
-  ),
+  {
+    subject: "특수교육학개론",
+    dataName: " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원1",
+    writer: "이무성",
+    id: 0,
+  },
+  {
+    subject: "특수교육학개론2",
+    dataName: " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원2",
+    writer: "이무성2",
+    id: 1,
+  },
+  {
+    subject: "특수교육학개론3",
+    dataName: " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원3",
+    writer: "이무성3",
+    id: 2,
+  },
 ];
 
 export default function DownloadData() {
@@ -33,9 +33,10 @@ export default function DownloadData() {
   const description = "신청이 수락된 자료들을 볼 수 있습니다.";
 
   return (
-    <Styled.MyPageInfo>
+    <S.MyPageInfo>
       <TitleDescription title={title} description={description} />
-      <Styled.BoundaryLine />
+      <S.BoundaryLine />
+
       <Styled.TableContainer>
         <Table aria-label="simple table">
           <TableHead>
@@ -54,9 +55,10 @@ export default function DownloadData() {
               </TableCell>
             </TableRow>
           </TableHead>
+
           <TableBody>
             {rows.map(row => (
-              <TableRow key={row.subject}>
+              <TableRow key={row.id}>
                 <TableCell align="center" className="subjectData">
                   {row.subject}
                 </TableCell>
@@ -76,6 +78,6 @@ export default function DownloadData() {
           </TableBody>
         </Table>
       </Styled.TableContainer>
-    </Styled.MyPageInfo>
+    </S.MyPageInfo>
   );
 }

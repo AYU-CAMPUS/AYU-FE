@@ -9,3 +9,6 @@ export const FormErrorMessages = {
   PASSWORD: "패스워드 형식에 맞지 않습니다.",
   PASSWORD_REQUIRED: "패스워드는 필수입니다.",
 };
+
+// 한글 검사
+export const koreaChractersCheck = /[가-힣ㄱ-ㅎㅏ-ㅣ]/gi;

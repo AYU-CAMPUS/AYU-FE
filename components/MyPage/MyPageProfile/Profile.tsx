@@ -8,18 +8,17 @@ export default function Profile() {
 
   return (
     <Styled.MyProfile>
-      <div className="profileDescription">
+      <Styled.ProfileDescription>
         <Image src="/images/Profile.png" width="80px" height="80px" />
         <p>{nickName}님</p>
-      </div>
-      <div className="registerBtn">
-        <button type="button" onClick={() => router.push("/")}>
-          프로필 사진 변경
-        </button>
-        <button type="button" onClick={() => router.push("/")}>
-          자료등록
-        </button>
-      </div>
+      </Styled.ProfileDescription>
+
+      <Styled.ProfileBtn type="button" onClick={() => router.push("/")}>
+        프로필 사진 변경
+      </Styled.ProfileBtn>
+      <Styled.RegisterBtn type="button" onClick={() => router.push("/")}>
+        자료등록
+      </Styled.RegisterBtn>
     </Styled.MyProfile>
   );
 }

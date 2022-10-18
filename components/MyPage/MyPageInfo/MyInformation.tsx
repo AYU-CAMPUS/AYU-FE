@@ -1,6 +1,9 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import * as Styled from "./style";
-import { FormErrorMessages } from "../../../utils/hookFormUtil";
+import * as Styled from "./MyPageInfo.style";
+import {
+  FormErrorMessages,
+  koreaChractersCheck,
+} from "../../../utils/hookFormUtil";
 import { IUserFormInput } from "./types";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
 
@@ -21,23 +24,25 @@ export default function MyInformation() {
   return (
     <Styled.MyPageInfo>
       <TitleDescription title={title} description={description} />
+
       <Styled.BoundaryLine />
-      <div className="formWrapper">
+
+      <Styled.FormWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="name">
-            <label htmlFor="이름">이름</label>
+          <Styled.Name>
+            <Styled.NameLabel>이름</Styled.NameLabel>
             <input
               {...register("name", {
                 required: true,
                 minLength: 3,
                 maxLength: 10,
-                pattern: /[가-힣ㄱ-ㅎㅏ-ㅣ]/gi,
+                pattern: koreaChractersCheck,
               })}
               placeholder="이름을 입력해주세요"
               id="name"
               style={{ border: watch("name") && "1px solid #6600CC" }}
             />
-          </div>
+          </Styled.Name>
           {errors?.name?.type === "pattern" && (
             <p className="errorMessage">{FormErrorMessages.NAME}</p>
           )}
@@ -50,23 +55,24 @@ export default function MyInformation() {
           {errors?.name?.type === "minLength" && (
             <p className="errorMessage">{FormErrorMessages.MIN_LENGTH}</p>
           )}
-          <div className="nickName">
-            <label htmlFor="닉네임">닉네임</label>
+
+          <Styled.NickName>
+            <Styled.NickNameLabel>닉네임</Styled.NickNameLabel>
             <input
               {...register("nickName", {
                 required: true,
                 minLength: 3,
                 maxLength: 10,
-                pattern: /[가-힣ㄱ-ㅎㅏ-ㅣ]/gi,
+                pattern: koreaChractersCheck,
               })}
               placeholder="닉네임을 입력해주세요"
               className="inputNickName"
               style={{ border: watch("nickName") && "1px solid #6600CC" }}
             />
-            <button type="button" className="duplicateVerificationBtn">
+            <Styled.DuplicateVerificationBtn>
               중복확인
-            </button>
-          </div>
+            </Styled.DuplicateVerificationBtn>
+          </Styled.NickName>
           {errors?.nickName?.type === "pattern" && (
             <p className="errorMessage">{FormErrorMessages.NICKNAME}</p>
           )}
@@ -81,18 +87,17 @@ export default function MyInformation() {
           {errors?.nickName?.type === "minLength" && (
             <p className="errorMessage">{FormErrorMessages.MIN_LENGTH}</p>
           )}
-          <div className="data">
-            <label htmlFor="자료">원하는 자료</label>
+
+          <Styled.Data>
+            <Styled.DataLabel>원하는 자료</Styled.DataLabel>
             <input type="text" placeholder="총 3개까지 적어주세요" />
-          </div>
-          <button type="submit" className="saveBtn">
-            저장
-          </button>
-          <button type="button" className="withdrwal">
-            회원탈퇴
-          </button>
+          </Styled.Data>
+
+          <Styled.SaveBtn type="submit">저장</Styled.SaveBtn>
+
+          <Styled.Withdrwal type="button">회원탈퇴</Styled.Withdrwal>
         </form>
-      </div>
+      </Styled.FormWrapper>
     </Styled.MyPageInfo>
   );
 }

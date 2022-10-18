@@ -4,7 +4,7 @@ import * as Styled from "./mypage.style";
 import Profile from "../../components/MyPage/MyPageProfile/Profile";
 import DataList from "../../components/MyPage/MyPageDataList/DataList";
 import MyPageNav from "../../components/MyPage/MyPageNav/MyPageNav";
-import Alarm from "../../components/MyPage/MyPageInfo/Notification";
+import Notification from "../../components/MyPage/MyPageInfo/Notification";
 
 function MyPage() {
   const router = useRouter();
@@ -32,7 +32,7 @@ function MyPage() {
           selectMenuNav={selectMenuNav}
           setSelectMenuNav={setSelectMenuNav}
         />
-        <Alarm />
+        <Notification />
       </Styled.MypageNavInfo>
     </Styled.MyPageWrapper>
   );

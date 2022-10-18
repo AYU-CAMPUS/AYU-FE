@@ -17,8 +17,8 @@ function MyPageNav({ menuNav, selectMenuNav, setSelectMenuNav }: MyProps) {
 
   return (
     <Styled.MyPageNav>
-      <h1>마이 캠퍼스</h1>
-      <div className="navBtn">
+      <Styled.Title>마이 캠퍼스</Styled.Title>
+      <Styled.NavWrapper>
         {menuNav.map(menu => {
           return (
             <MyButton
@@ -32,7 +32,7 @@ function MyPageNav({ menuNav, selectMenuNav, setSelectMenuNav }: MyProps) {
             </MyButton>
           );
         })}
-      </div>
+      </Styled.NavWrapper>
     </Styled.MyPageNav>
   );
 }

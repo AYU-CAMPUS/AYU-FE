@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import * as Styled from "./style";
+import * as Styled from "./MyPageInfo.style";
 import { IUserFormInput } from "./types";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
 
@@ -16,29 +16,27 @@ function ChangePassWord() {
   return (
     <Styled.MyPageInfo>
       <TitleDescription title={title} description={description} />
+
       <Styled.BoundaryLine />
-      <div className="formWrapper">
+
+      <Styled.FormWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="changePassword">
-            <label htmlFor="변경 비밀번호" className="changelabel">
-              변경 비밀번호
-            </label>
+          <Styled.ChangePassword>
+            <Styled.ChangeLabel>변경 비밀번호</Styled.ChangeLabel>
             <input
               placeholder="영어,숫자 조합 최소 8자 이상 입력해주세요"
               type="password"
             />
-          </div>
-          <div className="passwordConfirm">
-            <label htmlFor="비밀번호 확인" className="confirmlabel">
-              비밀번호 확인
-            </label>
+          </Styled.ChangePassword>
+
+          <Styled.PasswordConfirm>
+            <Styled.ConfirmLabel>비밀번호 확인</Styled.ConfirmLabel>
             <input type="password" />
-          </div>
-          <button type="submit" className="completeBtn">
-            완료
-          </button>
+          </Styled.PasswordConfirm>
+
+          <Styled.CompleteBtn type="submit">완료</Styled.CompleteBtn>
         </form>
-      </div>
+      </Styled.FormWrapper>
     </Styled.MyPageInfo>
   );
 }

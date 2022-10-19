@@ -3,8 +3,8 @@ import React from "react";
 import * as Styled from "./GuideMessage.style";
 
 interface Props {
-  errMsg: string;
-  okMsg: string;
+  errMsg?: string;
+  okMsg?: string;
 }
 
 function GuideMessage({ errMsg, okMsg }: Props) {

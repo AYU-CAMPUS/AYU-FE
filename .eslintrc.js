@@ -71,5 +71,11 @@ module.exports = {
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",
     "react/no-unused-prop-types": "off",
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        labelAttributes: ["htmlFor"],
+      },
+    ],
   },
 };

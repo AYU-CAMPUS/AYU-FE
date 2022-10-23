@@ -1,17 +1,20 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import Link from "next/link";
 
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import GuideMessage from "../GuideMessage/GuideMessage";
 
 import * as Styled from "./LoginForm.style";
 
 interface Inputs {
-  userId?: string;
-  password?: string;
+  userId: string;
+  password: string;
 }
 
 function LoginForm() {
-  const [inputs, setInputs] = useState<Inputs>({});
+  const [inputs, setInputs] = useState<Inputs>({
+    userId: "",
+    password: "",
+  });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name } = event.target;
@@ -30,7 +33,7 @@ function LoginForm() {
       <Styled.Form onSubmit={handleSubmit}>
         <Styled.Label htmlFor="user-id">
           아이디
-          <input
+          <Styled.Input
             type="text"
             name="userId"
             id="user-id"
@@ -40,12 +43,12 @@ function LoginForm() {
           />
         </Styled.Label>
         <Styled.ErrMsgContainer>
-          <ErrorMessage msg="잘못된 아이디입니다." />
+          <GuideMessage errMsg="잘못된 아이디입니다." />
         </Styled.ErrMsgContainer>
 
         <Styled.Label htmlFor="password">
           비밀번호
-          <input
+          <Styled.Input
             type="password"
             name="password"
             value={inputs.password || ""}
@@ -54,7 +57,7 @@ function LoginForm() {
           />
         </Styled.Label>
         <Styled.ErrMsgContainer>
-          <ErrorMessage msg="잘못된 비밀번호입니다." />
+          <GuideMessage errMsg="잘못된 비밀번호입니다." />
         </Styled.ErrMsgContainer>
 
         <Styled.ForgotLinkContainer>

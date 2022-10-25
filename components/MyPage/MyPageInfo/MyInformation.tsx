@@ -1,4 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useState } from "react";
 import * as Styled from "./MyPageInfo.style";
 import {
   FormErrorMessages,
@@ -6,6 +7,9 @@ import {
 } from "../../../utils/hookFormUtil";
 import { IUserFormInput } from "./types";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
+import Portal from "../../Modal/Portal/Portal";
+import Button from "../../Button/Button";
+import WithdrawlModal from "../../Modal/WithdrawlModal";
 
 export default function MyInformation() {
   const title = "내 정보";
@@ -16,6 +20,9 @@ export default function MyInformation() {
     formState: { errors },
     watch,
   } = useForm<IUserFormInput>();
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const handleModalClose = () => setModalIsOpen(false);
 
   const onSubmit: SubmitHandler<IUserFormInput> = (data: IUserFormInput) => {
     console.log(JSON.stringify(data));
@@ -93,9 +100,22 @@ export default function MyInformation() {
             <input type="text" placeholder="총 3개까지 적어주세요" />
           </Styled.Data>
 
-          <Styled.SaveBtn type="submit">저장</Styled.SaveBtn>
+          <Button margin="4rem 0 0 9.7rem">저장</Button>
 
-          <Styled.Withdrwal type="button">회원탈퇴</Styled.Withdrwal>
+          <Styled.Withdrwal
+            type="button"
+            onClick={() => {
+              setModalIsOpen(true);
+              console.log("버튼 클릭");
+            }}
+          >
+            회원탈퇴
+          </Styled.Withdrwal>
+          {modalIsOpen && (
+            <Portal>
+              <WithdrawlModal handleModalClose={handleModalClose} />
+            </Portal>
+          )}
         </form>
       </Styled.FormWrapper>
     </Styled.MyPageInfo>

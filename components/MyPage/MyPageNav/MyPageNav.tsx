@@ -2,11 +2,11 @@ import React from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
 import * as Styled from "./style";
-import { MyButtonProps, MyProps } from "./types";
+import { ButtonProps, MyProps } from "./types";
 
-const MyButton = styled.button<MyButtonProps>`
-  border: ${props => (props.isSelected ? "1px solid #6600CC" : "none")};
-  color: ${props => (props.isSelected ? "#6600CC" : "#000")};
+const Button = styled.button<ButtonProps>`
+  color: ${props => (props.isSelected ? "#26409A" : "#000")};
+  background: ${props => (props.isSelected ? "#FAFAFA;" : "#FFFFFF")};
 `;
 
 function MyPageNav({ menuNav, selectMenuNav, setSelectMenuNav }: MyProps) {
@@ -21,7 +21,7 @@ function MyPageNav({ menuNav, selectMenuNav, setSelectMenuNav }: MyProps) {
       <Styled.NavWrapper>
         {menuNav.map(menu => {
           return (
-            <MyButton
+            <Button
               type="button"
               isSelected={selectMenuNav === menu}
               onClick={() => buttonClickHandler(menu)}
@@ -29,7 +29,7 @@ function MyPageNav({ menuNav, selectMenuNav, setSelectMenuNav }: MyProps) {
             >
               <span>{menu}</span>
               <Image src="/images/ArrowBtn.png" width="13px" height="13px" />
-            </MyButton>
+            </Button>
           );
         })}
       </Styled.NavWrapper>

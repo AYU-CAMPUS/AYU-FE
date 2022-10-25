@@ -2,6 +2,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import * as Styled from "./MyPageInfo.style";
 import { IUserFormInput } from "./types";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
+import Button from "../../Button/Button";
 
 function ChangePassWord() {
   const title = "비밀번호 변경";
@@ -34,7 +35,7 @@ function ChangePassWord() {
             <input type="password" />
           </Styled.PasswordConfirm>
 
-          <Styled.CompleteBtn type="submit">완료</Styled.CompleteBtn>
+          <Button margin="6.3rem 0 0 12.7rem">완료</Button>
         </form>
       </Styled.FormWrapper>
     </Styled.MyPageInfo>

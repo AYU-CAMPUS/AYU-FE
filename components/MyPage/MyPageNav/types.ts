@@ -6,6 +6,6 @@ export interface MyProps {
   setSelectMenuNav: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export interface MyButtonProps {
+export interface ButtonProps {
   isSelected: boolean;
 }

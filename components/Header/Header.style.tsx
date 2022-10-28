@@ -8,6 +8,10 @@ export const Head = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: "Spoqa Han Sans Neo";
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 20px;
   div {
     display: flex;
     align-items: center;

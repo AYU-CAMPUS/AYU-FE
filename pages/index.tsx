@@ -7,6 +7,7 @@ import styles from "../styles/Home.module.css";
 // emotion styled div tag
 const StyledDiv = styled.div`
   color: red;
+  background-color: red;
 `;
 
 function Home() {

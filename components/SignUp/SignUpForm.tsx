@@ -39,7 +39,7 @@ function SignUpForm() {
             <Styled.Input
               type="text"
               name="userId"
-              value={inputs.userId || ""}
+              value={inputs.userId}
               id="user-id"
               onChange={handleChange}
               placeholder="아이디를 입력해주세요"
@@ -59,12 +59,12 @@ function SignUpForm() {
           />
         </Styled.GuideMsgContainer>
 
-        <Styled.Label htmlFor="nickname">
+        <Styled.Label htmlFor="password">
           비밀번호
           <Styled.Input
             type="text"
-            name="nickname"
-            value={inputs.nickname || ""}
+            name="password"
+            value={inputs.password}
             onChange={handleChange}
             placeholder="특수문자 포함 숫자 9~15자 입력해주세요."
           />
@@ -76,12 +76,12 @@ function SignUpForm() {
           />
         </Styled.ErrMsgContainer>
 
-        <Styled.Label htmlFor="nickname">
+        <Styled.Label htmlFor="password-confirm">
           비밀번호 확인
           <Styled.Input
             type="text"
-            name="nickname"
-            value={inputs.nickname || ""}
+            name="password-confirm"
+            value={inputs.passwordConfirm}
             onChange={handleChange}
             placeholder="비밀번호를 다시 입력해주세요"
           />
@@ -99,7 +99,7 @@ function SignUpForm() {
             <Styled.Input
               type="text"
               name="nickname"
-              value={inputs.nickname || ""}
+              value={inputs.nickname}
               onChange={handleChange}
               placeholder="닉네임을 입력해주세요"
               width="327px"

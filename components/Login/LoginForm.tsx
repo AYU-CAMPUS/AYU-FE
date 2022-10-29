@@ -6,12 +6,15 @@ import GuideMessage from "../GuideMessage/GuideMessage";
 import * as Styled from "./LoginForm.style";
 
 interface Inputs {
-  userId?: string;
-  password?: string;
+  userId: string;
+  password: string;
 }
 
 function LoginForm() {
-  const [inputs, setInputs] = useState<Inputs>({});
+  const [inputs, setInputs] = useState<Inputs>({
+    userId: "",
+    password: "",
+  });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name } = event.target;
@@ -40,7 +43,7 @@ function LoginForm() {
           />
         </Styled.Label>
         <Styled.ErrMsgContainer>
-          <GuideMessage msg="잘못된 아이디입니다." />
+          <GuideMessage errMsg="잘못된 아이디입니다." />
         </Styled.ErrMsgContainer>
 
         <Styled.Label htmlFor="password">
@@ -54,7 +57,7 @@ function LoginForm() {
           />
         </Styled.Label>
         <Styled.ErrMsgContainer>
-          <GuideMessage msg="잘못된 비밀번호입니다." />
+          <GuideMessage errMsg="잘못된 비밀번호입니다." />
         </Styled.ErrMsgContainer>
 
         <Styled.ForgotLinkContainer>

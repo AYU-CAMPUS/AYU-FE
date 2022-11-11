@@ -11,7 +11,7 @@ import searchIcon from "../../public/images/search.svg";
 import DataCategoryAside from "./DataCategoryAside";
 import { MajorsData } from "../MainPage/DataJson";
 import CategorySelection from "./CategorySelection";
-import { EngineeringCollege } from "./data";
+import { SocialScienceCollege } from "./data";
 
 const rows = [
   {
@@ -77,7 +77,7 @@ export default function Article() {
         />
 
         <Styled.CategorySection>
-          <CategorySelection departmentCategory={EngineeringCollege} />
+          <CategorySelection departmentCategory={SocialScienceCollege} />
         </Styled.CategorySection>
       </Styled.SchoolInfo>
 

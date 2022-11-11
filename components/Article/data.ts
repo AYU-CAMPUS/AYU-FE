@@ -49,95 +49,95 @@ export const TheologyCollege = [
 export const HumanityCollege = [
   {
     department: "국어국문학과",
-    id: 0,
-  },
-  {
-    department: "영미언어문문화학과",
-    id: 1,
-  },
-  {
-    department: "러시아언어문화학과",
     id: 2,
   },
   {
-    department: "유아교육학과",
+    department: "영미언어문문화학과",
     id: 3,
   },
   {
-    department: "중국언어문화학과",
+    department: "러시아언어문화학과",
     id: 4,
+  },
+  {
+    department: "유아교육학과",
+    id: 5,
+  },
+  {
+    department: "중국언어문화학과",
+    id: 6,
   },
 ];
 
 export const ArtCollege = [
   {
     department: "공연예술학과",
-    id: 0,
+    id: 7,
   },
   {
     department: "화장품발명디자인학과",
-    id: 1,
+    id: 8,
   },
   {
     department: "디지털미디어디자인학과",
-    id: 2,
+    id: 9,
   },
   {
     department: "음악학과",
-    id: 3,
+    id: 10,
   },
   {
     department: "뷰티메디컬디자인학과",
-    id: 4,
+    id: 11,
   },
 ];
 
 export const SocialScienceCollege = [
   {
     department: "글로벌경영학과",
-    id: 0,
+    id: 12,
   },
   {
     department: "행정학과",
-    id: 1,
+    id: 13,
   },
   {
     department: "관광경영학과",
-    id: 2,
+    id: 14,
   },
 ];
 
 export const EngineeringCollege = [
   {
     department: "식품영양학과",
-    id: 0,
+    id: 15,
   },
   {
     department: "컴퓨터공학과",
-    id: 1,
+    id: 16,
   },
   {
     department: "정보전기전자공학과",
-    id: 2,
+    id: 17,
   },
   {
     department: "통계사이언스학과",
-    id: 3,
+    id: 18,
   },
   {
     department: "소프트웨어학과",
-    id: 4,
+    id: 19,
   },
   {
     department: "도시정보공학과",
-    id: 5,
+    id: 20,
   },
   {
     department: "도시정보공학과",
-    id: 6,
+    id: 21,
   },
   {
     department: "Ai 융합학과",
-    id: 7,
+    id: 22,
   },
 ];

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Image from "next/image";
 
 export const Container = styled.section`
   width: 667px;
@@ -11,6 +12,12 @@ export const Container = styled.section`
   align-items: center;
 `;
 
+export const HeadingContainer = styled.section`
+  text-align: left;
+  width: 331px;
+  overflow: auto;
+`;
+
 export const Heading = styled.h1`
   font-weight: 500;
   font-size: 40px;
@@ -18,8 +25,48 @@ export const Heading = styled.h1`
   color: #333333;
 `;
 
-export const Form = styled.form`
-  margin-top: 50px;
+export const SubHeading = styled.h2`
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  color: #767777;
+  margin-bottom: 60px;
+`;
+
+interface UlProps {
+  width?: string;
+  height?: string;
+}
+
+export const UserIdList = styled("ul")<UlProps>`
+  width: ${props => (props.width ? props.width : "453px")};
+  height: ${props => (props.height ? props.height : "65px")};
+  margin-bottom: 120px;
+`;
+
+export const UserIdItem = styled.li`
+  list-style: none;
+  display: flex;
+  align-items: center;
+`;
+
+export const Img = styled(Image)``;
+
+export const UserId = styled.span`
+  margin-left: 15px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #333333;
+  text-decoration: underline;
+`;
+
+interface BtnContainerProps {
+  width?: string;
+  height?: string;
+}
+
+export const BtnContainer = styled("div")<BtnContainerProps>`
+  width: ${props => (props.width ? props.width : "453px")};
   display: flex;
   flex-direction: column;
 
@@ -28,58 +75,7 @@ export const Form = styled.form`
   }
 `;
 
-export const Label = styled.label`
-  font-weight: 400;
-  font-size: 16px;
-  color: #333333;
-  position: relative;
-`;
-
-interface InputProps {
-  inline?: boolean;
-  width?: string;
-  height?: string;
-  marginRight?: string;
-}
-
-export const Input = styled("input")<InputProps>`
-  margin-top: 5px;
-  display: ${props => (props.inline ? "inline-block" : "block")};
-  width: ${props => (props.width ? props.width : "453px")};
-  height: ${props => (props.height ? props.height : "65px")};
-  margin-right: ${props => (props.marginRight ? props.marginRight : "0")};
-  font-weight: 400;
-  font-size: 18px;
-  padding-left: 15px;
-  border: 1px solid #dcddde;
-  border-radius: 5px;
-
-  &:focus {
-    border: 1px solid #333333;
-  }
-`;
-
-interface ErrMsgContainerProps {
-  last?: boolean;
-}
-
-export const ErrMsgContainer = styled("div")<ErrMsgContainerProps>`
-  padding-top: 10px;
-  margin-bottom: ${props => (props.last ? "40px" : "0")};
-  height: 40px;
-`;
-
-interface GuideMsgContainerProps {
-  last?: boolean;
-}
-
-export const GuideMsgContainer = styled("div")<GuideMsgContainerProps>`
-  padding-top: 10px;
-  margin-bottom: ${props => (props.last ? "40px" : "0")};
-  height: 40px;
-`;
-
-export const SignUpBtnContainer = styled.div``;
+export const LoginBtnContainer = styled.div``;
 
 interface ButtonProps {
   primary?: boolean;

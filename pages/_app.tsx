@@ -19,7 +19,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <>
-      {" "}
       <GlobalStyles />
       {getLayout(<Component {...pageProps} />)}
     </>

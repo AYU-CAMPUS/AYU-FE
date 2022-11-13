@@ -67,6 +67,7 @@ module.exports = {
         aspects: ["invalidHref", "preferButton"],
       },
     ],
+    "jsx-a11y/label-has-associated-control": "off",
     "no-nested-ternary": "off",
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",

@@ -59,6 +59,14 @@ module.exports = {
         tsx: "never",
       },
     ],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        labelComponents: ["label"],
+        labelAttributes: ["htmlFor"],
+        controlComponents: ["input"],
+      },
+    ],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

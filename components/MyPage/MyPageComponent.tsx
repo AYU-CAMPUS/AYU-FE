@@ -9,7 +9,8 @@ import PostMyData from "./MyPageInfo/PostMyData";
 import DownloadData from "./MyPageInfo/DownloadData";
 import ExchangeAcceptance from "./MyPageInfo/ExchangeAcceptance";
 import Notification from "./MyPageInfo/Notification";
-import MyPageNavData, { IComponentProps } from "./MyPageNavData/MyPageNavData";
+import MyPageNavData from "./MyPageNavData/MyPageNavData";
+import { IComponentProps } from "./MyPageNavData/types";
 
 function MyPage() {
   const menuNav = [

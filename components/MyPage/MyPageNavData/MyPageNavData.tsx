@@ -1,16 +1,6 @@
 import React from "react";
 import * as Styled from "./style";
-
-export interface IComponentProps {
-  component: React.ReactElement;
-  menu: string;
-  id: number;
-}
-
-interface ComponentProps {
-  selectMenuNav: string;
-  selectMenuComponentList: IComponentProps[];
-}
+import { ComponentProps } from "./types";
 
 export default function MyPageNavData({
   selectMenuComponentList,

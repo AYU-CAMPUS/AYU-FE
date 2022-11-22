@@ -21,6 +21,10 @@
     "react-datepicker": "^4.8.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.4.3",
+    "react-hook-form": "^7.37.0",
+    "react-horizontal-scrolling-menu": "^3.2.2",
+    "styled-components": "^5.3.6",
+    "swiper": "^8.4.4",
     "twin.macro": "^2.8.2"
   },
   "devDependencies": {

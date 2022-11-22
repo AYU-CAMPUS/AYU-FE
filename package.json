@@ -15,7 +15,9 @@
     "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.10.13",
+    "@mui/material": "^5.10.9",
+    "@mui/styled-engine-sc": "^5.10.6",
+    "css": "^3.0.0",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-datepicker": "^4.8.0",
@@ -48,8 +50,8 @@
     "husky": "^8.0.1",
     "lint-staged": "^13.0.2",
     "prettier": "^2.7.1",
-    "twin.macro": "^2.8.2",
-    "typescript": "4.7.4"
+    "typescript": "4.7.4",
+    "twin.macro": "^2.8.2"
   },
   "lint-staged": {
     "*.{ts,tsx}": "next lint --fix"

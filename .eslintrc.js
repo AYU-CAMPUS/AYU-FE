@@ -42,6 +42,7 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-explicit-any": "error",
     "react/react-in-jsx-scope": "off",
+    "import/no-unresolved": "off",
     "react/jsx-filename-extension": [
       1,
       {
@@ -59,6 +60,14 @@ module.exports = {
         tsx: "never",
       },
     ],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        labelComponents: ["label"],
+        labelAttributes: ["htmlFor"],
+        controlComponents: ["input"],
+      },
+    ],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
@@ -67,7 +76,6 @@ module.exports = {
         aspects: ["invalidHref", "preferButton"],
       },
     ],
-    "jsx-a11y/label-has-associated-control": "off",
     "no-nested-ternary": "off",
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",

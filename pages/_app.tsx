@@ -1,6 +1,7 @@
 import React from "react";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
+import { GlobalStyles } from "twin.macro";
 
 import "../styles/reset.css";
 import "../styles/globals.css";
@@ -16,7 +17,12 @@ type AppPropsWithLayout = AppProps & {
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout || (page => page);
 
-  return <>{getLayout(<Component {...pageProps} />)}</>;
+  return (
+    <>
+      <GlobalStyles />
+      {getLayout(<Component {...pageProps} />)}
+    </>
+  );
 }
 
 export default MyApp;

@@ -1,6 +1,7 @@
-import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
+import { ChangeEvent, FormEvent, MouseEvent, useEffect, useState } from "react";
 
 import CategoryModal from "./CategoryModal/CategoryModal";
+import ModalOverlay from "./CategoryModal/ModalOverlay";
 
 import * as Styled from "./RegisterForm.style";
 
@@ -15,18 +16,34 @@ function RegisterForm() {
   };
 
   const [isOpenCategoryDialog, setIsOpenCategoryDialog] = useState(false);
+
   const openCategoryDialog = (e: MouseEvent<HTMLSelectElement>) => {
-    console.log("openCategoryDialog");
     e.preventDefault();
     setIsOpenCategoryDialog(true);
   };
 
-  const [category] = useState("카테고리");
+  const closeCategoryDialog = (e: MouseEvent<HTMLSelectElement>) => {
+    e.preventDefault();
+    setIsOpenCategoryDialog(false);
+  };
+
+  const [category] = useState("카테고리 선택");
   // const selectCategoryRef = useRef<HTMLSelectElement>(null);
+
+  useEffect(() => {
+    // 모달을 열 때 body의 overflow-y를 hidden으로 바꾸고 position: fixed를 해준다.
+    // 그리고 모달이 닫힐 때 다시 원래대로 바꿔준다.
+    if (isOpenCategoryDialog) {
+      document.body.style.overflowY = "hidden";
+      document.body.style.position = "fixed";
+    } else {
+      document.body.style.overflowY = "auto";
+      document.body.style.position = "relative";
+    }
+  }, [isOpenCategoryDialog]);
 
   return (
     <Styled.Container>
-      asdfsdf
       <Styled.Heading>자료등록</Styled.Heading>
       <Styled.Form onSubmit={handleSubmit}>
         <Styled.Formrow>
@@ -86,24 +103,34 @@ function RegisterForm() {
               required
               onChange={e => e.preventDefault()}
               onClick={openCategoryDialog}
-              defaultValue="select category"
               value={category}
             >
               <option
-                value="select category"
+                value="카테고리 선택"
                 disabled
-                style={{ display: "none" }}
+                style={{
+                  display: "none",
+                }}
               >
                 카테고리 선택
               </option>
-              <option value="completed" style={{ display: "none" }}>
+              <option
+                value="선택완료"
+                style={{
+                  display: "none",
+                }}
+              >
                 선택완료
               </option>
             </Styled.SelectCategory>
           </Styled.Col2>
         </Styled.Formrow>
         {/* 카테고리 선택을 위한 dialog */}
-        {isOpenCategoryDialog && <CategoryModal />}
+        {isOpenCategoryDialog && (
+          <ModalOverlay closeCategoryDialog={closeCategoryDialog}>
+            <CategoryModal />
+          </ModalOverlay>
+        )}
 
         <Styled.ButtonWrapper>
           <Styled.ExitButton type="button">취소하기</Styled.ExitButton>

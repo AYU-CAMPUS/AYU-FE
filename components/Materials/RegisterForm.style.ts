@@ -43,6 +43,12 @@ export const Col1 = styled.div<Col1Props>`
   min-width: 200px;
   float: left;
 
+  label {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+  }
+
   &:after {
     display: table;
     content: " ";
@@ -119,6 +125,12 @@ export const SelectFileLabelButton = styled.label`
   align-items: center;
   cursor: pointer;
   margin-right: 15px;
+
+  span {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+  }
 `;
 
 export const Label = styled.label`
@@ -134,6 +146,12 @@ export const SelectFileGuide = styled.div`
   color: #767777;
   display: flex;
   flex-direction: column;
+
+  p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+  }
 `;
 
 export const SelectCategory = styled.select`
@@ -145,6 +163,10 @@ export const SelectCategory = styled.select`
   padding-left: 15px;
   color: black;
 
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+
   &:required:invalid {
     color: #8f9091;
   }
@@ -153,7 +175,6 @@ export const SelectCategory = styled.select`
   }
   &::placeholder {
     color: #8f9091;
-    font: 16px sans-serif;
     transform: translate(0, 2px);
   }
 `;

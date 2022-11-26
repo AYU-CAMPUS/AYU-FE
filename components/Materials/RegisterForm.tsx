@@ -1,4 +1,6 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
+
+import CategoryModal from "./CategoryModal/CategoryModal";
 
 import * as Styled from "./RegisterForm.style";
 
@@ -8,17 +10,23 @@ function RegisterForm() {
     setTextValue(e.target.value);
   };
 
-  const [category, setCategory] = useState("");
-  const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setCategory(e.target.value);
-  };
-
   const handleSubmit = (event: FormEvent<HTMLDivElement>) => {
     event.preventDefault();
   };
 
+  const [isOpenCategoryDialog, setIsOpenCategoryDialog] = useState(false);
+  const openCategoryDialog = (e: MouseEvent<HTMLSelectElement>) => {
+    console.log("openCategoryDialog");
+    e.preventDefault();
+    setIsOpenCategoryDialog(true);
+  };
+
+  const [category] = useState("카테고리");
+  // const selectCategoryRef = useRef<HTMLSelectElement>(null);
+
   return (
     <Styled.Container>
+      asdfsdf
       <Styled.Heading>자료등록</Styled.Heading>
       <Styled.Form onSubmit={handleSubmit}>
         <Styled.Formrow>
@@ -75,19 +83,27 @@ function RegisterForm() {
           <Styled.Col2>
             <Styled.SelectCategory
               id="select-category"
-              value={category}
-              onChange={handleCategoryChange}
               required
+              onChange={e => e.preventDefault()}
+              onClick={openCategoryDialog}
+              defaultValue="select category"
+              value={category}
             >
-              <option value="" disabled selected>
+              <option
+                value="select category"
+                disabled
+                style={{ display: "none" }}
+              >
                 카테고리 선택
               </option>
-              <option value="Orange">Orange</option>
-              <option value="Radish">Radish</option>
-              <option value="Cherry">Cherry</option>
+              <option value="completed" style={{ display: "none" }}>
+                선택완료
+              </option>
             </Styled.SelectCategory>
           </Styled.Col2>
         </Styled.Formrow>
+        {/* 카테고리 선택을 위한 dialog */}
+        {isOpenCategoryDialog && <CategoryModal />}
 
         <Styled.ButtonWrapper>
           <Styled.ExitButton type="button">취소하기</Styled.ExitButton>

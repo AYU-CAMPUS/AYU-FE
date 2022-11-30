@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState, ChangeEvent, FormEvent } from "react";
 import Button from "../Button/Button";
 import * as Styled from "./WithdrawlModal.style";
+import cancel from "../../public/images/cancel.svg";
 
 type ModalEventProps = {
   handleModalClose: () => void;
@@ -51,7 +53,7 @@ function WithdrawlModal({ handleModalClose }: ModalEventProps) {
           <div />
           <h2>회원탈퇴</h2>
           <button type="button" onClick={handleModalClose}>
-            X
+            <Image src={cancel} />
           </button>
         </Styled.ModalTitle>
 

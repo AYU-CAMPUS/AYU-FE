@@ -29,11 +29,16 @@ export const Form = styled.form`
   }
 `;
 
-export const Label = styled.label`
+interface LabelProps {
+  last?: string;
+}
+
+export const Label = styled.label<LabelProps>`
   font-weight: 400;
   font-size: 16px;
   color: #333333;
   position: relative;
+  margin-bottom: ${props => props.last || "0px"};
 `;
 
 interface InputProps {
@@ -41,6 +46,7 @@ interface InputProps {
   width?: string;
   height?: string;
   marginRight?: string;
+  border?: boolean;
 }
 
 export const Input = styled("input")<InputProps>`
@@ -52,8 +58,10 @@ export const Input = styled("input")<InputProps>`
   font-weight: 400;
   font-size: 18px;
   padding-left: 15px;
-  border: 1px solid #dcddde;
+  border: ${props =>
+    props.border ? "1px solid transparent" : "1px solid #dcddde;"};
   border-radius: 5px;
+  cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
 
   &:focus {
     border: 1px solid #333333;

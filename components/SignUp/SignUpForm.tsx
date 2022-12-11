@@ -1,5 +1,8 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useRouter } from "next/router";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
+import { useDuplicateNicknameCheck } from "../../hooks/api/useDuplicateNicknameCheck";
+import { useSignUp } from "../../hooks/api/useSignUp";
 import GuideMessage from "../GuideMessage/GuideMessage";
 
 import * as Styled from "./SignUpForm.style";
@@ -19,21 +22,55 @@ function SignUpForm() {
     passwordConfirm: "",
   });
 
+  const router = useRouter();
+  useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+
+    const { email } = router.query;
+    if (typeof email !== "string") {
+      return;
+    }
+
+    setInputs(values => ({ ...values, userId: email }));
+  }, [router.isReady, router.query]);
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name } = event.target;
     const { value } = event.target;
     setInputs(values => ({ ...values, [name]: value }));
   };
 
+  const {
+    data: duplicateNicknameCheck,
+    refetch: refetchDuplicateNicknameCheck,
+  } = useDuplicateNicknameCheck(["/user/existence-id", inputs.nickname], {
+    nickName: inputs.nickname,
+  });
+
+  const handleDuplicateNicknameCheck = () => {
+    refetchDuplicateNicknameCheck();
+    console.log("중복확인", duplicateNicknameCheck);
+  };
+
+  const { mutate } = useSignUp({
+    userId: inputs.userId,
+    nickName: inputs.nickname,
+    password: "",
+  });
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    mutate();
   };
 
   return (
     <Styled.Container>
       <Styled.Heading>회원가입</Styled.Heading>
       <Styled.Form onSubmit={handleSubmit}>
-        <Styled.CertificationNumberInputContainer>
+        <Styled.InputContainer>
           <Styled.Label htmlFor="user-id">
             아이디
             <Styled.Input
@@ -41,17 +78,13 @@ function SignUpForm() {
               name="userId"
               value={inputs.userId}
               id="user-id"
-              onChange={handleChange}
-              placeholder="아이디를 입력해주세요"
-              width="327px"
+              // placeholder="아이디를 입력해주세요"
               height="65px"
               marginRight="10px"
+              disabled
             />
           </Styled.Label>
-          <Styled.Button type="submit" width="116px" height="65px">
-            중복확인
-          </Styled.Button>
-        </Styled.CertificationNumberInputContainer>
+        </Styled.InputContainer>
         <Styled.GuideMsgContainer>
           <GuideMessage
             errMsg="잘못된 아이디입니다."
@@ -93,7 +126,7 @@ function SignUpForm() {
           />
         </Styled.ErrMsgContainer>
 
-        <Styled.CertificationNumberInputContainer>
+        <Styled.InputContainer>
           <Styled.Label htmlFor="nickname">
             닉네임
             <Styled.Input
@@ -107,10 +140,15 @@ function SignUpForm() {
               marginRight="10px"
             />
           </Styled.Label>
-          <Styled.Button type="submit" width="116px" height="65px">
+          <Styled.Button
+            type="submit"
+            width="116px"
+            height="65px"
+            onClick={handleDuplicateNicknameCheck}
+          >
             중복확인
           </Styled.Button>
-        </Styled.CertificationNumberInputContainer>
+        </Styled.InputContainer>
         <Styled.ErrMsgContainer last>
           <GuideMessage
             errMsg="중복된 닉네임입니다."

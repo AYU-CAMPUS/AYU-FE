@@ -127,7 +127,7 @@ export const Button = styled("button")<ButtonProps>`
     (props.disabled && "#fff") || (props.primary ? "#FFF" : "#26409A")};
 `;
 
-export const CertificationNumberInputContainer = styled.div`
+export const InputContainer = styled.div`
   display: flex;
   align-items: end;
 `;

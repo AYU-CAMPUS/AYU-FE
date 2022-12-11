@@ -15,6 +15,16 @@ function MailAuthForm() {
   // 인증번호 받는 중임을 나타내는 상태
   const [isAuthenticating, setIsAuthenticating] = useState(false);
 
+  const router = useRouter();
+  useEffect(() => {
+    // router.query.studentWebMail을 지워준다.
+    // router.query.studentWebMail을 지우지 않으면,
+    // router.query.studentWebMail이 변경되어도 useEffect가 실행되지 않는다.
+    // router.query.studentWebMail이 변경되어도 useEffect가 실행되도록 하기 위해서
+    // router.query.studentWebMail을 지워준다.
+    delete router.query.studentWebMail;
+  }, [router.query.studentWebMail]);
+
   const handleStudentWebMailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setStudentWebMail(event.target.value);
   };
@@ -43,13 +53,13 @@ function MailAuthForm() {
   }, [data]);
 
   const handleGetVerificationCode = async () => {
-    setIsAuthenticating(true);
     refetch();
+    setIsAuthenticating(true);
   };
 
   // 회원가입을 위한 인증번호 확인 POST 요청
   // useMutation을 사용한다. uri: POST /user/sign-up/confirm/verification-code;
-  const router = useRouter();
+  // const router = useRouter();
   // react-query의 useMutation을 사용해서 인증번호 확인 요청을 보낸다.
   // const { mutate, isLoading, isError, error } = usePostVerificationCode(
   //   ["postVerificationCode", verificationCodeToken, verificationUserInput],
@@ -62,14 +72,9 @@ function MailAuthForm() {
   const handleVerificationCodeSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    // 인증번호가 일치하지 않는 경우
-    // if (verificationCodeToken !== verificationUserInput) {
-    //   return;
-    // }
-
-    // 인증번호가 일치하는 경우
-    // 회원가입 페이지로 이동한다.
-    router.push("/sign/sign-up");
+    router.replace(`/sign/sign-up?email=${studentWebMail}`, undefined, {
+      shallow: true,
+    });
   };
 
   const [isTriggerVerificationCode] = useState(false);

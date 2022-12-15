@@ -1,31 +1,109 @@
-import { useForm, SubmitHandler } from "react-hook-form";
-import { useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import router from "next/router";
 import * as Styled from "./MyPageInfo.style";
-import {
-  FormErrorMessages,
-  koreaChractersCheck,
-} from "../../../utils/hookFormUtil";
-import { IUserFormInput } from "./types";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
-import Portal from "../../Modal/Portal/Portal";
+// import Portal from "../../Modal/Portal/Portal";
 import Button from "../../Button/Button";
-import WithdrawlModal from "../../Modal/WithdrawlModal";
+// import WithdrawlModal from "../../Modal/WithdrawlModal";
+import { apiInstance } from "../../../pages/api/setting";
 
 export default function MyInformation() {
   const title = "내 정보";
   const description = "회원님의 정보를 한 눈에 볼 수 있어요";
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm<IUserFormInput>();
+  const refOne = useRef<HTMLInputElement>(null);
+  const refTwo = useRef<HTMLInputElement>(null);
+  const refThree = useRef<HTMLInputElement>(null);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const handleModalClose = () => setModalIsOpen(false);
+  const [nickName, setNickName] = useState<string>("");
+  const [token, setToken] = useState<string>();
 
-  const onSubmit: SubmitHandler<IUserFormInput> = (data: IUserFormInput) => {
-    console.log(JSON.stringify(data));
+  const tokenAPI = async () => {
+    const result = await apiInstance.get("/oauth2/temp/login");
+    setToken(result.data.token);
+  };
+
+  useEffect(() => {
+    tokenAPI();
+  }, []);
+
+  const [nickNameMessage, setNickNameMessage] = useState<string>("");
+  const [isNickName, setIsNickName] = useState<boolean>(false);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+
+  const [checkMsg, setCheckMsg] = useState();
+
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const handleModalClose = () => setModalIsOpen(false);
+
+  const handleCheck = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    try {
+      const result = await apiInstance.get(
+        `/user/existence-nickname?nickName=${nickName}`
+      );
+      setCheckMsg(result.data);
+      setIsChecked(true);
+    } catch {
+      console.log("네트워크 에러");
+    }
+  };
+
+  const handleChangeNickName = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const nickNameRegex = /^[a-zA-Z\d가-힣]{1,8}$/gi;
+      const nickNameCurrent = e.target.value;
+      setNickName(nickNameCurrent);
+      setIsChecked(false);
+
+      if (!nickNameRegex.test(nickNameCurrent)) {
+        setNickNameMessage("닉네임 형식이 틀렸어요! 다시 확인해주세요!");
+        setIsNickName(false);
+      } else {
+        setNickNameMessage("올바른 닉네임 형식이에요 : )");
+        setIsNickName(true);
+      }
+    },
+    []
+  );
+
+  const ChangeInfoAPI = async () => {
+    const desiredData = [refOne, refTwo, refThree].map(ref =>
+      ref.current !== null ? ref.current.value : null
+    );
+
+    try {
+      const result = await apiInstance.patch(
+        `/user/info`,
+        {
+          nickName,
+          desiredData,
+        },
+        {
+          headers: {
+            token: `${token}`,
+          },
+        }
+      );
+
+      console.log(result);
+      if (result.status === 200) {
+        router.push("/mypage");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    ChangeInfoAPI();
   };
 
   return (
@@ -35,74 +113,64 @@ export default function MyInformation() {
       <Styled.BoundaryLine />
 
       <Styled.FormWrapper>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Styled.Name>
-            <Styled.NameLabel>이름</Styled.NameLabel>
-            <input
-              {...register("name", {
-                required: true,
-                minLength: 3,
-                maxLength: 10,
-                pattern: koreaChractersCheck,
-              })}
-              placeholder="이름을 입력해주세요"
-              id="name"
-              style={{ border: watch("name") && "1px solid #6600CC" }}
-            />
-          </Styled.Name>
-          {errors?.name?.type === "pattern" && (
-            <p className="errorMessage">{FormErrorMessages.NAME}</p>
-          )}
-          {errors?.name?.type === "required" && (
-            <p className="errorMessage">{FormErrorMessages.NAME_REQUIRED}</p>
-          )}
-          {errors?.name?.type === "maxLength" && (
-            <p className="errorMessage">{FormErrorMessages.MAX_LENGTH}</p>
-          )}
-          {errors?.name?.type === "minLength" && (
-            <p className="errorMessage">{FormErrorMessages.MIN_LENGTH}</p>
-          )}
-
+        <form onSubmit={onSubmit}>
           <Styled.NickName>
             <Styled.NickNameLabel>닉네임</Styled.NickNameLabel>
             <input
-              {...register("nickName", {
-                required: true,
-                minLength: 3,
-                maxLength: 10,
-                pattern: koreaChractersCheck,
-              })}
-              placeholder="닉네임을 입력해주세요"
+              placeholder="1~8 글자 닉네임을 입력해주세요"
               className="inputNickName"
-              style={{ border: watch("nickName") && "1px solid #6600CC" }}
+              onChange={handleChangeNickName}
             />
-            <Styled.DuplicateVerificationBtn>
+
+            <Styled.DuplicateVerificationBtn
+              disabled={!isNickName}
+              onClick={handleCheck}
+            >
               중복확인
             </Styled.DuplicateVerificationBtn>
           </Styled.NickName>
-          {errors?.nickName?.type === "pattern" && (
-            <p className="errorMessage">{FormErrorMessages.NICKNAME}</p>
-          )}
-          {errors?.nickName?.type === "required" && (
-            <p className="errorMessage">
-              {FormErrorMessages.NICKNAME_REQUIRED}
-            </p>
-          )}
-          {errors?.nickName?.type === "maxLength" && (
-            <p className="errorMessage">{FormErrorMessages.MAX_LENGTH}</p>
-          )}
-          {errors?.nickName?.type === "minLength" && (
-            <p className="errorMessage">{FormErrorMessages.MIN_LENGTH}</p>
+          {isChecked ? (
+            checkMsg === false ? (
+              <p className={`errorMessage ${!checkMsg ? "success" : "error"}`}>
+                사용 가능한 닉네임입니다.
+              </p>
+            ) : (
+              <p className={`errorMessage ${!checkMsg ? "success" : "error"}`}>
+                중복되는 닉네임입니다.
+              </p>
+            )
+          ) : (
+            nickName.length > 0 && (
+              <p className={`errorMessage ${isNickName ? "success" : "error"}`}>
+                {nickNameMessage}
+              </p>
+            )
           )}
 
           <Styled.Data>
-            <Styled.DataLabel>원하는 자료</Styled.DataLabel>
-            <input type="text" placeholder="총 3개까지 적어주세요" />
+            <div>
+              <Styled.DataLabel>원하는 자료</Styled.DataLabel>
+              <input
+                type="text"
+                placeholder="1. 인간관계론 기말고사 자료"
+                ref={refOne}
+              />
+            </div>
+            <input
+              type="text"
+              placeholder="2. 컴퓨터개론 기말고사 자료"
+              ref={refTwo}
+            />
+            <input
+              type="text"
+              placeholder="3. 기독교개론 기말고사 자료"
+              ref={refThree}
+            />
           </Styled.Data>
 
-          <Button margin="4rem 0 0 9.7rem">저장</Button>
+          <Button margin="4rem 0 12rem 9.7rem">저장</Button>
 
-          <Styled.Withdrwal
+          {/* <Styled.Withdrwal
             type="button"
             onClick={() => {
               setModalIsOpen(true);
@@ -115,7 +183,7 @@ export default function MyInformation() {
             <Portal>
               <WithdrawlModal handleModalClose={handleModalClose} />
             </Portal>
-          )}
+          )} */}
         </form>
       </Styled.FormWrapper>
     </Styled.MyPageInfo>

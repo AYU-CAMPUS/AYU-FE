@@ -1,9 +1,12 @@
 import Image from "next/image";
+import { ChangeEvent, useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { Pagination, PaginationItem } from "@mui/material";
+import { apiInstance } from "../../../pages/api/setting";
 import * as Styled from "./TableContainer.style";
 import * as S from "./MyPageInfo.style";
 
@@ -33,6 +36,21 @@ const rows = [
 export default function PostMyData() {
   const title = "내가 올린 자료";
   const description = "회원님이 등록한 자료를 볼 수 있습니다.";
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
+    setCurrentPage(page);
+  };
+
+  const token = "a";
+
+  const UserDataAPI = async () => {
+    await apiInstance.get(`/user/data?page=${currentPage}&?token=${token}`);
+  };
+
+  useEffect(() => {
+    UserDataAPI();
+  }, []);
 
   return (
     <S.MyPageInfo>
@@ -78,6 +96,20 @@ export default function PostMyData() {
           </TableBody>
         </Table>
       </Styled.TableContainer>
+
+      <Pagination
+        count={10}
+        page={currentPage}
+        onChange={onPageChange}
+        color="primary"
+        size="large"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "15px 0",
+        }}
+        renderItem={item => <PaginationItem {...item} sx={{ fontSize: 12 }} />}
+      />
     </S.MyPageInfo>
   );
 }

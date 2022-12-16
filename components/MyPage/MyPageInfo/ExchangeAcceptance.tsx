@@ -59,7 +59,7 @@ export default function ExchangeAcceptance() {
           </TableHead>
 
           <TableBody>
-            {dataStatus ? (
+            {!dataStatus ? (
               rows.map(row => (
                 <TableRow key={row.date}>
                   <TableCell align="center" className="dateData">

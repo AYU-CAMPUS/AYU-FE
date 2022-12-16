@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -33,6 +33,18 @@ const rows = [
   },
 ];
 
+// interface IPostsProps {
+//   dataPages: number;
+//   myDataInfos: [
+//     {
+//       createdDate: string;
+//       title: string;
+//       boardId: number;
+//       category: string;
+//     }
+//   ];
+// }
+
 export default function PostMyData() {
   const title = "내가 올린 자료";
   const description = "회원님이 등록한 자료를 볼 수 있습니다.";
@@ -42,15 +54,36 @@ export default function PostMyData() {
     setCurrentPage(page);
   };
 
-  const token = "a";
+  // const [posts, setPosts] = useState<IPostsProps>();
+  // const [limit, setLimit] = useState(10);
+  // const [page, setPage] = useState(1);
+  // const offset = (page - 1) * limit;
 
-  const UserDataAPI = async () => {
-    await apiInstance.get(`/user/data?page=${currentPage}&?token=${token}`);
+  const tokenAPI = async () => {
+    const result = await apiInstance.get("/oauth2/temp/login");
+    return result.data.token;
   };
 
+  const userPostDataAPI = useCallback(
+    async (token: string) => {
+      await apiInstance.get(`/user/data?page=${currentPage}`, {
+        headers: {
+          token: `${token}`,
+        },
+      });
+      // setPosts(result.data);
+    },
+    [currentPage]
+  );
+
+  // console.log(posts?.myDataInfos);
+
   useEffect(() => {
-    UserDataAPI();
-  }, []);
+    (async () => {
+      const token = await tokenAPI();
+      userPostDataAPI(token);
+    })();
+  }, [userPostDataAPI, currentPage]);
 
   return (
     <S.MyPageInfo>

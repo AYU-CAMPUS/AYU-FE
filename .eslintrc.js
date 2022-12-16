@@ -81,5 +81,8 @@ module.exports = {
     "react/require-default-props": "off",
     "react/no-unused-prop-types": "off",
     "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+    // enum issue
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
   },
 };

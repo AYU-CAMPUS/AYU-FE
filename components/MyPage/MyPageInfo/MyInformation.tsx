@@ -106,18 +106,17 @@ export default function MyInformation() {
             type="button"
             onClick={() => {
               setModalIsOpen(true);
-              console.log("버튼 클릭");
             }}
           >
             회원탈퇴
           </Styled.Withdrwal>
-          {modalIsOpen && (
-            <Portal>
-              <WithdrawlModal handleModalClose={handleModalClose} />
-            </Portal>
-          )}
         </form>
       </Styled.FormWrapper>
+      {modalIsOpen && (
+        <Portal>
+          <WithdrawlModal handleModalClose={handleModalClose} />
+        </Portal>
+      )}
     </Styled.MyPageInfo>
   );
 }

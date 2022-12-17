@@ -1,24 +1,14 @@
-import tw from "twin.macro";
+import React from "react";
 
-import Button from "../src/components/Button";
+import MainPage from "../components/MainPage/MainPage";
+import MainLayout from "../components/Layout/MainLayout";
 
-function Home() {
-  return (
-    <div
-      css={[
-        tw`flex flex-col items-center justify-center h-screen`,
-        tw`bg-gradient-to-b `,
-      ]}
-    >
-      <div tw="flex flex-col justify-center h-full space-y-5">
-        <Button isPrimary tw="text-h3 text-primary-5">
-          Submit
-        </Button>
-        <Button isSecondary>Cancel</Button>
-        <Button isSmall>Close</Button>
-      </div>
-    </div>
-  );
+function Main() {
+  return <MainPage />;
 }
 
-export default Home;
+Main.getLayout = function getLayout(page: React.ReactElement) {
+  return <MainLayout>{page}</MainLayout>;
+};
+
+export default Main;

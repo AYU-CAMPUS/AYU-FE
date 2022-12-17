@@ -38,12 +38,6 @@ export const BannerSection = styled.div`
     background: rgba(0, 0, 0, 0.2);
     border-radius: 10rem;
   }
-  .swiper-button-prev {
-    margin-left: 26.5rem;
-  }
-  .swiper-button-next {
-    margin-right: 26.5rem;
-  }
 `;
 
 export const DataSection = styled.section`
@@ -51,7 +45,6 @@ export const DataSection = styled.section`
   flex-direction: column;
   gap: 16rem;
   margin-bottom: 34rem;
-  padding: 0 26.5rem;
 `;
 
 export const MajorArticle = styled.article``;

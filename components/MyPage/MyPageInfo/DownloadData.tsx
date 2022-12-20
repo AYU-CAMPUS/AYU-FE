@@ -38,11 +38,6 @@ export default function DownloadData() {
   // const [limit, setLimit] = useState(10);
   // const [currentPage, setCurrentPage] = useState(1);
 
-  // const tokenAPI = async () => {
-  //   const result = await apiInstance.get("/oauth2/temp/login");
-  //   return result.data.token;
-  // };
-
   // const userDownloadDataListAPI = async (token: string) => {
   //   const result = await apiInstance.get(
   //     `/user/downloadable?page=${currentPage}`,

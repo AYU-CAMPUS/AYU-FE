@@ -70,25 +70,13 @@ function MyPage() {
 
   const [userInfo, setUserInfo] = useState<IUserInfoProps>();
 
-  const tokenAPI = async () => {
-    const result = await apiInstance.get("/oauth2/temp/login");
-    return result.data.token;
-  };
-
-  const userAPI = async (token: string) => {
-    const result = await apiInstance.get("/user?token", {
-      headers: {
-        token: `${token}`,
-      },
-    });
+  const userAPI = async () => {
+    const result = await apiInstance.get("/user");
     setUserInfo(result.data);
   };
 
   useEffect(() => {
-    (async () => {
-      const token = await tokenAPI();
-      userAPI(token);
-    })();
+    userAPI();
   }, []);
 
   return (

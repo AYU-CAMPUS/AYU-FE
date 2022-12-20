@@ -2,7 +2,6 @@ import React, {
   ChangeEvent,
   FormEvent,
   useCallback,
-  useEffect,
   useRef,
   useState,
 } from "react";
@@ -22,16 +21,6 @@ export default function MyInformation() {
   const refThree = useRef<HTMLInputElement>(null);
 
   const [nickName, setNickName] = useState<string>("");
-  const [token, setToken] = useState<string>();
-
-  const tokenAPI = async () => {
-    const result = await apiInstance.get("/oauth2/temp/login");
-    setToken(result.data.token);
-  };
-
-  useEffect(() => {
-    tokenAPI();
-  }, []);
 
   const [nickNameMessage, setNickNameMessage] = useState<string>("");
   const [isNickName, setIsNickName] = useState<boolean>(false);
@@ -79,18 +68,10 @@ export default function MyInformation() {
     );
 
     try {
-      const result = await apiInstance.patch(
-        `/user/info`,
-        {
-          nickName,
-          desiredData,
-        },
-        {
-          headers: {
-            token: `${token}`,
-          },
-        }
-      );
+      const result = await apiInstance.patch(`/user/info`, {
+        nickName,
+        desiredData,
+      });
 
       console.log(result);
       if (result.status === 200) {

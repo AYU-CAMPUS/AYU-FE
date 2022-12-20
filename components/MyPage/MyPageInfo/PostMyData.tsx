@@ -9,7 +9,6 @@ import { Pagination, PaginationItem } from "@mui/material";
 import { apiInstance } from "../../../pages/api/setting";
 import * as Styled from "./TableContainer.style";
 import * as S from "./MyPageInfo.style";
-
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
 
 const rows = [
@@ -59,30 +58,15 @@ export default function PostMyData() {
   // const [page, setPage] = useState(1);
   // const offset = (page - 1) * limit;
 
-  const tokenAPI = async () => {
-    const result = await apiInstance.get("/oauth2/temp/login");
-    return result.data.token;
-  };
-
-  const userPostDataAPI = useCallback(
-    async (token: string) => {
-      await apiInstance.get(`/user/data?page=${currentPage}`, {
-        headers: {
-          token: `${token}`,
-        },
-      });
-      // setPosts(result.data);
-    },
-    [currentPage]
-  );
+  const userPostDataAPI = useCallback(async () => {
+    await apiInstance.get(`/user/data?page=${currentPage}`);
+    // setPosts(result.data);
+  }, [currentPage]);
 
   // console.log(posts?.myDataInfos);
 
   useEffect(() => {
-    (async () => {
-      const token = await tokenAPI();
-      userPostDataAPI(token);
-    })();
+    userPostDataAPI();
   }, [userPostDataAPI, currentPage]);
 
   return (

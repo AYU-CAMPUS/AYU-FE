@@ -26,7 +26,7 @@ export const ProfileDescription = styled.div`
   margin-bottom: 4rem;
 `;
 export const ProfileBtn = styled.button`
-  width: 18rem;
+  width: 36rem;
   height: 5.5rem;
   background: #f4f4f5;
   border-radius: 10px;
@@ -37,7 +37,6 @@ export const ProfileBtn = styled.button`
   line-height: 23px;
   letter-spacing: -0.05em;
   color: #333333;
-  margin-right: 1rem;
 `;
 
 export const RegisterBtn = styled(ProfileBtn)``;

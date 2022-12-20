@@ -1,14 +1,9 @@
-import React from "react";
+import Link from "next/link";
 
-import MainPage from "../components/MainPage/MainPage";
-import MainLayout from "../components/Layout/MainLayout";
-
-function Main() {
-  return <MainPage />;
+export default function Test() {
+  return (
+    <Link href="https://ayu-be.shop/oauth2/authorization/google ">
+      <button type="button">Connect to google</button>
+    </Link>
+  );
 }
-
-Main.getLayout = function getLayout(page: React.ReactElement) {
-  return <MainLayout>{page}</MainLayout>;
-};
-
-export default Main;

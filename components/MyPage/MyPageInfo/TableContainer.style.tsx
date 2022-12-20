@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const TableContainer = styled.table`
+export const TableContainer = styled.div`
   width: 100%;
   .registrationDate,
   .subject,

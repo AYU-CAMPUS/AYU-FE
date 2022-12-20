@@ -5,7 +5,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import router from "next/router";
 import * as Styled from "./MyPageInfo.style";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
 // import Portal from "../../Modal/Portal/Portal";
@@ -66,17 +65,11 @@ export default function MyInformation() {
     const desiredData = [refOne, refTwo, refThree].map(ref =>
       ref.current !== null ? ref.current.value : null
     );
-
     try {
-      const result = await apiInstance.patch(`/user/info`, {
+      await apiInstance.patch(`/user/info`, {
         nickName,
         desiredData,
       });
-
-      console.log(result);
-      if (result.status === 200) {
-        router.push("/mypage");
-      }
     } catch (err) {
       console.error(err);
     }

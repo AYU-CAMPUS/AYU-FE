@@ -1,24 +1,9 @@
-import tw from "twin.macro";
+import Link from "next/link";
 
-import Button from "../src/components/Button";
-
-function Home() {
+export default function Test() {
   return (
-    <div
-      css={[
-        tw`flex flex-col items-center justify-center h-screen`,
-        tw`bg-gradient-to-b `,
-      ]}
-    >
-      <div tw="flex flex-col justify-center h-full space-y-5">
-        <Button isPrimary tw="text-h3 text-primary-5">
-          Submit
-        </Button>
-        <Button isSecondary>Cancel</Button>
-        <Button isSmall>Close</Button>
-      </div>
-    </div>
+    <Link href="https://ayu-be.shop/oauth2/authorization/google ">
+      <button type="button">Connect to google</button>
+    </Link>
   );
 }
-
-export default Home;

@@ -75,6 +75,8 @@ function MyPage() {
     setUserInfo(result.data);
   };
 
+  console.log(userInfo);
+
   useEffect(() => {
     userAPI();
   }, []);

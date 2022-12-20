@@ -1,49 +1,49 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 import Button from "../Button/Button";
-import * as Styled from "./WithdrawlModal.style";
+import * as Styled from "./ExchangeModal.style";
 import cancel from "../../public/images/cancel.svg";
 
 type ModalEventProps = {
   handleModalClose: () => void;
 };
 
-function WithdrawlModal({ handleModalClose }: ModalEventProps) {
+function ExchangeModal({ handleModalClose }: ModalEventProps) {
   const router = useRouter();
   const [selected, setSelected] = useState<number>();
-  const [inputs, setInputs] = useState("");
 
   const reasons = [
     {
       id: 0,
-      reason: "탈퇴 후 재가입 하기 위해서",
+      reason: "인간관계론 ",
     },
     {
       id: 1,
-      reason: "사이트 디자인이 별로여서",
+      reason: "인간관계론 ",
     },
     {
       id: 2,
-      reason: "사용하기에 불편해서",
+      reason: "인간관계론 ",
     },
     {
       id: 3,
-      reason: "더 이상 필요하다고 못 느껴서  ",
+      reason: "인간관계론 ",
     },
     {
       id: 4,
-      reason: "직접입력",
+      reason: "인간관계론",
+    },
+    {
+      id: 4,
+      reason: "인간관계론",
     },
   ];
-
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setInputs(e.target.value);
-  };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     router.push("/");
+    console.log(selected);
   };
 
   return (
@@ -51,7 +51,7 @@ function WithdrawlModal({ handleModalClose }: ModalEventProps) {
       <Styled.Form onSubmit={handleSubmit}>
         <Styled.ModalTitle>
           <div />
-          <h2>회원탈퇴</h2>
+          <h2>교환할 내 자료</h2>
           <button type="button" onClick={handleModalClose}>
             <Image src={cancel} />
           </button>
@@ -60,8 +60,9 @@ function WithdrawlModal({ handleModalClose }: ModalEventProps) {
         <Styled.BoundaryLine />
 
         <Styled.ReasonSelection>
-          <p>사유선택</p>
-          <span>*회원 탈퇴 시 모든 자료들과 댓글은 삭제됩니다.</span>
+          <span>
+            *교환이 완료된 후 3일 이내에 다운로드 받는 것을 권장드려요.
+          </span>
 
           <Styled.RadioSection>
             {reasons.map(reason => {
@@ -80,17 +81,8 @@ function WithdrawlModal({ handleModalClose }: ModalEventProps) {
             })}
           </Styled.RadioSection>
 
-          {selected === 4 && (
-            <Styled.Textarea
-              placeholder="불편한 점이나 개선사항을 적어주세요!"
-              onChange={handleChange}
-              name="textarea"
-              value={inputs}
-            />
-          )}
-
           <Button width="60rem" height="7rem" margin="3rem 0 4.4rem 0">
-            탈퇴
+            교환 신청
           </Button>
         </Styled.ReasonSelection>
       </Styled.Form>
@@ -98,4 +90,4 @@ function WithdrawlModal({ handleModalClose }: ModalEventProps) {
   );
 }
 
-export default WithdrawlModal;
+export default ExchangeModal;

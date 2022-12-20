@@ -148,7 +148,6 @@ export default function MyInformation() {
             type="button"
             onClick={() => {
               setModalIsOpen(true);
-              console.log("버튼 클릭");
             }}
           >
             회원탈퇴

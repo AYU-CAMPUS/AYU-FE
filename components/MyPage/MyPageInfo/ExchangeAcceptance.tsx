@@ -83,7 +83,7 @@ export default function ExchangeAcceptance() {
               ))
             ) : (
               <TableCell align="center" colSpan={4}>
-                <p className="exchangeStatus"> 교환신청이 없습니다.</p>
+                <p className="exchangeStatus"> 교환신청이 없습니다ㅇㅇ.</p>
               </TableCell>
             )}
           </TableBody>

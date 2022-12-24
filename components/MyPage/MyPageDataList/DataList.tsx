@@ -18,7 +18,7 @@ export default function DataList({ ...props }: IDataListProps) {
 
         <Styled.Exchange>
           <Styled.Description>교환 완료 수</Styled.Description>
-          <Styled.DataBtn>{props.downloadCount}건</Styled.DataBtn>
+          <Styled.DataBtn>{props.exchangeSuccessCount}건</Styled.DataBtn>
         </Styled.Exchange>
 
         <Styled.Data>

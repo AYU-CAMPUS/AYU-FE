@@ -18,6 +18,19 @@ export const TableContainer = styled.div`
     letter-spacing: -0.05em;
     color: #333333;
   }
+  .exchangeComplete {
+    font-family: "Spoqa Han Sans Neo";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 21px;
+    letter-spacing: -0.05em;
+    color: #767777;
+  }
+  img:hover {
+    cursor: pointer;
+  }
+
   .registrationDateData,
   .subjectData,
   .dataNameData,
@@ -59,6 +72,10 @@ export const TableContainer = styled.div`
     background: #ffffff;
     border: 1px solid #26409a;
     border-radius: 5px;
+  }
+
+  .dataNameData:hover {
+    cursor: pointer;
   }
 
   .acceptBtn,

@@ -1,5 +1,6 @@
 import Table from "@mui/material/Table";
 import { ChangeEvent, useEffect, useState } from "react";
+import Link from "next/link";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
@@ -18,6 +19,7 @@ interface IPostsProps {
       title: string;
       requesterBoardId: number;
       writer: string;
+      category: string;
     }
   ];
 }
@@ -29,6 +31,7 @@ export default function DownloadData() {
   const [currentPage, setCurrentPage] = useState(1);
   const [posts, setPosts] = useState<IPostsProps>();
   const [total, setTotal] = useState<number>(1);
+  const [downloadData, setDownloadData] = useState<string>();
   const numPages = Math.ceil(total / 2);
 
   const userDownloadDataListAPI = async () => {
@@ -40,8 +43,29 @@ export default function DownloadData() {
   };
 
   const userDownloadDataAPI = async (requesterBoardId: number) => {
-    console.log(await apiInstance.get(`/user/download/${requesterBoardId}`));
+    const result = await apiInstance.get(`/user/download/${requesterBoardId}`, {
+      responseType: "blob",
+    });
+    setDownloadData(result.data);
   };
+
+  useEffect(() => {
+    if (downloadData) {
+      const url = URL.createObjectURL(new Blob([downloadData]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `${posts?.downloadableInfos[0].title}.txt`);
+      link.setAttribute("id", "testLink");
+      document.body.appendChild(link);
+      link.click();
+    }
+    return () => {
+      const link = document.querySelector("#testLink");
+      link && link.remove();
+    };
+  }, [downloadData]);
+
+  console.log(downloadData);
 
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
@@ -65,7 +89,10 @@ export default function DownloadData() {
           <TableHead>
             <TableRow>
               <TableCell align="center" className="registrationDate">
-                과목
+                교환완료
+              </TableCell>
+              <TableCell align="center" className="registrationDate">
+                카테고리
               </TableCell>
               <TableCell align="center" className="subject">
                 자료명
@@ -82,12 +109,19 @@ export default function DownloadData() {
           <TableBody>
             {posts?.downloadableInfos.map(data => (
               <TableRow key={data.requesterBoardId}>
-                <TableCell align="center" className="subjectData">
+                <TableCell align="center" className="exchangeComplete">
                   {data.exchangeDate}
                 </TableCell>
-                <TableCell align="center" className="dataNameData">
-                  {data.title}
+                <TableCell align="center" className="subjectData">
+                  {data.category}
                 </TableCell>
+
+                <Link href={`/article/${data.requesterBoardId}`}>
+                  <TableCell align="center" className="dataNameData">
+                    {data.title}
+                  </TableCell>
+                </Link>
+
                 <TableCell align="center" className="writerData">
                   {data.writer}
                 </TableCell>

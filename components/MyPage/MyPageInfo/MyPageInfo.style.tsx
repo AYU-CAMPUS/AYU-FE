@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const MyPageInfo = styled.section`
   margin-left: 5.8rem;
-
   input {
     width: 45.3rem;
     height: 6.5rem;

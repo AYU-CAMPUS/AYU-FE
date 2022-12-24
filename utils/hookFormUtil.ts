@@ -7,7 +7,6 @@ export const FormErrorMessages = {
   NICKNAME_REQUIRED: "닉네임은 필수입니다.",
   NICKNAME_DUPLICATED: "중복되는 닉네임입니다.",
   // PASSWORD: "패스워드 형식에 맞지 않습니다.",
-  // PASSWORD_REQUIRED: "패스워드는 필수입니다.",
 };
 
 // 한글 검사

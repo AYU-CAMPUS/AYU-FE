@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
+import Link from "next/link";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -81,11 +82,16 @@ export default function PostMyData() {
                   {data.createdDate}
                 </TableCell>
                 <TableCell align="center" className="subjectData">
+                  {data.category}
                   {data.boardId}
                 </TableCell>
-                <TableCell align="center" className="dataNameData">
-                  {data.title}
-                </TableCell>
+
+                <Link href={`/article/${data.boardId}`}>
+                  <TableCell align="center" className="dataNameData">
+                    {data.title}dd
+                  </TableCell>
+                </Link>
+
                 <TableCell align="center">
                   <Image src="/images/EditBtn.png" width="20px" height="20px" />
                 </TableCell>

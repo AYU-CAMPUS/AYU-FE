@@ -59,31 +59,29 @@ export default function ExchangeAcceptance() {
     boardId: number,
     requesterBoardId: number
   ) => {
-    console.log(
-      await apiInstance.post("/user/exchange/accept", {
+    await apiInstance.post("/user/exchange/accept", {
+      exchangeId,
+      requesterId,
+      boardId,
+      requesterBoardId,
+    });
+  };
+
+  const refusalAPI = async (
+    exchangeId: number,
+    requesterId: string,
+    boardId: number,
+    requesterBoardId: number
+  ) => {
+    await apiInstance.delete("/user/exchange/refusal", {
+      data: {
         exchangeId,
         requesterId,
         boardId,
         requesterBoardId,
-      })
-    );
+      },
+    });
   };
-
-  // const refusalAPI = async (
-  //   exchangeId: number,
-  //   requesterId: string,
-  //   boardId: number,
-  //   requesterBoardId: number
-  // ) => {
-  //   console.log(
-  //     await apiInstance.delete("/user/exchange/refusal", {
-  //       exchangeId,
-  //       requesterId,
-  //       boardId,
-  //       requesterBoardId,
-  //     })
-  //   );
-  // };
 
   const handleClickAccept = (
     exchangeId: number,
@@ -94,14 +92,14 @@ export default function ExchangeAcceptance() {
     acceptAPI(exchangeId, requesterId, boardId, requesterBoardId);
   };
 
-  // const handleClickRefuse = (
-  //   exchangeId: number,
-  //   requesterId: string,
-  //   boardId: number,
-  //   requesterBoardId: number
-  // ) => {
-  //   refusalAPI(exchangeId, requesterId, boardId, requesterBoardId);
-  // };
+  const handleClickRefuse = (
+    exchangeId: number,
+    requesterId: string,
+    boardId: number,
+    requesterBoardId: number
+  ) => {
+    refusalAPI(exchangeId, requesterId, boardId, requesterBoardId);
+  };
 
   return (
     <S.MyPageInfo>
@@ -160,14 +158,14 @@ export default function ExchangeAcceptance() {
                     <button
                       type="button"
                       className="refuseBtn"
-                      // onClick={() => {
-                      //   handleClickRefuse(
-                      //     data.exchangeId,
-                      //     data.requesterId,
-                      //     data.boardId,
-                      //     data.requesterBoardId
-                      //   );
-                      // }}
+                      onClick={() => {
+                        handleClickRefuse(
+                          data.exchangeId,
+                          data.requesterId,
+                          data.boardId,
+                          data.requesterBoardId
+                        );
+                      }}
                     >
                       거절
                     </button>

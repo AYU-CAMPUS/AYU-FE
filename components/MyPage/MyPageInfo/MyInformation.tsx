@@ -66,10 +66,13 @@ export default function MyInformation() {
       ref.current !== null ? ref.current.value : null
     );
     try {
-      await apiInstance.patch(`/user/info`, {
+      const result = await apiInstance.patch(`/user/info`, {
         nickName,
         desiredData,
       });
+      if (result.status === 200) {
+        window.location.reload();
+      }
     } catch (err) {
       console.error(err);
     }

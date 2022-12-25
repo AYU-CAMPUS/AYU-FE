@@ -5,6 +5,7 @@ export const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.5s ease-out;
 `;
 
 export const Form = styled.form`

@@ -1,7 +1,16 @@
 import styled from "@emotion/styled";
 
 export const ArticleDetailWrapper = styled.main`
-  padding: 0 4.8rem;
+  padding: 7rem 31.3rem 0 31.3rem;
+  .swal2-popup {
+    font-size: 100px !important;
+    font-family: Georgia, serif;
+    height: 1000px;
+  }
+  .swal2-html-container {
+    font-size: 100px !important;
+    height: 1000px;
+  }
 `;
 
 export const Article = styled.div`
@@ -23,7 +32,6 @@ export const ArticleTitle = styled.h1`
 export const ArticleSection = styled.section`
   display: flex;
   flex-direction: column;
-  min-width: 599px;
 `;
 
 export const ArticleInfoList = styled.dl`
@@ -59,9 +67,9 @@ export const ArticleInfoContent = styled.dd`
 
 export const ArticleDetailInfo = styled.section`
   border-top: 2px solid #abaeaf;
-  border-bottom: 2px solid #abaeaf;
   padding: 40px 48px;
   margin-top: 120px;
+
   p {
     font-family: "Spoqa Han Sans Neo";
     font-weight: 400;
@@ -82,64 +90,69 @@ export const ArticleDetailTitle = styled.h1`
   margin-bottom: 36px;
 `;
 
-export const CommentWrapper = styled.section`
-  padding: 40px 48px;
-`;
-
-export const CommentTitle = styled(ArticleDetailTitle)`
-  margin-bottom: 15px;
-`;
-
-export const CommentRegister = styled.div`
+export const ButtonWrapper = styled.div`
   display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 40px;
+  gap: 2rem;
 `;
 
-export const CommentSection = styled.div`
-  display: flex;
-  margin-bottom: 50px;
-  gap: 15px;
-`;
+// export const CommentWrapper = styled.section`
+//   padding: 40px 48px;
+// `;
 
-export const CommentInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-`;
+// export const CommentTitle = styled(ArticleDetailTitle)`
+//   margin-bottom: 15px;
+// `;
 
-export const Writer = styled.span`
-  font-family: "Spoqa Han Sans Neo";
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 23px;
-  letter-spacing: -0.05em;
-  color: #333333;
-`;
+// export const CommentRegister = styled.div`
+//   display: flex;
+//   align-items: center;
+//   gap: 15px;
+//   margin-bottom: 40px;
+// `;
 
-export const CommentContent = styled(Writer)`
-  font-weight: 400;
-`;
+// export const CommentSection = styled.div`
+//   display: flex;
+//   margin-bottom: 50px;
+//   gap: 15px;
+// `;
 
-export const CommentHour = styled.span`
-  font-family: "Spoqa Han Sans Neo";
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: -0.05em;
-  color: #8f9091;
-`;
+// export const CommentInfo = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   gap: 5px;
+// `;
 
-export const CommentReply = styled(CommentHour)``;
+// export const Writer = styled.span`
+//   font-family: "Spoqa Han Sans Neo";
+//   font-weight: 500;
+//   font-size: 18px;
+//   line-height: 23px;
+//   letter-spacing: -0.05em;
+//   color: #333333;
+// `;
 
-export const CommentReport = styled(CommentHour)``;
+// export const CommentContent = styled(Writer)`
+//   font-weight: 400;
+// `;
 
-export const Comment = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 15px;
-`;
+// export const CommentHour = styled.span`
+//   font-family: "Spoqa Han Sans Neo";
+//   font-weight: 400;
+//   font-size: 16px;
+//   line-height: 20px;
+//   letter-spacing: -0.05em;
+//   color: #8f9091;
+// `;
 
-export const CommentOption = styled(Comment)``;
+// export const CommentReply = styled(CommentHour)``;
+
+// export const CommentReport = styled(CommentHour)``;
+
+// export const Comment = styled.div`
+//   display: flex;
+//   align-items: center;
+//   gap: 15px;
+// `;
+
+// export const CommentOption = styled(Comment)``;

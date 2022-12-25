@@ -6,7 +6,7 @@ import Alarm from "../../public/images/alarm.svg";
 import exchangeAlarm from "../../public/images/exchangeAlarm.svg";
 
 function Header() {
-  const isLogin = true;
+  const isLogin = false;
   return (
     <>
       <Styled.HeadWrapper>
@@ -24,7 +24,9 @@ function Header() {
           ) : (
             <div>
               <Link href="/signup">회원가입</Link>
-              <Link href="/login">로그인</Link>
+              <Link href="https://ayu-be.shop/oauth2/authorization/google ">
+                <button type="button">Connect to google</button>
+              </Link>
               <Image src={Alarm} width="37px" height="37px" />
             </div>
           )}

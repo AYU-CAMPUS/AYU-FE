@@ -14,8 +14,10 @@ const InputStyled = styled.input<InputProps>`
   ::placeholder {
     font-family: "Spoqa Han Sans Neo";
     font-weight: 400;
-    letter-spacing: -0.1em;
-    color: #767777;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: -0.05em;
+    color: #8f9091;
   }
 `;
 

@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const MyPageInfo = styled.section`
   margin-left: 5.8rem;
-
   input {
     width: 45.3rem;
     height: 6.5rem;
@@ -30,9 +29,34 @@ export const MyPageInfo = styled.section`
     font-size: 1.4rem;
     line-height: 18px;
     letter-spacing: -0.05em;
-    color: #dd4e48;
     margin: 1rem 0 0 10rem;
+    &.success {
+      color: #26409a;
+    }
+    &.error {
+      color: #ff2727;
+    }
   }
+
+  nav {
+    margin-top: 50px;
+    button {
+      font-family: "Spoqa Han Sans Neo";
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+`;
+
+export const CheckMessage = styled.p`
+  font-family: "Spoqa Han Sans Neo";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.05em;
+  color: #26409a;
+  margin: 1rem 0 0 10rem;
 `;
 
 export const TitleDescriptionWrapper = styled.div`
@@ -78,8 +102,40 @@ export const ChangePassword = styled.div`
 
 export const PasswordConfirm = styled(ChangePassword)``;
 export const Name = styled(ChangePassword)``;
-export const NickName = styled(ChangePassword)``;
-export const Data = styled(ChangePassword)``;
+export const NickName = styled(ChangePassword)`
+  input {
+    font-family: "Spoqa Han Sans Neo";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.05em;
+    color: #333333;
+  }
+`;
+export const Data = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 4.5rem;
+  gap: 10px;
+  div {
+    display: flex;
+    align-items: center;
+    input {
+      margin-left: 0rem;
+    }
+  }
+  input {
+    margin-left: 9.7rem;
+    font-family: "Spoqa Han Sans Neo";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.05em;
+    color: #333333;
+  }
+`;
 
 export const ChangeLabel = styled.label`
   font-family: "Spoqa Han Sans Neo";
@@ -98,18 +154,23 @@ export const NameLabel = styled(ChangeLabel)`
 export const NickNameLabel = styled(NameLabel)``;
 export const DataLabel = styled(NameLabel)``;
 
-export const DuplicateVerificationBtn = styled.button`
+interface ButtonProps {
+  disabled: boolean;
+}
+
+export const DuplicateVerificationBtn = styled.button<ButtonProps>`
   width: 11.6rem;
   height: 6.5rem;
   background: #ffffff;
-  border: 1px solid #26409a;
+  border: 1px solid ${props => (props.disabled && "#666666") || "#26409a"};
   border-radius: 5px;
   font-family: "Spoqa Han Sans Neo";
   font-weight: 400;
   font-size: 2.2rem;
   line-height: 28px;
   letter-spacing: -0.05em;
-  color: #26409a;
+  color: ${props => (props.disabled && "#666666") || "#26409a"};
+  cursor: ${props => (props.disabled && "not-allowed") || "pointer"};
   margin: 0 0 0 1rem;
 `;
 

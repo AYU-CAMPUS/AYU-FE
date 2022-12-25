@@ -1,36 +1,83 @@
 import Table from "@mui/material/Table";
+import { ChangeEvent, useEffect, useState } from "react";
+import Link from "next/link";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { Pagination, PaginationItem } from "@mui/material";
 import * as Styled from "./TableContainer.style";
 import * as S from "./MyPageInfo.style";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
+import { apiInstance } from "../../../pages/api/setting";
 
-const rows = [
-  {
-    subject: "특수교육학개론",
-    dataName: " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원1",
-    writer: "이무성",
-    id: 0,
-  },
-  {
-    subject: "특수교육학개론2",
-    dataName: " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원2",
-    writer: "이무성2",
-    id: 1,
-  },
-  {
-    subject: "특수교육학개론3",
-    dataName: " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원3",
-    writer: "이무성3",
-    id: 2,
-  },
-];
+interface IPostsProps {
+  downloadablePages: number;
+  downloadableInfos: [
+    {
+      exchangeDate: string;
+      title: string;
+      requesterBoardId: number;
+      writer: string;
+      category: string;
+    }
+  ];
+}
 
 export default function DownloadData() {
   const title = "다운로드 가능한 자료";
   const description = "신청이 수락된 자료들을 볼 수 있습니다.";
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [posts, setPosts] = useState<IPostsProps>();
+  const [total, setTotal] = useState<number>(1);
+  const [downloadData, setDownloadData] = useState<string>();
+  const numPages = Math.ceil(total / 2);
+
+  const userDownloadDataListAPI = async () => {
+    const result = await apiInstance.get(
+      `/user/downloadable?page=${currentPage}`
+    );
+    setPosts(result.data);
+    setTotal(result.data.downloadablePages);
+  };
+
+  const userDownloadDataAPI = async (requesterBoardId: number) => {
+    const result = await apiInstance.get(`/user/download/${requesterBoardId}`, {
+      responseType: "blob",
+    });
+    setDownloadData(result.data);
+  };
+
+  useEffect(() => {
+    if (downloadData) {
+      const url = URL.createObjectURL(new Blob([downloadData]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `${posts?.downloadableInfos[0].title}.txt`);
+      link.setAttribute("id", "testLink");
+      document.body.appendChild(link);
+      link.click();
+    }
+    return () => {
+      const link = document.querySelector("#testLink");
+      link && link.remove();
+    };
+  }, [downloadData]);
+
+  console.log(downloadData);
+
+  const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleDownload = async (requesterBoardId: number) => {
+    userDownloadDataAPI(requesterBoardId);
+  };
+
+  useEffect(() => {
+    userDownloadDataListAPI();
+  }, [currentPage]);
 
   return (
     <S.MyPageInfo>
@@ -42,7 +89,10 @@ export default function DownloadData() {
           <TableHead>
             <TableRow>
               <TableCell align="center" className="registrationDate">
-                과목
+                교환완료
+              </TableCell>
+              <TableCell align="center" className="registrationDate">
+                카테고리
               </TableCell>
               <TableCell align="center" className="subject">
                 자료명
@@ -57,19 +107,32 @@ export default function DownloadData() {
           </TableHead>
 
           <TableBody>
-            {rows.map(row => (
-              <TableRow key={row.id}>
+            {posts?.downloadableInfos.map(data => (
+              <TableRow key={data.requesterBoardId}>
+                <TableCell align="center" className="exchangeComplete">
+                  {data.exchangeDate}
+                </TableCell>
                 <TableCell align="center" className="subjectData">
-                  {row.subject}
+                  {data.category}
                 </TableCell>
-                <TableCell align="center" className="dataNameData">
-                  {row.dataName}
-                </TableCell>
+
+                <Link href={`/article/${data.requesterBoardId}`}>
+                  <TableCell align="center" className="dataNameData">
+                    {data.title}
+                  </TableCell>
+                </Link>
+
                 <TableCell align="center" className="writerData">
-                  {row.writer}
+                  {data.writer}
                 </TableCell>
                 <TableCell align="center">
-                  <button type="button" className="downloadBtn">
+                  <button
+                    type="button"
+                    className="downloadBtn"
+                    onClick={() => {
+                      handleDownload(data.requesterBoardId);
+                    }}
+                  >
                     다운받기
                   </button>
                 </TableCell>
@@ -78,6 +141,20 @@ export default function DownloadData() {
           </TableBody>
         </Table>
       </Styled.TableContainer>
+
+      <Pagination
+        count={numPages}
+        page={currentPage}
+        onChange={onPageChange}
+        color="primary"
+        size="large"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "15px 0",
+        }}
+        renderItem={item => <PaginationItem {...item} sx={{ fontSize: 12 }} />}
+      />
     </S.MyPageInfo>
   );
 }

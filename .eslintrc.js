@@ -43,6 +43,9 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": "error",
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
+    "sonarjs/no-unused-collection": "off",
+    "no-unsafe-optional-chaining": "off",
+    "no-unused-expressions": "off",
     "react/jsx-filename-extension": [
       1,
       {

@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import Link from "next/link";
 import Table from "@mui/material/Table";
+import { Pagination, PaginationItem } from "@mui/material";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
@@ -7,32 +9,97 @@ import TableRow from "@mui/material/TableRow";
 import * as Styled from "./TableContainer.style";
 import * as S from "./MyPageInfo.style";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
+import { apiInstance } from "../../../pages/api/setting";
 
-const rows = [
-  {
-    date: "22.10.12",
-    applicant: "이무성",
-    dataName: " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원1",
-    id: 0,
-  },
-  {
-    date: "22.10.13",
-    applicant: "이무성2",
-    dataName: " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원2",
-    id: 1,
-  },
-  {
-    date: "22.10.14",
-    applicant: "이무성3",
-    dataName: " 특수교육학개론 개별화 교육 프로그램과 긍정적 행동 지원3",
-    id: 2,
-  },
-];
+interface IPostsProps {
+  exchangePages: number;
+  exchangeInfos: [
+    {
+      exchangeId: number;
+      applicationDate: string;
+      requesterNickName: string;
+      requesterId: string;
+      title: string;
+      requesterBoardId: number;
+      boardId: number;
+    }
+  ];
+}
 
 export default function ExchangeAcceptance() {
   const [dataStatus] = useState(false);
   const title = "교환신청 수락";
   const description = "교환신청 수락여부를  선택할 수 있어요.";
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [posts, setPosts] = useState<IPostsProps>();
+  const [total, setTotal] = useState<number>(1);
+
+  const userPostDataAPI = async () => {
+    const result = await apiInstance.get(`/user/exchange?page=${currentPage}`);
+    setPosts(result.data);
+    setTotal(result.data.exchangePages);
+  };
+
+  console.log(posts);
+
+  const numPages = Math.ceil(total / 2);
+
+  const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
+    setCurrentPage(page);
+  };
+
+  useEffect(() => {
+    userPostDataAPI();
+  }, [currentPage]);
+
+  const acceptAPI = async (
+    exchangeId: number,
+    requesterId: string,
+    boardId: number,
+    requesterBoardId: number
+  ) => {
+    await apiInstance.post("/user/exchange/accept", {
+      exchangeId,
+      requesterId,
+      boardId,
+      requesterBoardId,
+    });
+  };
+
+  const refusalAPI = async (
+    exchangeId: number,
+    requesterId: string,
+    boardId: number,
+    requesterBoardId: number
+  ) => {
+    await apiInstance.delete("/user/exchange/refusal", {
+      data: {
+        exchangeId,
+        requesterId,
+        boardId,
+        requesterBoardId,
+      },
+    });
+  };
+
+  const handleClickAccept = (
+    exchangeId: number,
+    requesterId: string,
+    boardId: number,
+    requesterBoardId: number
+  ) => {
+    acceptAPI(exchangeId, requesterId, boardId, requesterBoardId);
+  };
+
+  const handleClickRefuse = (
+    exchangeId: number,
+    requesterId: string,
+    boardId: number,
+    requesterBoardId: number
+  ) => {
+    refusalAPI(exchangeId, requesterId, boardId, requesterBoardId);
+  };
 
   return (
     <S.MyPageInfo>
@@ -59,23 +126,47 @@ export default function ExchangeAcceptance() {
           </TableHead>
 
           <TableBody>
-            {dataStatus ? (
-              rows.map(row => (
-                <TableRow key={row.date}>
+            {!dataStatus ? (
+              posts?.exchangeInfos.map(data => (
+                <TableRow key={data.boardId}>
                   <TableCell align="center" className="dateData">
-                    {row.date}
+                    {data.applicationDate}
                   </TableCell>
                   <TableCell align="center" className="applicantData">
-                    {row.applicant}
+                    {data.requesterNickName}
                   </TableCell>
-                  <TableCell align="center" className="dataNameData">
-                    {row.dataName}
-                  </TableCell>
+                  <Link href="/">
+                    <TableCell align="center" className="dataNameData">
+                      {data.title}
+                    </TableCell>
+                  </Link>
                   <TableCell align="center">
-                    <button type="button" className="acceptBtn">
+                    <button
+                      type="button"
+                      className="acceptBtn"
+                      onClick={() => {
+                        handleClickAccept(
+                          data.exchangeId,
+                          data.requesterId,
+                          data.boardId,
+                          data.requesterBoardId
+                        );
+                      }}
+                    >
                       수락
                     </button>
-                    <button type="button" className="refuseBtn">
+                    <button
+                      type="button"
+                      className="refuseBtn"
+                      onClick={() => {
+                        handleClickRefuse(
+                          data.exchangeId,
+                          data.requesterId,
+                          data.boardId,
+                          data.requesterBoardId
+                        );
+                      }}
+                    >
                       거절
                     </button>
                   </TableCell>
@@ -89,6 +180,20 @@ export default function ExchangeAcceptance() {
           </TableBody>
         </Table>
       </Styled.TableContainer>
+
+      <Pagination
+        count={numPages}
+        page={currentPage}
+        onChange={onPageChange}
+        color="primary"
+        size="large"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "15px 0",
+        }}
+        renderItem={item => <PaginationItem {...item} sx={{ fontSize: 12 }} />}
+      />
     </S.MyPageInfo>
   );
 }

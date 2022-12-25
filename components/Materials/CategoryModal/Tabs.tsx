@@ -5,9 +5,11 @@ import {
   useContext,
   ReactNode,
   useEffect,
+  Dispatch,
+  SetStateAction,
+  MouseEvent,
 } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import tw from "twin.macro";
 
 import "react-tabs/style/react-tabs.css";
 
@@ -15,17 +17,17 @@ const liPadding = "30px 30px 20px";
 
 const optionsOfTab1 = [
   [
-    { label: "예술체육대학", value: "예술쳬육대학" },
-    { label: "사회과학대학", value: "사회과학대학" },
-    { label: "창의융합대학", value: "창의융합대학" },
-    { label: "인문대학", value: "인문대학" },
-    { label: "신학대학", value: "신학대학" },
+    { label: "예술체육대학", value: "예술쳬육대학", start: 7, end: 11 },
+    { label: "사회과학대학", value: "사회과학대학", start: 12, end: 14 },
+    { label: "창의융합대학", value: "창의융합대학", start: 15, end: 22 },
+    { label: "인문대학", value: "인문대학", start: 2, end: 6 },
+    { label: "신학대학", value: "신학대학", start: 0, end: 1 },
   ],
   [
     { label: "영어언어문화", value: "영어언어문화" },
-    { label: "중어언어문화", value: "중어언어문화" },
+    { label: "중국언어문화학과", value: "중국언어문화학과" },
     { label: "러시아언어문화", value: "러시아언어문화" },
-    { label: "국어국문", value: "국어국문" },
+    { label: "국어국문학과", value: "국어국문학과" },
   ],
   [
     { label: "중간고사", value: "중간고사" },
@@ -33,6 +35,54 @@ const optionsOfTab1 = [
     { label: "필기요약", value: "필기요약" },
   ],
 ];
+
+const optionsOfUniversity = {
+  예술체육대학: [
+    { label: "공연예술학과", value: "공연예술학과" },
+    {
+      label: "음악학과",
+      value: "음악학과",
+    },
+    {
+      label: "디지털미디어디자인학과",
+      value: "디지털미디어디자인학과",
+    },
+    {
+      label: "화장품발명디자인학과",
+      value: "화장품발명디자인학과",
+    },
+    {
+      label: "뷰티메디컬디자인학과",
+      value: "뷰티메디컬디자인학과",
+    },
+  ],
+  사회과학대학: [
+    { label: "글로벌경영학과", value: "글로벌경영학과" },
+    { label: "행정학과", value: "행정학과" },
+    { label: "관광경영학과", value: "관광경영학과" },
+  ],
+  창의융합대학: [
+    { label: "식품영양학과", value: "식품영양학과" },
+    { label: "컴퓨터공학과", value: "컴퓨터공학과" },
+    { label: "정보전기전자공학과", value: "정보전기전자공학과" },
+    { label: "통계데이터사이언스학과", value: "통계데이터사이언스학과" },
+    { label: "소프트웨어학과", value: "소프트웨어학과" },
+    { label: "도시정보공학과", value: "도시정보공학과" },
+    { label: "환경에너지공학과", value: "환경에너지공학과" },
+    { label: "AI융합학과", value: "AI융합학과" },
+  ],
+  인문대학: [
+    { label: "국어국문학과", value: "국어국문학과" },
+    { label: "영미언어문화학과", value: "영미언어문화학과" },
+    { label: "러시아언어문화학과", value: "러시아언어문화학과" },
+    { label: "중국언어문화학과", value: "중국언어문화학과" },
+    { label: "유아교육과", value: "유아교육과" },
+  ],
+  신학대학: [
+    { label: "신학과", value: "신학과" },
+    { label: "기독교교육과", value: "기독교교육과" },
+  ],
+};
 
 const optionsOfTab2 = [
   [
@@ -153,18 +203,20 @@ function RadioInput({
 function Buttons({
   tabIdx,
   completed,
+  handleClose,
+  handleOK,
 }: {
   tabIdx: number;
   completed: boolean[];
+  handleClose: (e: MouseEvent<HTMLButtonElement>) => void;
+  handleOK: () => void;
 }) {
   // tabIdx에 일치하는 completed가 true면 disbled를 해제
-  const disabled = !completed[tabIdx];
+  const disabled = !completed[`${tabIdx}`];
 
-  console.log(disabled);
   return (
     <div
       css={[
-        tw``,
         css`
           position: absolute;
           bottom: 30px;
@@ -176,7 +228,6 @@ function Buttons({
     >
       <button
         css={[
-          tw``,
           css`
             width: 100px;
             height: 40px;
@@ -190,12 +241,12 @@ function Buttons({
           `,
         ]}
         type="button"
+        onClick={handleClose}
       >
         닫기
       </button>
       <button
         css={[
-          tw``,
           css`
             width: 100px;
             height: 40px;
@@ -212,7 +263,7 @@ function Buttons({
         ]}
         type="button"
         disabled={disabled}
-        onClick={() => console.log("click", disabled)}
+        onClick={handleOK}
       >
         선택완료
       </button>
@@ -220,7 +271,15 @@ function Buttons({
   );
 }
 
-export default function TabComponent() {
+interface TabComponentProps {
+  setSelectedCategories: Dispatch<SetStateAction<string[]>>;
+  closeCategoryDialog: (e?: MouseEvent<HTMLDivElement>) => void;
+}
+
+export default function TabComponent({
+  setSelectedCategories,
+  closeCategoryDialog,
+}: TabComponentProps) {
   const [tabIndex, setTabIndex] = useState(0);
   const [checked, setChecked] = useState([true, true]);
   const [valueOfTab, setValueOfTab] = useState<ValuesOfTab>([
@@ -255,6 +314,8 @@ export default function TabComponent() {
 
   const handleTabClick = (index: number) => {
     setTabIndex(index);
+    // tab을 변경하면 체크했던 항목을 모두 삭제(0~3 : 1번탭, 4~5 : 2번탭, 6 : 3번탭)
+    setValueOfTab(["", "", "", "", "", ""]);
   };
 
   const handleTabChange = (label: keyof typeof TabIndex, value: string) => {
@@ -278,7 +339,26 @@ export default function TabComponent() {
     setCompleted([tab1Completed, tab2Completed, tab3Completed]);
   }, [valueOfTab]);
 
-  console.log(completed);
+  // 닫기 버튼 클릭 시
+  const handleClose = () => {
+    setTabIndex(0);
+    setValueOfTab(["", "", "", "", "", ""]);
+    closeCategoryDialog();
+  };
+
+  // 선택완료 버튼 클릭 시
+  const handleOK = () => {
+    if (tabIndex === 0) {
+      setSelectedCategories(["1", ...valueOfTab.slice(0, 3)]);
+    } else if (tabIndex === 1) {
+      setSelectedCategories(["2", ...valueOfTab.slice(3, 5)]);
+    } else if (tabIndex === 2) {
+      setSelectedCategories(["3", ...valueOfTab.slice(5, 6)]);
+    } else {
+      alert("선택된 탭이 없습니다.");
+    }
+    handleClose();
+  };
 
   return (
     <Tabs onSelect={handleTabClick}>
@@ -380,7 +460,6 @@ export default function TabComponent() {
         >
           <div
             css={[
-              tw``,
               css`
                 display: ${tabIndex === 0 ? "grid" : "none"};
                 grid-template-columns: repeat(3, auto);
@@ -412,19 +491,16 @@ export default function TabComponent() {
               value={valueOfTab}
               onChange={handleTabChange}
             >
-              <div
+              <hr
                 css={[
-                  tw``,
                   css`
                     margin: 0 auto;
                     width: calc(100% - 80px);
-                    border: 1px solid #dedede;
                   `,
                 ]}
               />
               <div
                 css={[
-                  tw``,
                   css`
                     display: ${tabIndex === 0 ? "grid" : "none"};
                     grid-template-columns: repeat(3, auto);
@@ -437,15 +513,22 @@ export default function TabComponent() {
                 ]}
               >
                 {/* 첫 섹션 선택 시 추가로 보여주는 섹션 */}
-                {optionsOfTab1[1].map(option => (
-                  <RadioInput
-                    key={option.label}
-                    groupLabel="tab1-2"
-                    label={option.label || ""}
-                    value={option.value || ""}
-                    checkedValue={valueOfTab[TabIndex["tab1-2"]]}
-                  />
-                ))}
+                {(valueOfTab[
+                  TabIndex["tab1-1"]
+                ] as keyof typeof optionsOfUniversity) &&
+                  optionsOfUniversity[
+                    valueOfTab[
+                      TabIndex["tab1-1"]
+                    ] as keyof typeof optionsOfUniversity
+                  ].map(option => (
+                    <RadioInput
+                      key={option.label}
+                      groupLabel="tab1-2"
+                      label={option.label || ""}
+                      value={option.value || ""}
+                      checkedValue={valueOfTab[TabIndex["tab1-2"]]}
+                    />
+                  ))}
               </div>
             </RadioGroup>
             <RadioGroup
@@ -453,19 +536,16 @@ export default function TabComponent() {
               value={valueOfTab}
               onChange={handleTabChange}
             >
-              <div
+              <hr
                 css={[
-                  tw``,
                   css`
                     margin: 0 auto;
                     width: calc(100% - 80px);
-                    border: 1px solid #dedede;
                   `,
                 ]}
               />
               <div
                 css={[
-                  tw``,
                   css`
                     display: ${tabIndex === 0 ? "grid" : "none"};
                     grid-template-columns: repeat(3, auto);
@@ -491,7 +571,12 @@ export default function TabComponent() {
             </RadioGroup>
           </>
         )}
-        <Buttons tabIdx={0} completed={completed} />
+        <Buttons
+          tabIdx={0}
+          completed={completed}
+          handleClose={handleClose}
+          handleOK={handleOK}
+        />
       </TabPanel>
       {/* @ : 교양대학 자료 */}
       <TabPanel
@@ -506,7 +591,6 @@ export default function TabComponent() {
         >
           <div
             css={[
-              tw``,
               css`
                 display: ${tabIndex === 1 ? "grid" : "none"};
                 grid-template-columns: repeat(4, auto);
@@ -537,19 +621,16 @@ export default function TabComponent() {
             value={valueOfTab}
             onChange={handleTabChange}
           >
-            <div
+            <hr
               css={[
-                tw``,
                 css`
                   margin: 0 auto;
                   width: calc(100% - 80px);
-                  border: 1px solid #dedede;
                 `,
               ]}
             />
             <div
               css={[
-                tw``,
                 css`
                   display: ${tabIndex === 1 ? "grid" : "none"};
                   grid-template-columns: repeat(3, auto);
@@ -576,7 +657,12 @@ export default function TabComponent() {
             </div>
           </RadioGroup>
         )}
-        <Buttons tabIdx={1} completed={completed} />
+        <Buttons
+          tabIdx={1}
+          completed={completed}
+          handleClose={handleClose}
+          handleOK={handleOK}
+        />
       </TabPanel>
       {/* @ : 카테고리별 자료 */}
       <TabPanel
@@ -591,7 +677,6 @@ export default function TabComponent() {
         >
           <div
             css={[
-              tw``,
               css`
                 display: ${tabIndex === 2 ? "grid" : "none"};
                 grid-template-columns: repeat(4, auto);
@@ -616,7 +701,12 @@ export default function TabComponent() {
             ))}
           </div>
         </RadioGroup>
-        <Buttons tabIdx={2} completed={completed} />
+        <Buttons
+          tabIdx={2}
+          completed={completed}
+          handleClose={handleClose}
+          handleOK={handleOK}
+        />
       </TabPanel>
     </Tabs>
   );

@@ -23,8 +23,9 @@ function ModalOverlay({ children, closeCategoryDialog }: ModalOverlayProps) {
         z-index: 9999;
         position: fixed;
         top: 0;
+        left: 0;
         background: rgba(0, 0, 0, 0.2);
-        width: 100vw;
+        width: 100%;
         height: 100vh;
         overflow-y: hidden;
         cursor: default;

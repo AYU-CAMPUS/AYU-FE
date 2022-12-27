@@ -1,15 +1,17 @@
+import { Dispatch, SetStateAction, MouseEvent } from "react";
 import { css } from "@emotion/react";
-import React from "react";
 
 import Tabs from "./Tabs";
 
-function CategoryModal() {
-  // const [activeTab, setActiveTab] = React.useState(0);
+interface CategoryModalProps {
+  setSelectedCategories: Dispatch<SetStateAction<string[]>>;
+  closeCategoryDialog: (e?: MouseEvent<HTMLDivElement>) => void;
+}
 
-  // const handleTabClick = (index: number) => {
-  //   setActiveTab(index);
-  // };
-
+function CategoryModal({
+  setSelectedCategories,
+  closeCategoryDialog,
+}: CategoryModalProps) {
   return (
     <div
       // modal overlay 중에 modal 부분은 이벤트가 퍼져나가면 안된다.
@@ -27,10 +29,12 @@ function CategoryModal() {
         cursor: default;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
-        /* width: 100%; */
       `}
     >
-      <Tabs />
+      <Tabs
+        setSelectedCategories={setSelectedCategories}
+        closeCategoryDialog={closeCategoryDialog}
+      />
     </div>
   );
 }

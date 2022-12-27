@@ -87,5 +87,6 @@ module.exports = {
     // enum issue
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
+    "react/no-unknown-property": ["error", { ignore: ["css"] }],
   },
 };

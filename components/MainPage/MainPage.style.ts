@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
 
-export const MainPageWrapper = styled.main``;
+export const MainPageWrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 
 export const TitleInputSection = styled.section`
   display: flex;

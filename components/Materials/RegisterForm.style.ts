@@ -18,7 +18,7 @@ export const Heading = styled.h1`
   border-bottom: 2px solid #abaeaf;
 `;
 
-export const Form = styled.div``;
+export const Form = styled.form``;
 
 export const Formrow = styled.div`
   &:after {
@@ -30,6 +30,7 @@ export const Formrow = styled.div`
 
 interface Col1Props {
   height?: string;
+  gap?: string;
 }
 
 export const Col1 = styled.div<Col1Props>`
@@ -65,6 +66,7 @@ export const Col2 = styled.div<Col1Props>`
   align-items: center;
   min-width: 200px;
   float: left;
+  gap: ${props => (props.gap ? props.gap : "0")};
 
   &:after {
     display: table;
@@ -80,6 +82,7 @@ export const TitleInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   padding-left: 15px;
+  font-size: 18px;
 
   &::placeholder {
     font: 16px sans-serif;
@@ -95,6 +98,7 @@ export const DescriptionTextArea = styled.textarea`
   border-radius: 5px;
   padding-top: 15px;
   padding-left: 15px;
+  font-size: 18px;
 
   &::placeholder {
     font: 18px sans-serif;
@@ -108,6 +112,7 @@ export const PageNumberInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   padding-left: 15px;
+  font-size: 18px;
 
   &::placeholder {
     font: 16px sans-serif;

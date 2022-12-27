@@ -122,7 +122,6 @@ export default function MainPage() {
 
           {/* <Styled.ExchangeArticle>
           <DataView title={ExchangeTitle} />
-
           <Styled.ExchangeBtnWrapper>
             {ExchangeData.map(Exchange => {
               return <button type="button" key={Exchange.id} />;

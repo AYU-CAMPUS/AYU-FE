@@ -29,32 +29,32 @@ export const MajorsData = [
 
 export const CultureData = [
   {
-    id: 0,
+    id: 5,
     description: "인성양성",
     image: leaderIcon,
   },
   {
-    id: 1,
+    id: 6,
     description: "리더쉽",
     image: leaderIcon,
   },
   {
-    id: 2,
+    id: 7,
     description: "융합실무",
     image: convergencePracticeIcon,
   },
   {
-    id: 3,
+    id: 8,
     description: "문제해결",
     image: problemSolvingIcon,
   },
   {
-    id: 4,
+    id: 9,
     description: "글로벌",
     image: globalIcon,
   },
   {
-    id: 5,
+    id: 10,
     description: "의사소통",
     image: communicationIcon,
   },
@@ -62,35 +62,35 @@ export const CultureData = [
 
 export const CategoryData = [
   {
-    id: 0,
+    id: 11,
     description: "레포트",
   },
   {
-    id: 1,
+    id: 12,
     description: "PPT 템플릿",
   },
   {
-    id: 2,
+    id: 13,
     description: "한국사 자격증",
   },
   {
-    id: 3,
+    id: 14,
     description: "토익",
   },
   {
-    id: 4,
+    id: 15,
     description: "토플",
   },
   {
-    id: 5,
+    id: 16,
     description: "논문",
   },
   {
-    id: 6,
+    id: 17,
     description: "이력서",
   },
   {
-    id: 7,
+    id: 18,
     description: "컴활 자격증",
   },
 ];

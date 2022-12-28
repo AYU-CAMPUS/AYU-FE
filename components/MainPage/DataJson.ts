@@ -4,7 +4,7 @@ import globalIcon from "../../public/images/global.svg";
 import convergencePracticeIcon from "../../public/images/convergencePractice.svg";
 import communicationIcon from "../../public/images/communication.svg";
 
-export const MajorsData = [
+export const CollegeDataList = [
   {
     id: 0,
     description: "신학대학",
@@ -27,7 +27,7 @@ export const MajorsData = [
   },
 ];
 
-export const CultureData = [
+export const CultureDataList = [
   {
     id: 5,
     description: "인성양성",
@@ -60,7 +60,7 @@ export const CultureData = [
   },
 ];
 
-export const CategoryData = [
+export const CategoryDataList = [
   {
     id: 11,
     description: "레포트",
@@ -92,38 +92,5 @@ export const CategoryData = [
   {
     id: 18,
     description: "컴활 자격증",
-  },
-];
-
-export const ExchangeData = [
-  {
-    id: 0,
-  },
-  {
-    id: 1,
-  },
-  {
-    id: 2,
-  },
-  {
-    id: 3,
-  },
-  {
-    id: 4,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 6,
-  },
-  {
-    id: 7,
-  },
-  {
-    id: 8,
-  },
-  {
-    id: 9,
   },
 ];

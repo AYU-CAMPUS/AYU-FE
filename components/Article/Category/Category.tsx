@@ -1,31 +1,23 @@
-import Image from "next/image";
+// import Image from "next/image";
 import * as Styled from "./Category.style";
-import Input from "../Input/Input";
-import searchIcon from "../../public/images/search.svg";
-import DataCategoryAside from "./DataCategoryAside";
-import { CategoryData } from "../MainPage/DataJson";
+// import Input from "../../Input/Input";
+// import searchIcon from "../../public/images/search.svg";
 
 export default function Category() {
-  const categoryTitle = "카테고리별 자료";
+  // const categoryTitle = "카테고리별 자료";
 
   return (
     <Styled.CategoryWrapper>
       <Styled.SchoolInfo>
-        <DataCategoryAside
-          categoryTitle={categoryTitle}
-          categoryData={CategoryData}
-          height="53.2rem"
-        />
-
         <Styled.KeyWordArticleSection>
-          <Styled.InputWrapper>
+          {/* <Styled.InputWrapper>
             <Input />
             <button type="button">
               <Image src={searchIcon} />
             </button>
-          </Styled.InputWrapper>
+          </Styled.InputWrapper> */}
 
-          <Styled.TemplateWrapper>
+          {/* <Styled.TemplateWrapper>
             <Styled.ThumbnailDescription>
               <Styled.Thumbnail />
               <Styled.Description>
@@ -48,7 +40,7 @@ export default function Category() {
                 </Styled.SpanWrapper>
               </Styled.Description>
             </Styled.ThumbnailDescription>
-          </Styled.TemplateWrapper>
+          </Styled.TemplateWrapper> */}
 
           <Styled.RegisterBtn>
             <div />

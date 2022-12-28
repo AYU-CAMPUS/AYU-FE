@@ -13,9 +13,9 @@ import BannerTitle from "../../public/images/BannerTitle.png";
 // import searchIcon from "../../public/images/search.svg";
 
 import {
-  MajorsData,
-  CultureData,
-  CategoryData,
+  CollegeDataList,
+  CultureDataList,
+  CategoryDataList,
   // ExchangeData,
 } from "./DataJson";
 import Header from "../Header/Header";
@@ -74,11 +74,11 @@ export default function MainPage() {
             <DataView title={MajorTitle} description={MajorDescription} />
 
             <Styled.ButtonWrapper>
-              {MajorsData.map(Major => {
+              {CollegeDataList.map(Major => {
                 return (
                   <Link
                     key={Major.id}
-                    href={`/article/department?value=${Major.description}`}
+                    href={`/article/major?college=${Major.description}`}
                   >
                     <a>{Major.description}</a>
                   </Link>
@@ -91,9 +91,12 @@ export default function MainPage() {
             <DataView title={CultureTitle} description={CultureDescription} />
 
             <Styled.ImageBtnWrapper>
-              {CultureData.map(Culture => {
+              {CultureDataList.map(Culture => {
                 return (
-                  <Link key={Culture.id} href="/article/culture">
+                  <Link
+                    key={Culture.id}
+                    href={`/article/culture?category=${Culture.description}`}
+                  >
                     <Styled.ImageDescriptionWrapper>
                       <div>
                         <Image src={Culture.image} />
@@ -110,7 +113,7 @@ export default function MainPage() {
             <DataView title={CategoryTitle} description={CategoryDescription} />
 
             <Styled.ButtonWrapper>
-              {CategoryData.map(Category => {
+              {CategoryDataList.map(Category => {
                 return (
                   <Link key={Category.id} href="/article/category">
                     <a> {Category.description}</a>

@@ -1,5 +1,5 @@
 import React from "react";
-import Culture from "../../components/Article/Culture";
+import Culture from "../../components/Article/Culture/Culture";
 
 import MainLayout from "../../components/Layout/MainLayout";
 

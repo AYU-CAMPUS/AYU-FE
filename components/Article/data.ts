@@ -137,3 +137,31 @@ export const EngineeringCollege = [
     id: 22,
   },
 ];
+
+export const selectDepartmentList = [
+  {
+    college: "신학대학",
+    department: TheologyCollege,
+    id: 0,
+  },
+  {
+    college: "인문대학",
+    department: HumanityCollege,
+    id: 1,
+  },
+  {
+    college: "예술체육대학",
+    department: ArtCollege,
+    id: 2,
+  },
+  {
+    college: "사회과학대학",
+    department: SocialScienceCollege,
+    id: 3,
+  },
+  {
+    college: "창의융합대학",
+    department: EngineeringCollege,
+    id: 4,
+  },
+];

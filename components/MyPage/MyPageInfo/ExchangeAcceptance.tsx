@@ -59,12 +59,15 @@ export default function ExchangeAcceptance() {
     boardId: number,
     requesterBoardId: number
   ) => {
-    await apiInstance.post("/user/exchange/accept", {
+    const result = await apiInstance.post("/user/exchange", {
       exchangeId,
       requesterId,
       boardId,
       requesterBoardId,
     });
+    if (result.status === 200) {
+      window.location.reload();
+    }
   };
 
   const refusalAPI = async (
@@ -73,7 +76,7 @@ export default function ExchangeAcceptance() {
     boardId: number,
     requesterBoardId: number
   ) => {
-    await apiInstance.delete("/user/exchange/refusal", {
+    const result = await apiInstance.delete("/user/exchange", {
       data: {
         exchangeId,
         requesterId,
@@ -81,6 +84,9 @@ export default function ExchangeAcceptance() {
         requesterBoardId,
       },
     });
+    if (result.status === 200) {
+      window.location.reload();
+    }
   };
 
   const handleClickAccept = (

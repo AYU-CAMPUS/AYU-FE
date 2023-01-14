@@ -5,14 +5,14 @@ import { useRouter } from "next/router";
 // import { motion } from "framer-motion";
 import * as Styled from "./Detail.style";
 import thumbnail from "../../../public/images/thumbnail.png";
+import Button from "../../Button/Button";
 
 // import Input from "../Input/Input";
 
 // import ProfileImage from "../../public/images/ProfileImage.png";
-import Portal from "../Modal/Portal/Portal";
-import ExchangeModal from "../Modal/ExchangeModal";
-import { apiInstance } from "../../../pages/api/setting";
-import Button from "../Button/Button";
+import Portal from "../../Modal/Portal/Portal";
+import ExchangeModal from "../../Modal/ExchangeModal";
+import { apiInstance } from "../../../api/config";
 
 interface IPostsProps {
   content: string;

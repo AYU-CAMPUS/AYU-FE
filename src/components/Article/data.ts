@@ -1,23 +1,19 @@
 export const grades = [
   {
-    grade: "전체학년",
+    grade: "1학년",
     id: 0,
   },
   {
-    grade: "1학년",
+    grade: "2학년",
     id: 1,
   },
   {
-    grade: "2학년",
+    grade: "3학년",
     id: 2,
   },
   {
-    grade: "3학년",
-    id: 3,
-  },
-  {
     grade: "4학년",
-    id: 4,
+    id: 3,
   },
 ];
 export const tests = [
@@ -60,11 +56,11 @@ export const HumanityCollege = [
     id: 4,
   },
   {
-    department: "유아교육학과",
+    department: "중국언어문화학과",
     id: 5,
   },
   {
-    department: "중국언어문화학과",
+    department: "유아교육과",
     id: 6,
   },
 ];
@@ -75,7 +71,7 @@ export const ArtCollege = [
     id: 7,
   },
   {
-    department: "화장품발명디자인학과",
+    department: "음악학과",
     id: 8,
   },
   {
@@ -83,7 +79,7 @@ export const ArtCollege = [
     id: 9,
   },
   {
-    department: "음악학과",
+    department: "화장품발명디자인학과",
     id: 10,
   },
   {
@@ -121,7 +117,7 @@ export const EngineeringCollege = [
     id: 17,
   },
   {
-    department: "통계사이언스학과",
+    department: "통계데터사이언스학과",
     id: 18,
   },
   {
@@ -133,11 +129,39 @@ export const EngineeringCollege = [
     id: 20,
   },
   {
-    department: "도시정보공학과",
+    department: "환경에너지공학과",
     id: 21,
   },
   {
     department: "Ai 융합학과",
     id: 22,
+  },
+];
+
+export const selectDepartmentList = [
+  {
+    college: "신학대학",
+    department: TheologyCollege,
+    id: 0,
+  },
+  {
+    college: "인문대학",
+    department: HumanityCollege,
+    id: 1,
+  },
+  {
+    college: "예술체육대학",
+    department: ArtCollege,
+    id: 2,
+  },
+  {
+    college: "사회과학대학",
+    department: SocialScienceCollege,
+    id: 3,
+  },
+  {
+    college: "창의융합대학",
+    department: EngineeringCollege,
+    id: 4,
   },
 ];

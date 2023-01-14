@@ -41,6 +41,7 @@ export const BannerSection = styled.div`
     height: 6.7rem;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 10rem;
+    margin: 0 26.5rem;
   }
 `;
 
@@ -51,13 +52,10 @@ export const DataSection = styled.section`
   margin: auto;
   gap: 16rem;
   margin-bottom: 34rem;
+  padding: 0 26.5rem;
 `;
 
-export const MajorArticle = styled.article`
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-`;
+export const MajorArticle = styled.article``;
 export const CultureArticle = styled(MajorArticle)``;
 export const CategoryArticle = styled(MajorArticle)``;
 // export const ExchangeArticle = styled(MajorArticle)``;
@@ -105,7 +103,7 @@ export const ImageDescriptionWrapper = styled.div`
     align-items: center;
     justify-content: center;
     &:hover {
-      background: #3f8cee;
+      cursor: pointer;
     }
   }
   p {

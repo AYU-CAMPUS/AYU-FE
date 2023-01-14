@@ -1,6 +1,6 @@
 import React from "react";
-import Department from "../../src/components/Article/Department";
 
+import Department from "../../src/components/Article/Department";
 import MainLayout from "../../src/components/Layout/MainLayout";
 
 function ArticleDepartmentPage() {

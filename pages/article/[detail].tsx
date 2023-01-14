@@ -1,6 +1,6 @@
 import React from "react";
-import Detail from "../../src/components/Article/Detail";
 
+import Detail from "../../src/components/Article/Detail/Detail";
 import MainLayout from "../../src/components/Layout/MainLayout";
 
 function ArticleDetailPage() {

@@ -1,19 +1,15 @@
 import styled from "@emotion/styled";
 
-export const MajorSelection = styled.div`
+export const GradeSelection = styled.div`
   display: flex;
-  gap: 6rem;
-  p {
-    margin-bottom: 11rem;
-  }
-`;
-
-export const MajorWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
   div {
     display: flex;
-    gap: 0.4rem;
+    gap: 1rem;
+    align-items: center;
+  }
+  p {
+    padding-right: 3rem;
   }
 `;
 

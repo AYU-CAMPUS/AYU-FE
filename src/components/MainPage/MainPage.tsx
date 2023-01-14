@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import React from "react";
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -10,13 +9,13 @@ import * as Styled from "./MainPage.style";
 import DataView from "./DataView";
 import BannerStarbucks from "../../public/images/BannerStarbucks.png";
 import BannerTitle from "../../public/images/BannerTitle.png";
-import Input from "../Input/Input";
-import searchIcon from "../../public/images/search.svg";
+// import Input from "../Input/Input";
+// import searchIcon from "../../public/images/search.svg";
 
 import {
-  MajorsData,
-  CultureData,
-  CategoryData,
+  CollegeDataList,
+  CultureDataList,
+  CategoryDataList,
   // ExchangeData,
 } from "./DataJson";
 import Header from "../Header/Header";
@@ -45,12 +44,12 @@ export default function MainPage() {
             안양대 학생들을 위한 자료 공유 플랫폼!
           </Styled.MainTitle>
 
-          <Styled.InputWrapper>
+          {/* <Styled.InputWrapper>
             <Input width="101rem" padding="3rem 2.5rem" />
             <button type="button">
               <Image src={searchIcon} />
             </button>
-          </Styled.InputWrapper>
+          </Styled.InputWrapper> */}
         </Styled.TitleInputSection>
 
         <Styled.BannerSection>
@@ -75,9 +74,12 @@ export default function MainPage() {
             <DataView title={MajorTitle} description={MajorDescription} />
 
             <Styled.ButtonWrapper>
-              {MajorsData.map(Major => {
+              {CollegeDataList.map(Major => {
                 return (
-                  <Link key={Major.id} href="/article/department">
+                  <Link
+                    key={Major.id}
+                    href={`/article/major?college=${Major.description}`}
+                  >
                     <a>{Major.description}</a>
                   </Link>
                 );
@@ -89,9 +91,12 @@ export default function MainPage() {
             <DataView title={CultureTitle} description={CultureDescription} />
 
             <Styled.ImageBtnWrapper>
-              {CultureData.map(Culture => {
+              {CultureDataList.map(Culture => {
                 return (
-                  <Link key={Culture.id} href="/article/culture">
+                  <Link
+                    key={Culture.id}
+                    href={`/article/culture?category=${Culture.description}`}
+                  >
                     <Styled.ImageDescriptionWrapper>
                       <div>
                         <Image src={Culture.image} />
@@ -108,7 +113,7 @@ export default function MainPage() {
             <DataView title={CategoryTitle} description={CategoryDescription} />
 
             <Styled.ButtonWrapper>
-              {CategoryData.map(Category => {
+              {CategoryDataList.map(Category => {
                 return (
                   <Link key={Category.id} href="/article/category">
                     <a> {Category.description}</a>
@@ -120,7 +125,6 @@ export default function MainPage() {
 
           {/* <Styled.ExchangeArticle>
           <DataView title={ExchangeTitle} />
-
           <Styled.ExchangeBtnWrapper>
             {ExchangeData.map(Exchange => {
               return <button type="button" key={Exchange.id} />;

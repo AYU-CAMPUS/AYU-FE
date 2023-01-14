@@ -1,6 +1,6 @@
 import React from "react";
-import Culture from "../../src/components/Article/Culture";
 
+import Culture from "../../src/components/Article/Culture";
 import MainLayout from "../../src/components/Layout/MainLayout";
 
 function ArticleCulturePage() {

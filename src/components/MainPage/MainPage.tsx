@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import tw from "twin.macro";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 import "swiper/css";
@@ -7,8 +8,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import * as Styled from "./MainPage.style";
 import DataView from "./DataView";
-import BannerStarbucks from "../../public/images/BannerStarbucks.png";
-import BannerTitle from "../../public/images/BannerTitle.png";
 // import Input from "../Input/Input";
 // import searchIcon from "../../public/images/search.svg";
 
@@ -61,10 +60,22 @@ export default function MainPage() {
             autoplay={{ delay: 2000 }}
           >
             <SwiperSlide>
-              <Image src={BannerTitle} />
+              <div css={[tw` w-[300px] h-[225px]`]}>
+                <Image
+                  src="/images/BannerTitle.png"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-              <Image src={BannerStarbucks} />
+              <div css={[tw`w-[300px] h-[225px]`]}>
+                <Image
+                  src="/images/BannerStarbucks.png"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
             </SwiperSlide>
           </Swiper>
         </Styled.BannerSection>
@@ -99,7 +110,12 @@ export default function MainPage() {
                   >
                     <Styled.ImageDescriptionWrapper>
                       <div>
-                        <Image src={Culture.image} />
+                        <Image
+                          src={Culture.image}
+                          width="100%"
+                          height="100%"
+                          layout="responsive"
+                        />
                       </div>
                       <p> {Culture.description}</p>
                     </Styled.ImageDescriptionWrapper>

@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import * as Styled from "./Header.style";
-import Logo from "../../public/images/ayu-campus-logo.svg";
-import Alarm from "../../public/images/alarm.svg";
-import exchangeAlarm from "../../public/images/exchangeAlarm.svg";
 
 function Header() {
   const isLogin = false;
@@ -12,14 +9,23 @@ function Header() {
       <Styled.HeadWrapper>
         <Styled.Head>
           <Link href="/">
-            <Image src={Logo} />
+            <Image
+              alt="ayu campus logo"
+              src="/images/ayu-campus-logo.svg"
+              width="212px"
+              height="43px"
+            />
           </Link>
           {isLogin ? (
             <div>
               <Link href="/mypage">마이페이지</Link>
               <Link href="/register">자료등록</Link>
-              <Image src={exchangeAlarm} width="37px" height="37px" />
-              <Image src={Alarm} width="37px" height="37px" />
+              <Image
+                src="/images/exchangeAlarm.svg"
+                width="37px"
+                height="37px"
+              />
+              <Image src="/images/alarm.svg" width="37px" height="37px" />
             </div>
           ) : (
             <div>
@@ -27,7 +33,7 @@ function Header() {
               <Link href="https://ayu-be.shop/oauth2/authorization/google ">
                 <button type="button">Connect to google</button>
               </Link>
-              <Image src={Alarm} width="37px" height="37px" />
+              <Image src="/images/alarm.svg" width="37px" height="37px" />
             </div>
           )}
         </Styled.Head>

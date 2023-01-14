@@ -10,7 +10,7 @@ import TitleDescription from "../MyPageNavTitle/TitleDescription";
 // import Portal from "../../Modal/Portal/Portal";
 import Button from "../../Button/Button";
 // import WithdrawlModal from "../../Modal/WithdrawlModal";
-import { apiInstance } from "../../../pages/api/setting";
+import { apiInstance } from "../../../../pages/api/setting";
 
 export default function MyInformation() {
   const title = "내 정보";

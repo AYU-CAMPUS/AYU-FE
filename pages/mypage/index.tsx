@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import MainLayout from "../../components/Layout/MainLayout";
-import MyPageComponent from "../../components/MyPage/MyPageComponent";
+import MainLayout from "../../src/components/Layout/MainLayout";
+import MyPageComponent from "../../src/components/MyPage/MyPageComponent";
 
 function MyPage() {
   return <MyPageComponent />;

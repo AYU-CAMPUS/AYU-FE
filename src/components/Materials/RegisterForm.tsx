@@ -6,7 +6,7 @@ import { css } from "@emotion/react";
 import CategoryModal from "./CategoryModal/CategoryModal";
 import ModalOverlay from "./CategoryModal/ModalOverlay";
 import { EnumCategory, EnumDepartmentType, EnumFileType } from "./types";
-import api, { apiInstance } from "../../src/api/config";
+import api, { apiInstance } from "../../api/config";
 
 import * as Styled from "./RegisterForm.style";
 
@@ -42,9 +42,6 @@ function SmallTextInput({
 
 interface ReqBody {
   title: string;
-  // category: number;
-  // departmentType: number;
-  // fileType: number;
   gradeType: number;
   subjectName: string;
   professorName: string;
@@ -141,7 +138,6 @@ function RegisterForm() {
             EnumFileType[selectedCategories[3] as keyof typeof EnumFileType],
         }),
     };
-    console.log(writeRequest);
     const formData = new FormData();
     if (!file) {
       // error handling
@@ -153,20 +149,19 @@ function RegisterForm() {
       alert("입력 필드를 모두 채워주세요.");
       return;
     }
+
     formData.append("file", file);
     formData.append(
       "writeRequest",
       new Blob([JSON.stringify(writeRequest)], { type: "application/json" })
     );
-    console.log(formData);
     apiInstance
       .post(`${api}/board`, formData, {
         headers: {
           "Content-Type": `multipart/form-data`,
         },
       })
-      .then(res => {
-        console.log(res);
+      .then(() => {
         // 등록 완료 시 메인 페이지로 이동(next.js)
         router.push("/");
       })
@@ -365,7 +360,6 @@ function RegisterForm() {
             </Styled.Formrow>
           </>
         )}
-        {/* "departmentType": 0, "fileType": 0, "file": "string" */}
         {/* 카테고리 선택을 위한 dialog */}
         {isOpenCategoryDialog && (
           <ModalOverlay closeCategoryDialog={closeCategoryDialog}>

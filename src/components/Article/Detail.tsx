@@ -12,7 +12,7 @@ import Button from "../Button/Button";
 // import ProfileImage from "../../public/images/ProfileImage.png";
 import Portal from "../Modal/Portal/Portal";
 import ExchangeModal from "../Modal/ExchangeModal";
-import { apiInstance } from "../../pages/api/setting";
+import { apiInstance } from "../../../pages/api/setting";
 
 interface IPostsProps {
   content: string;

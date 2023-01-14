@@ -1,8 +1,8 @@
 import Script from "next/script";
 import React from "react";
 
-import MainLayout from "../../../components/Layout/MainLayout";
-import RegisterForm from "../../../components/Materials/RegisterForm";
+import MainLayout from "../../../src/components/Layout/MainLayout";
+import RegisterForm from "../../../src/components/Materials/RegisterForm";
 
 import * as Styled from "./Register.style";
 

@@ -1,7 +1,7 @@
 import React from "react";
 
-import MainLayout from "../../../components/Layout/MainLayout";
-import SignUpForm from "../../../components/SignUp/SignUpForm";
+import MainLayout from "../../../src/components/Layout/MainLayout";
+import SignUpForm from "../../../src/components/SignUp/SignUpForm";
 
 import * as Styled from "./SignUp.style";
 

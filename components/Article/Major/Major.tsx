@@ -40,6 +40,7 @@ export interface IPostsProps {
 
 export default function Article() {
   const categoryTitle = "학과별 전공 자료";
+  const [nickName, setNickName] = useState<string | null>("");
 
   const router = useRouter();
   const { college } = router.query;
@@ -52,6 +53,12 @@ export default function Article() {
     "창의융합대학",
   ];
 
+  useEffect(() => {
+    if (typeof window.console !== "undefined") {
+      setNickName(localStorage.getItem("nickName"));
+    }
+  }, []);
+
   const defaultSelect = (college || collegeList[0]) as string;
   const [selectDepartmentNav, setSelectDepartmentNav] = useState(defaultSelect);
   const category = collegeList.indexOf(String(selectDepartmentNav));
@@ -63,7 +70,6 @@ export default function Article() {
   const [currentPage, setCurrentPage] = useState(1);
   const [articleList, setArticleList] = useState<IPostsProps>();
   const [total, setTotal] = useState<number>(1);
-  const numPages = Math.ceil(total / 2);
 
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
@@ -176,15 +182,17 @@ export default function Article() {
           </Table>
         </Styled.TableContainer>
 
-        <Styled.RegisterBtn>
-          <div />
-          <button type="button" onClick={handleRegisterClick}>
-            자료등록
-          </button>
-        </Styled.RegisterBtn>
+        {nickName && (
+          <Styled.RegisterBtn>
+            <div />
+            <button type="button" onClick={handleRegisterClick}>
+              자료등록
+            </button>
+          </Styled.RegisterBtn>
+        )}
 
         <Pagination
-          count={numPages}
+          count={total}
           page={currentPage}
           onChange={onPageChange}
           color="primary"

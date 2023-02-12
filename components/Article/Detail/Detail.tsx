@@ -285,7 +285,6 @@ export default function Detail() {
       </Styled.ArticleDetailInfo>
       {/* <Styled.CommentWrapper>
         <Styled.CommentTitle>댓글</Styled.CommentTitle>
-
         <Styled.CommentRegister>
           <Image src={ProfileImage} width="44" height="44" />
           <Input width="85.8rem" padding="1rem 1.5rem" />
@@ -293,7 +292,6 @@ export default function Detail() {
             등록
           </Button>
         </Styled.CommentRegister>
-
         <Styled.CommentSection>
           <Image src={ProfileImage} width="44" height="44" />
           <Styled.CommentInfo>
@@ -303,7 +301,6 @@ export default function Detail() {
                 이 자료에 대해 궁금하신 점이 있다면 댓글 주세요.
               </Styled.CommentContent>
             </Styled.Comment>
-
             <Styled.CommentOption>
               <Styled.CommentHour>21시간</Styled.CommentHour>
               <Styled.CommentReply as="button">답글쓰기</Styled.CommentReply>
@@ -311,7 +308,6 @@ export default function Detail() {
             </Styled.CommentOption>
           </Styled.CommentInfo>
         </Styled.CommentSection>
-
         <Styled.CommentSection>
           <Image src={ProfileImage} width="44" height="44" />
           <Styled.CommentInfo>
@@ -321,7 +317,6 @@ export default function Detail() {
                 이 자료에 대해 궁금하신 점이 있다면 댓글 주세요.
               </Styled.CommentContent>
             </Styled.Comment>
-
             <Styled.CommentOption>
               <Styled.CommentHour>21시간</Styled.CommentHour>
               <Styled.CommentReply as="button">답글쓰기</Styled.CommentReply>

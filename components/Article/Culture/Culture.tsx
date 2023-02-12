@@ -38,7 +38,8 @@ export default function Culture() {
   const [currentPage, setCurrentPage] = useState(1);
   const [articleList, setArticleList] = useState<IPostsProps>();
   const [total, setTotal] = useState<number>(1);
-  const numPages = Math.ceil(total / 2);
+
+  const nickName = localStorage.getItem("nickName");
 
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
@@ -58,8 +59,6 @@ export default function Culture() {
     setArticleList(result.data);
     setTotal(result.data.totalPages);
   };
-
-  console.log(articleList);
 
   useEffect(() => {
     boardInquiryAPI();
@@ -135,15 +134,18 @@ export default function Culture() {
                 </TableBody>
               </Table>
             </Styled.TableContainer>
-            <Styled.RegisterBtn>
-              <div />
-              <button type="button" onClick={handleRegisterClick}>
-                자료등록
-              </button>
-            </Styled.RegisterBtn>
+
+            {nickName && (
+              <Styled.RegisterBtn>
+                <div />
+                <button type="button" onClick={handleRegisterClick}>
+                  자료등록
+                </button>
+              </Styled.RegisterBtn>
+            )}
 
             <Pagination
-              count={numPages}
+              count={total}
               page={currentPage}
               onChange={onPageChange}
               color="primary"

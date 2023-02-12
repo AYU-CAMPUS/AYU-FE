@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { AxiosError } from "axios";
+import Swal from "sweetalert2";
 import * as Styled from "./MyPageComponent.style";
 import Profile from "./MyPageProfile/Profile";
 import DataList from "./MyPageDataList/DataList";
@@ -34,6 +37,8 @@ function MyPage() {
   ];
   const defaultSelect = menuNav[0];
   const [selectMenuNav, setSelectMenuNav] = useState(defaultSelect);
+  const router = useRouter();
+  const url = process.env.NEXT_PUBLIC_APP_BASE_URL;
 
   const selectMenuComponentList: IComponentProps[] = [
     {
@@ -71,11 +76,28 @@ function MyPage() {
   const [userInfo, setUserInfo] = useState<IUserInfoProps>();
 
   const userAPI = async () => {
-    const result = await apiInstance.get("/user");
-    setUserInfo(result.data);
+    try {
+      const result = await apiInstance.get("/user");
+      console.log(result);
+      setUserInfo(result.data);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        if (error.response?.status === 401) {
+          await Swal.fire({
+            title:
+              "<span style='font-size:18px; line-height: 23px'>로그인을 해야 접근이 가능합니다.</span>",
+            confirmButtonText:
+              "<button style='font-size:18px; width:128px; background: #26409A; height:45px; border-radius: 10px; color: white;'>확인</button>",
+            width: 380,
+            heightAuto: true,
+            color: "#000000",
+            confirmButtonColor: "white",
+          });
+        }
+        router.push(`${url}/oauth2/authorization/google`);
+      }
+    }
   };
-
-  console.log(userInfo);
 
   useEffect(() => {
     userAPI();

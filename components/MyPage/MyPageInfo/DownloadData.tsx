@@ -41,6 +41,8 @@ export default function DownloadData() {
     setTotal(result.data.downloadablePages);
   };
 
+  console.log("test");
+
   const userDownloadDataAPI = async (requesterBoardId: number) => {
     const result = await apiInstance.get(`/user/download/${requesterBoardId}`, {
       responseType: "blob",

@@ -65,8 +65,6 @@ export default function DownloadData() {
     };
   }, [downloadData]);
 
-  console.log(downloadData);
-
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
   };

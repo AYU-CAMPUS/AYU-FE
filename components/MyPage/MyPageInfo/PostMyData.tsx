@@ -39,8 +39,6 @@ export default function PostMyData() {
     setTotal(result.data.dataPages);
   };
 
-  console.log(posts);
-
   const numPages = Math.ceil(total / 2);
 
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {

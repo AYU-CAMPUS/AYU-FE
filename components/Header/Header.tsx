@@ -1,12 +1,43 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import * as Styled from "./Header.style";
 import Logo from "../../public/images/ayu-campus-logo.svg";
-import Alarm from "../../public/images/alarm.svg";
-import exchangeAlarm from "../../public/images/exchangeAlarm.svg";
+import { apiInstance } from "../../pages/api/setting";
+// import Alarm from "../../public/images/alarm.svg";
+// import exchangeAlarm from "../../public/images/exchangeAlarm.svg";
 
 function Header() {
-  const isLogin = false;
+  const [nickName, setNickName] = useState<string | null>("");
+  const router = useRouter();
+  const url = process.env.NEXT_PUBLIC_APP_BASE_URL;
+
+  const loginAPI = async () => {
+    try {
+      const result = await apiInstance.get("/user/notification");
+      localStorage.setItem("nickName", result.data.nickName);
+      setNickName(localStorage.getItem("nickName"));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    loginAPI();
+  }, []);
+
+  const logoutAPI = async () => {
+    await apiInstance.get("/user/logout");
+    localStorage.clear();
+    window.location.reload();
+    router.push("/");
+  };
+
+  const handleLogOutClick = () => {
+    logoutAPI();
+  };
+
   return (
     <>
       <Styled.HeadWrapper>
@@ -14,20 +45,22 @@ function Header() {
           <Link href="/">
             <Image src={Logo} />
           </Link>
-          {isLogin ? (
+          {nickName ? (
             <div>
               <Link href="/mypage">마이페이지</Link>
-              <Link href="/register">자료등록</Link>
-              <Image src={exchangeAlarm} width="37px" height="37px" />
-              <Image src={Alarm} width="37px" height="37px" />
+              <Link href="/materials/register">자료등록</Link>
+              <button onClick={handleLogOutClick} type="button">
+                로그아웃
+              </button>
+
+              {/* <Image src={exchangeAlarm} width="37px" height="37px" />
+              <Image src={Alarm} width="37px" height="37px" /> */}
             </div>
           ) : (
             <div>
-              <Link href="/signup">회원가입</Link>
-              <Link href="https://ayu-be.shop/oauth2/authorization/google ">
-                <button type="button">Connect to google</button>
+              <Link href={`${url}/oauth2/authorization/google`}>
+                <button type="button">로그인</button>
               </Link>
-              <Image src={Alarm} width="37px" height="37px" />
             </div>
           )}
         </Styled.Head>

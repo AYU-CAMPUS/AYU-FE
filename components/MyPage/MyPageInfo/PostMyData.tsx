@@ -84,12 +84,11 @@ export default function PostMyData() {
                   </TableCell>
                   <TableCell align="center" className="subjectData">
                     {data.category}
-                    {data.boardId}
                   </TableCell>
 
                   <Link href={`/article/${data.boardId}`}>
                     <TableCell align="center" className="dataNameData">
-                      {data.title}dd
+                      {data.title}
                     </TableCell>
                   </Link>
 
@@ -104,7 +103,10 @@ export default function PostMyData() {
               ))
             ) : (
               <TableCell align="center" colSpan={5}>
-                <p className="exchangeStatus">내가 올린 자료가 없습니다.</p>
+                <p className="exchangeStatus">
+                  내가 올린 자료가 없습니다. <br />
+                  자료 업로드는 3일정도 소요됩니다.
+                </p>
               </TableCell>
             )}
           </TableBody>

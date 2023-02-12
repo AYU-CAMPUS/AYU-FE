@@ -9,7 +9,6 @@ interface DateCategoryProps {
   categoryNav: string[];
   selectCultureNav: string | string[];
   setSelectCultureNav: React.Dispatch<React.SetStateAction<string>>;
-  setSelectTest: React.Dispatch<React.SetStateAction<number[]>>;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
@@ -18,7 +17,7 @@ export const NavButtonSection = styled.section`
   flex-direction: column;
   gap: 3rem;
   min-width: 22.4rem;
-  height: 40.6rem;
+  height: 53.2rem;
   background: #ffffff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -52,9 +51,8 @@ export default function CategoryAside({ ...props }: DateCategoryProps) {
 
   const handleOptionClick = (culture: string) => {
     props.setSelectCultureNav(culture);
-    props.setSelectTest([]);
     props.setCurrentPage(1);
-    router.replace(`/article/culture?category=${culture}`);
+    router.replace(`/article/category?list=${culture}`);
   };
 
   return (

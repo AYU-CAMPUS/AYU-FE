@@ -1,10 +1,6 @@
 import styled from "@emotion/styled";
 
-export const MainPageWrapper = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
+export const MainPageWrapper = styled.main``;
 
 export const TitleInputSection = styled.section`
   display: flex;
@@ -34,6 +30,7 @@ export const InputWrapper = styled.div`
 
 export const BannerSection = styled.div`
   margin: 4.2rem 0 13rem 0;
+  display: flex;
   .swiper-button-prev,
   .swiper-button-next {
     color: white;
@@ -41,7 +38,9 @@ export const BannerSection = styled.div`
     height: 6.7rem;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 10rem;
+    position: absolute;
     margin: 0 26.5rem;
+    top: 100px;
   }
 `;
 
@@ -56,8 +55,8 @@ export const DataSection = styled.section`
 `;
 
 export const MajorArticle = styled.article``;
-export const CultureArticle = styled(MajorArticle)``;
-export const CategoryArticle = styled(MajorArticle)``;
+export const CultureArticle = styled.article``;
+export const CategoryArticle = styled.article``;
 // export const ExchangeArticle = styled(MajorArticle)``;
 
 export const ButtonWrapper = styled.div`

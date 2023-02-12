@@ -1,19 +1,19 @@
 export const grades = [
   {
     grade: "1학년",
-    id: 0,
-  },
-  {
-    grade: "2학년",
     id: 1,
   },
   {
-    grade: "3학년",
+    grade: "2학년",
     id: 2,
   },
   {
-    grade: "4학년",
+    grade: "3학년",
     id: 3,
+  },
+  {
+    grade: "4학년",
+    id: 4,
   },
 ];
 export const tests = [

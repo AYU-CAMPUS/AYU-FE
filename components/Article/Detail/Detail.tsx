@@ -82,8 +82,22 @@ export default function Detail() {
   const { detail } = router.query;
 
   const articleContentAPI = async (id: string | string[]) => {
-    const result = await apiInstance.get(`/board/content/${id}`);
-    setPosts(result.data);
+    try {
+      const result = await apiInstance.get(`/board/content/${id}`);
+      setPosts(result.data);
+    } catch (error) {
+      await Swal.fire({
+        title: "게시물이 존재하지 않습니다.",
+        width: 380,
+        heightAuto: true,
+        color: "#000000",
+        confirmButtonColor: "#3085d6",
+      }).then(async result => {
+        if (result.isConfirmed) {
+          router.push("/mypage");
+        }
+      });
+    }
   };
 
   console.log(posts);
@@ -94,6 +108,9 @@ export default function Detail() {
         boardId: detail,
       },
     });
+    // if(result.status===422){
+    //   alert("")
+    // }
   };
 
   const handleClickDelete = async () => {

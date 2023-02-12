@@ -172,7 +172,7 @@ export default function Detail() {
             })}
           </Styled.ArticleInfoList>
 
-          {posts?.exchangeType === 0 && (
+          {posts?.exchangeType === 1 && (
             <Button
               width="26.6rem"
               height="6.3rem"
@@ -197,7 +197,7 @@ export default function Detail() {
             </Button>
           )}
 
-          {posts?.exchangeType === 1 && (
+          {posts?.exchangeType === 0 && (
             <Button width="26.6rem" height="6.3rem" margin="4.5rem 0 0 33.3rem">
               교환완료
             </Button>

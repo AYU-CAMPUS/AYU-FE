@@ -10,8 +10,8 @@ import TableRow from "@mui/material/TableRow";
 import { Pagination, PaginationItem } from "@mui/material";
 import { IPostsProps } from "../Major/Major";
 import * as Styled from "./Category.style";
-import CategoryAside from "./CategoryAside";
 import { apiInstance } from "../../../pages/api/setting";
+import CategoryAside from "./CategoryAside";
 // import Input from "../../Input/Input";
 // import searchIcon from "../../public/images/search.svg";
 

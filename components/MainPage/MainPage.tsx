@@ -11,7 +11,6 @@ import BannerStarbucks from "../../public/images/BannerStarbucks.png";
 import BannerTitle from "../../public/images/BannerTitle.png";
 // import Input from "../Input/Input";
 // import searchIcon from "../../public/images/search.svg";
-
 import {
   CollegeDataList,
   CultureDataList,
@@ -32,12 +31,13 @@ export default function MainPage() {
   const CategoryTitle = "카테고리별 자료";
   const CategoryDescription = "다양한 자료를 모아놨어요!";
 
+  // const [nickName, setNickName] = useState("");
+
   // const ExchangeTitle = "신청수가 많은 자료";
 
   return (
     <>
       <Header />
-
       <Styled.MainPageWrapper>
         <Styled.TitleInputSection>
           <Styled.MainTitle>
@@ -58,7 +58,7 @@ export default function MainPage() {
             slidesPerView={1}
             navigation
             pagination={{ clickable: true }}
-            autoplay={{ delay: 2000 }}
+            // autoplay={{ delay: 2000 }}
           >
             <SwiperSlide>
               <Image src={BannerTitle} />
@@ -115,7 +115,10 @@ export default function MainPage() {
             <Styled.ButtonWrapper>
               {CategoryDataList.map(Category => {
                 return (
-                  <Link key={Category.id} href="/article/category">
+                  <Link
+                    key={Category.id}
+                    href={`/article/category?list=${Category.description}`}
+                  >
                     <a> {Category.description}</a>
                   </Link>
                 );

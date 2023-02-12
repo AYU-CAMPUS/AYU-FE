@@ -40,10 +40,6 @@ export default function ExchangeAcceptance() {
     setTotal(result.data.exchangePages);
   };
 
-  console.log(posts);
-
-  const numPages = Math.ceil(total / 2);
-
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
   };
@@ -189,7 +185,7 @@ export default function ExchangeAcceptance() {
       </Styled.TableContainer>
 
       <Pagination
-        count={numPages}
+        count={total}
         page={currentPage}
         onChange={onPageChange}
         color="primary"

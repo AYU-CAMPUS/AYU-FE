@@ -39,10 +39,6 @@ export default function PostMyData() {
     setTotal(result.data.dataPages);
   };
 
-  console.log(posts);
-
-  const numPages = Math.ceil(total / 2);
-
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
   };
@@ -114,7 +110,7 @@ export default function PostMyData() {
       </Styled.TableContainer>
 
       <Pagination
-        count={numPages}
+        count={total}
         page={currentPage}
         onChange={onPageChange}
         color="primary"

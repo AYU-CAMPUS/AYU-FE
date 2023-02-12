@@ -32,7 +32,6 @@ export default function DownloadData() {
   const [posts, setPosts] = useState<IPostsProps>();
   const [total, setTotal] = useState<number>(1);
   const [downloadData, setDownloadData] = useState<string>();
-  const numPages = Math.ceil(total / 2);
 
   const userDownloadDataListAPI = async () => {
     const result = await apiInstance.get(
@@ -151,7 +150,7 @@ export default function DownloadData() {
       </Styled.TableContainer>
 
       <Pagination
-        count={numPages}
+        count={total}
         page={currentPage}
         onChange={onPageChange}
         color="primary"

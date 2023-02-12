@@ -19,7 +19,10 @@ export default function Profile({ nickName }: IProfileProps) {
       {/* <Styled.ProfileBtn type="button" onClick={() => router.push("/")}>
         프로필 사진 변경
       </Styled.ProfileBtn> */}
-      <Styled.RegisterBtn type="button" onClick={() => router.push("/")}>
+      <Styled.RegisterBtn
+        type="button"
+        onClick={() => router.push("/materials/register")}
+      >
         자료등록
       </Styled.RegisterBtn>
     </Styled.MyProfile>

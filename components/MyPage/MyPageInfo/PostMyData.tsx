@@ -76,27 +76,37 @@ export default function PostMyData() {
           </TableHead>
 
           <TableBody>
-            {posts?.myDataInfos.map(data => (
-              <TableRow key={data.boardId}>
-                <TableCell align="center" className="registrationDateData">
-                  {data.createdDate}
-                </TableCell>
-                <TableCell align="center" className="subjectData">
-                  {data.category}
-                  {data.boardId}
-                </TableCell>
-
-                <Link href={`/article/${data.boardId}`}>
-                  <TableCell align="center" className="dataNameData">
-                    {data.title}dd
+            {posts?.myDataInfos.length ? (
+              posts?.myDataInfos.map(data => (
+                <TableRow key={data.boardId}>
+                  <TableCell align="center" className="registrationDateData">
+                    {data.createdDate}
                   </TableCell>
-                </Link>
+                  <TableCell align="center" className="subjectData">
+                    {data.category}
+                    {data.boardId}
+                  </TableCell>
 
-                <TableCell align="center">
-                  <Image src="/images/EditBtn.png" width="20px" height="20px" />
-                </TableCell>
-              </TableRow>
-            ))}
+                  <Link href={`/article/${data.boardId}`}>
+                    <TableCell align="center" className="dataNameData">
+                      {data.title}dd
+                    </TableCell>
+                  </Link>
+
+                  <TableCell align="center">
+                    <Image
+                      src="/images/EditBtn.png"
+                      width="20px"
+                      height="20px"
+                    />
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableCell align="center" colSpan={5}>
+                <p className="exchangeStatus">내가 올린 자료가 없습니다.</p>
+              </TableCell>
+            )}
           </TableBody>
         </Table>
       </Styled.TableContainer>

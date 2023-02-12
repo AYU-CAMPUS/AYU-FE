@@ -1,6 +1,7 @@
 // import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 // import {
 //   EnumCategory,
 //   EnumDepartmentType,
@@ -38,7 +39,6 @@ export interface IPostsProps {
 }
 
 export default function Article() {
-  const [dataStatus] = useState(true);
   const categoryTitle = "학과별 전공 자료";
 
   const router = useRouter();
@@ -69,6 +69,10 @@ export default function Article() {
     setCurrentPage(page);
   };
 
+  const handleRegisterClick = () => {
+    router.push("/materials/register");
+  };
+
   const boardInquiryAPI = async () => {
     const result = await apiInstance.get(`/board/${category}`, {
       params: {
@@ -78,7 +82,6 @@ export default function Article() {
         department: `${selectDepartment}`,
       },
     });
-
     setArticleList(result.data);
     setTotal(result.data.totalPages);
   };
@@ -146,13 +149,19 @@ export default function Article() {
             </TableHead>
 
             <TableBody>
-              {dataStatus ? (
+              {articleList?.boardList.length ? (
                 articleList?.boardList.map(article => (
                   <TableRow key={article.id}>
                     <TableCell align="center">{article.createdDate}</TableCell>
                     <TableCell align="center">{article.subjectName}</TableCell>
-                    <TableCell align="center">{article.gradeType}</TableCell>
-                    <TableCell align="center">{article.title}</TableCell>
+                    <TableCell align="center">
+                      {`${article.gradeType}학년`}
+                    </TableCell>
+
+                    <Link href={`/article/${article.id}`}>
+                      <TableCell align="center">{article.title}</TableCell>
+                    </Link>
+
                     <TableCell align="center">
                       {article.numberOfSuccessfulExchanges}
                     </TableCell>
@@ -160,15 +169,18 @@ export default function Article() {
                 ))
               ) : (
                 <TableCell align="center" colSpan={5}>
-                  <p className="exchangeStatus">첫 자료를 등록해주세요!</p>
+                  <p className="exchangeStatus">첫 자료를 등록해주세요! </p>
                 </TableCell>
               )}
             </TableBody>
           </Table>
         </Styled.TableContainer>
+
         <Styled.RegisterBtn>
           <div />
-          <button type="button">자료등록</button>
+          <button type="button" onClick={handleRegisterClick}>
+            자료등록
+          </button>
         </Styled.RegisterBtn>
 
         <Pagination

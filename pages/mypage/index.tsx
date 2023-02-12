@@ -1,7 +1,6 @@
 import React from "react";
 import MainLayout from "../../components/Layout/MainLayout";
 import MyPageComponent from "../../components/MyPage/MyPageComponent";
-// import WithAuth from "../PrivateRoute";
 
 function MyPage() {
   return <MyPageComponent />;

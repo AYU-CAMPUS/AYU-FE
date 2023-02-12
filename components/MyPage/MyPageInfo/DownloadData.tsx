@@ -32,6 +32,7 @@ export default function DownloadData() {
   const [posts, setPosts] = useState<IPostsProps>();
   const [total, setTotal] = useState<number>(1);
   const [downloadData, setDownloadData] = useState<string>();
+  const numPages = Math.ceil(total / 2);
 
   const userDownloadDataListAPI = async () => {
     const result = await apiInstance.get(
@@ -40,8 +41,6 @@ export default function DownloadData() {
     setPosts(result.data);
     setTotal(result.data.downloadablePages);
   };
-
-  console.log("test");
 
   const userDownloadDataAPI = async (requesterBoardId: number) => {
     const result = await apiInstance.get(`/user/download/${requesterBoardId}`, {
@@ -65,8 +64,6 @@ export default function DownloadData() {
       link && link.remove();
     };
   }, [downloadData]);
-
-  console.log(downloadData);
 
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
@@ -152,7 +149,7 @@ export default function DownloadData() {
       </Styled.TableContainer>
 
       <Pagination
-        count={total}
+        count={numPages}
         page={currentPage}
         onChange={onPageChange}
         color="primary"

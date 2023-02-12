@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const GradeSelection = styled.div`
   display: flex;
   gap: 3rem;
+  margin-bottom: 6rem;
   div {
     display: flex;
     gap: 1rem;

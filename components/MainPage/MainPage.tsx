@@ -58,7 +58,7 @@ export default function MainPage() {
             slidesPerView={1}
             navigation
             pagination={{ clickable: true }}
-            // autoplay={{ delay: 2000 }}
+            autoplay={{ delay: 2000 }}
           >
             <SwiperSlide>
               <Image src={BannerTitle} />

@@ -54,7 +54,7 @@ export default function Article() {
   ];
 
   useEffect(() => {
-    if (typeof window.console !== "undefined") {
+    if (typeof window !== "undefined") {
       setNickName(localStorage.getItem("nickName"));
     }
   }, []);

@@ -39,7 +39,13 @@ export default function Culture() {
   const [articleList, setArticleList] = useState<IPostsProps>();
   const [total, setTotal] = useState<number>(1);
 
-  const nickName = localStorage.getItem("nickName");
+  const [nickName, setNickName] = useState<string | null>("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setNickName(localStorage.getItem("nickName"));
+    }
+  }, []);
 
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);

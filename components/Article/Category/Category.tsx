@@ -39,8 +39,13 @@ export default function Category() {
   const [currentPage, setCurrentPage] = useState(1);
   const [articleList, setArticleList] = useState<IPostsProps>();
   const [total, setTotal] = useState<number>(1);
+  const [nickName, setNickName] = useState<string | null>("");
 
-  const nickName = localStorage.getItem("nickName");
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setNickName(localStorage.getItem("nickName"));
+    }
+  }, []);
 
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);

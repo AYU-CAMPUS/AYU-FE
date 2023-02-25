@@ -1,7 +1,7 @@
-import DatePicker from "react-datepicker"; // DatePicker 라는 컴포넌트도 가져오깅
-import "react-datepicker/dist/react-datepicker.css"; // 스타일 맥이기
-import { SetStateAction, useState } from "react";
-import styled from "@emotion/styled";
+// import DatePicker from "react-datepicker"; // DatePicker 라는 컴포넌트도 가져오깅
+// import "react-datepicker/dist/react-datepicker.css"; // 스타일 맥이기
+// import { SetStateAction, useState } from "react";
+// import styled from "@emotion/styled";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,37 +12,37 @@ import * as Styled from "./UserManagement.style";
 import { TableData } from "./TableData";
 import dateIcon from "../../../public/images/date.svg";
 
-const MyDatePicker = styled(DatePicker)`
-  background: #ffffff;
-  border: 1px solid #b2b7c1;
-  border-radius: 10px;
-  width: 217px;
-  height: 50px;
-  padding: 16px;
-`;
+// const MyDatePicker = styled(DatePicker)`
+//   background: #ffffff;
+//   border: 1px solid #b2b7c1;
+//   border-radius: 10px;
+//   width: 217px;
+//   height: 50px;
+//   padding: 16px;
+// `;
 
 export default function UserManagement() {
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
+  // const [startDate, setStartDate] = useState();
+  // const [endDate, setEndDate] = useState();
   return (
     <>
       <Styled.SearchSection>
         <Styled.Term>
           <Styled.Label>기간</Styled.Label>
 
-          <Styled.DateWrapper>
+          {/* <Styled.DateWrapper>
             <MyDatePicker
               selected={startDate}
               dateFormat="yyyy-MM-dd" // 날짜 형식
-              onChange={(date: SetStateAction<string>) => setStartDate(date)}
+              onChange={(date: SetStateAction<undefined>) => setStartDate(date)}
             />
             <span>~</span>
             <MyDatePicker
               selected={endDate}
               dateFormat="yyyy-MM-dd" // 날짜 형식
-              onChange={(date: SetStateAction<string>) => setEndDate(date)}
+              onChange={(date: SetStateAction<undefined>) => setEndDate(date)}
             />
-          </Styled.DateWrapper>
+          </Styled.DateWrapper> */}
 
           <Styled.GenderWrapper>
             <Styled.Gender>성별</Styled.Gender>

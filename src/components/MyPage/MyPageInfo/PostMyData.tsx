@@ -7,7 +7,7 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Pagination, PaginationItem } from "@mui/material";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { apiInstance } from "../../../../pages/api/setting";
 import * as Styled from "./TableContainer.style";
 import * as S from "./MyPageInfo.style";
@@ -40,8 +40,6 @@ export default function PostMyData() {
     setTotal(result.data.dataPages);
   };
 
-  console.log(posts);
-
   const numPages = Math.ceil(total / 2);
 
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
@@ -52,10 +50,11 @@ export default function PostMyData() {
     userPostDataAPI();
   }, [currentPage]);
 
-  const router = useRouter();
-  const handleEditRequest = (boardId: number) => {
-    router.push(`/materials/edit/${boardId}`);
-  };
+  // 추후 적용 필요
+  // const router = useRouter();
+  // const handleEditRequest = (boardId: number) => {
+  //   router.push(`/materials/edit/${boardId}`);
+  // };
 
   return (
     <S.MyPageInfo>
@@ -82,35 +81,39 @@ export default function PostMyData() {
           </TableHead>
 
           <TableBody>
-            {posts?.myDataInfos.map(data => (
-              <TableRow key={data.boardId}>
-                <TableCell align="center" className="registrationDateData">
-                  {data.createdDate}
-                </TableCell>
-                <TableCell align="center" className="subjectData">
-                  {data.category}
-                  {data.boardId}
-                </TableCell>
-
-                <Link href={`/article/${data.boardId}`}>
-                  <TableCell align="center" className="dataNameData">
-                    {data.title}dd
+            {posts?.myDataInfos.length ? (
+              posts?.myDataInfos.map(data => (
+                <TableRow key={data.boardId}>
+                  <TableCell align="center" className="registrationDateData">
+                    {data.createdDate}
                   </TableCell>
-                </Link>
+                  <TableCell align="center" className="subjectData">
+                    {data.category}
+                  </TableCell>
 
-                <TableCell align="center">
-                  <Image
-                    src="/images/EditBtn.png"
-                    width="20px"
-                    height="20px"
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={() => handleEditRequest(data.boardId)}
-                    onClick={() => handleEditRequest(data.boardId)}
-                  />
-                </TableCell>
-              </TableRow>
-            ))}
+                  <Link href={`/article/${data.boardId}`}>
+                    <TableCell align="center" className="dataNameData">
+                      {data.title}
+                    </TableCell>
+                  </Link>
+
+                  <TableCell align="center">
+                    <Image
+                      src="/images/EditBtn.png"
+                      width="20px"
+                      height="20px"
+                    />
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableCell align="center" colSpan={5}>
+                <p className="exchangeStatus">
+                  내가 올린 자료가 없습니다. <br />
+                  자료 업로드는 3일정도 소요됩니다.
+                </p>
+              </TableCell>
+            )}
           </TableBody>
         </Table>
       </Styled.TableContainer>

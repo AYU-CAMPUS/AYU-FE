@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -15,11 +16,10 @@ import TestSelection from "../FillterSelection/TestSelection";
 import { apiInstance } from "../../../api/config";
 
 export default function Culture() {
-  const [dataStatus] = useState(true);
   const categoryTitle = "교양대학 자료";
 
   const router = useRouter();
-  const { college } = router.query;
+  const { category } = router.query;
 
   const cultureList = [
     "인성양성",
@@ -30,22 +30,33 @@ export default function Culture() {
     "의사소통",
   ];
 
-  const defaultSelect = (college || cultureList[0]) as string;
+  const defaultSelect = (category || cultureList[0]) as string;
   const [selectCultureNav, setSelectCultureNav] = useState(defaultSelect);
-  const category = cultureList.indexOf(String(selectCultureNav)) + 5;
+  const categoryData = cultureList.indexOf(String(selectCultureNav)) + 5;
 
   const [selectTest, setSelectTest] = useState<number[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [articleList, setArticleList] = useState<IPostsProps>();
   const [total, setTotal] = useState<number>(1);
-  const numPages = Math.ceil(total / 2);
+
+  const [nickName, setNickName] = useState<string | null>("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setNickName(localStorage.getItem("nickName"));
+    }
+  }, []);
 
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
   };
 
+  const handleRegisterClick = () => {
+    router.push("/materials/register");
+  };
+
   const boardInquiryAPI = async () => {
-    const result = await apiInstance.get(`/board/${category}`, {
+    const result = await apiInstance.get(`/board/${categoryData}`, {
       params: {
         page: currentPage,
         type: `${selectTest}`,
@@ -55,11 +66,9 @@ export default function Culture() {
     setTotal(result.data.totalPages);
   };
 
-  console.log(articleList);
-
   useEffect(() => {
     boardInquiryAPI();
-  }, [category, currentPage, selectTest]);
+  }, [categoryData, currentPage, selectTest]);
 
   return (
     <Styled.CultureWrapper>
@@ -104,7 +113,7 @@ export default function Culture() {
                 </TableHead>
 
                 <TableBody>
-                  {dataStatus ? (
+                  {articleList?.boardList.length ? (
                     articleList?.boardList.map(article => (
                       <TableRow key={article.id}>
                         <TableCell align="center">
@@ -113,7 +122,11 @@ export default function Culture() {
                         <TableCell align="center">
                           {article.subjectName}
                         </TableCell>
-                        <TableCell align="center">{article.title}</TableCell>
+
+                        <Link href={`/article/${article.id}`}>
+                          <TableCell align="center">{article.title}</TableCell>
+                        </Link>
+
                         <TableCell align="center">
                           {article.numberOfSuccessfulExchanges}
                         </TableCell>
@@ -127,13 +140,18 @@ export default function Culture() {
                 </TableBody>
               </Table>
             </Styled.TableContainer>
-            <Styled.RegisterBtn>
-              <div />
-              <button type="button">자료등록</button>
-            </Styled.RegisterBtn>
+
+            {nickName && (
+              <Styled.RegisterBtn>
+                <div />
+                <button type="button" onClick={handleRegisterClick}>
+                  자료등록
+                </button>
+              </Styled.RegisterBtn>
+            )}
 
             <Pagination
-              count={numPages}
+              count={total}
               page={currentPage}
               onChange={onPageChange}
               color="primary"

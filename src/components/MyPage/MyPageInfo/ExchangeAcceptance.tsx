@@ -27,7 +27,6 @@ interface IPostsProps {
 }
 
 export default function ExchangeAcceptance() {
-  const [dataStatus] = useState(false);
   const title = "교환신청 수락";
   const description = "교환신청 수락여부를  선택할 수 있어요.";
 
@@ -40,8 +39,6 @@ export default function ExchangeAcceptance() {
     setPosts(result.data);
     setTotal(result.data.exchangePages);
   };
-
-  console.log(posts);
 
   const numPages = Math.ceil(total / 2);
 
@@ -132,7 +129,7 @@ export default function ExchangeAcceptance() {
           </TableHead>
 
           <TableBody>
-            {!dataStatus ? (
+            {posts?.exchangeInfos.length ? (
               posts?.exchangeInfos.map(data => (
                 <TableRow key={data.boardId}>
                   <TableCell align="center" className="dateData">
@@ -141,11 +138,13 @@ export default function ExchangeAcceptance() {
                   <TableCell align="center" className="applicantData">
                     {data.requesterNickName}
                   </TableCell>
-                  <Link href="/">
+
+                  <Link href={`/article/${data.boardId}`}>
                     <TableCell align="center" className="dataNameData">
                       {data.title}
                     </TableCell>
                   </Link>
+
                   <TableCell align="center">
                     <button
                       type="button"

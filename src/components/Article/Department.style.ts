@@ -19,9 +19,6 @@ export const CategorySection = styled.section`
 `;
 
 export const FillterSelectionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 6rem;
   p {
     font-family: "Spoqa Han Sans Neo";
     font-weight: 500;

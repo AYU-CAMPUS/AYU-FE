@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState, ChangeEvent, useEffect, FormEvent } from "react";
+import { useRouter } from "next/router";
 import { Pagination, PaginationItem } from "@mui/material";
 import Button from "../Button/Button";
 import * as Styled from "./ExchangeModal.style";
@@ -25,6 +26,8 @@ function ExchangeModal({ handleModalClose, detail }: ModalProps) {
   const [selected, setSelected] = useState<number>();
   const [currentPage, setCurrentPage] = useState(1);
 
+  const router = useRouter();
+
   const [posts, setPosts] = useState<IPostsProps>();
   const [total, setTotal] = useState<number>(1);
 
@@ -36,15 +39,14 @@ function ExchangeModal({ handleModalClose, detail }: ModalProps) {
     setTotal(result.data.exchangePages);
   };
 
-  console.log(posts);
-
   const exchangeRequestAPI = async (requesterBoardId: number | undefined) => {
-    console.log(
-      await apiInstance.post("/exchange/request", {
-        boardId,
-        requesterBoardId,
-      })
-    );
+    const result = await apiInstance.post("/exchange", {
+      boardId,
+      requesterBoardId,
+    });
+    if (result.status === 200) {
+      router.push("/mypage");
+    }
   };
 
   const numPages = Math.ceil(total / 2);

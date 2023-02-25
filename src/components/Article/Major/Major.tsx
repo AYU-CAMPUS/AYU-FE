@@ -1,6 +1,7 @@
 // import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 // import {
 //   EnumCategory,
 //   EnumDepartmentType,
@@ -38,8 +39,8 @@ export interface IPostsProps {
 }
 
 export default function Article() {
-  const [dataStatus] = useState(true);
   const categoryTitle = "학과별 전공 자료";
+  const [nickName, setNickName] = useState<string | null>("");
 
   const router = useRouter();
   const { college } = router.query;
@@ -52,6 +53,12 @@ export default function Article() {
     "창의융합대학",
   ];
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setNickName(localStorage.getItem("nickName"));
+    }
+  }, []);
+
   const defaultSelect = (college || collegeList[0]) as string;
   const [selectDepartmentNav, setSelectDepartmentNav] = useState(defaultSelect);
   const category = collegeList.indexOf(String(selectDepartmentNav));
@@ -63,10 +70,13 @@ export default function Article() {
   const [currentPage, setCurrentPage] = useState(1);
   const [articleList, setArticleList] = useState<IPostsProps>();
   const [total, setTotal] = useState<number>(1);
-  const numPages = Math.ceil(total / 2);
 
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleRegisterClick = () => {
+    router.push("/materials/register");
   };
 
   const boardInquiryAPI = async () => {
@@ -78,7 +88,6 @@ export default function Article() {
         department: `${selectDepartment}`,
       },
     });
-
     setArticleList(result.data);
     setTotal(result.data.totalPages);
   };
@@ -146,13 +155,19 @@ export default function Article() {
             </TableHead>
 
             <TableBody>
-              {dataStatus ? (
+              {articleList?.boardList.length ? (
                 articleList?.boardList.map(article => (
                   <TableRow key={article.id}>
                     <TableCell align="center">{article.createdDate}</TableCell>
                     <TableCell align="center">{article.subjectName}</TableCell>
-                    <TableCell align="center">{article.gradeType}</TableCell>
-                    <TableCell align="center">{article.title}</TableCell>
+                    <TableCell align="center">
+                      {`${article.gradeType}학년`}
+                    </TableCell>
+
+                    <Link href={`/article/${article.id}`}>
+                      <TableCell align="center">{article.title}</TableCell>
+                    </Link>
+
                     <TableCell align="center">
                       {article.numberOfSuccessfulExchanges}
                     </TableCell>
@@ -160,19 +175,24 @@ export default function Article() {
                 ))
               ) : (
                 <TableCell align="center" colSpan={5}>
-                  <p className="exchangeStatus">첫 자료를 등록해주세요!</p>
+                  <p className="exchangeStatus">첫 자료를 등록해주세요! </p>
                 </TableCell>
               )}
             </TableBody>
           </Table>
         </Styled.TableContainer>
-        <Styled.RegisterBtn>
-          <div />
-          <button type="button">자료등록</button>
-        </Styled.RegisterBtn>
+
+        {nickName && (
+          <Styled.RegisterBtn>
+            <div />
+            <button type="button" onClick={handleRegisterClick}>
+              자료등록
+            </button>
+          </Styled.RegisterBtn>
+        )}
 
         <Pagination
-          count={numPages}
+          count={total}
           page={currentPage}
           onChange={onPageChange}
           color="primary"

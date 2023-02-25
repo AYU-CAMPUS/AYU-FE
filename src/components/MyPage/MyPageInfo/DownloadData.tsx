@@ -65,8 +65,6 @@ export default function DownloadData() {
     };
   }, [downloadData]);
 
-  console.log(downloadData);
-
   const onPageChange = (e: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
   };
@@ -107,37 +105,45 @@ export default function DownloadData() {
           </TableHead>
 
           <TableBody>
-            {posts?.downloadableInfos.map(data => (
-              <TableRow key={data.requesterBoardId}>
-                <TableCell align="center" className="exchangeComplete">
-                  {data.exchangeDate}
-                </TableCell>
-                <TableCell align="center" className="subjectData">
-                  {data.category}
-                </TableCell>
-
-                <Link href={`/article/${data.requesterBoardId}`}>
-                  <TableCell align="center" className="dataNameData">
-                    {data.title}
+            {posts?.downloadableInfos.length ? (
+              posts?.downloadableInfos.map(data => (
+                <TableRow key={data.requesterBoardId}>
+                  <TableCell align="center" className="exchangeComplete">
+                    {data.exchangeDate}
                   </TableCell>
-                </Link>
+                  <TableCell align="center" className="subjectData">
+                    {data.category}
+                  </TableCell>
 
-                <TableCell align="center" className="writerData">
-                  {data.writer}
-                </TableCell>
-                <TableCell align="center">
-                  <button
-                    type="button"
-                    className="downloadBtn"
-                    onClick={() => {
-                      handleDownload(data.requesterBoardId);
-                    }}
-                  >
-                    다운받기
-                  </button>
-                </TableCell>
-              </TableRow>
-            ))}
+                  <Link href={`/article/${data.requesterBoardId}`}>
+                    <TableCell align="center" className="dataNameData">
+                      {data.title}
+                    </TableCell>
+                  </Link>
+
+                  <TableCell align="center" className="writerData">
+                    {data.writer}
+                  </TableCell>
+                  <TableCell align="center">
+                    <button
+                      type="button"
+                      className="downloadBtn"
+                      onClick={() => {
+                        handleDownload(data.requesterBoardId);
+                      }}
+                    >
+                      다운받기
+                    </button>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableCell align="center" colSpan={5}>
+                <p className="exchangeStatus">
+                  다운로드 가능한 자료가 없습니다.
+                </p>
+              </TableCell>
+            )}
           </TableBody>
         </Table>
       </Styled.TableContainer>

@@ -13,25 +13,58 @@ export const KeyWordArticleSection = styled.section`
   width: 100%;
 `;
 
-export const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-bottom: 2rem;
-  button {
-    width: 2rem;
-    height: 2rem;
-    position: absolute;
-    left: 49.1rem;
-  }
-`;
+// export const InputWrapper = styled.div`
+//   display: flex;
+//   align-items: center;
+//   position: relative;
+//   margin-bottom: 2rem;
+//   button {
+//     width: 2rem;
+//     height: 2rem;
+//     position: absolute;
+//     left: 49.1rem;
+//   }
+// `;
 
-export const TemplateWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  border-top: 1px solid #dedede;
-  border-bottom: 1px solid #dedede;
+// export const TemplateWrapper = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 1.5rem;
+//   border-top: 1px solid #dedede;
+//   border-bottom: 1px solid #dedede;
+// `;
+
+export const TableContainer = styled.table`
+  border-top: 2px solid #abaeaf;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  td:nth-child(2) {
+    color: #26409a;
+  }
+  th,
+  td {
+    font-family: "Spoqa Han Sans Neo";
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 23px;
+    letter-spacing: -0.05em;
+    color: #333333;
+  }
+  td {
+    font-weight: 400;
+  }
+  .exchangeStatus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Spoqa Han Sans Neo";
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 28px;
+    letter-spacing: -0.05em;
+    color: #333333;
+    height: 16.8rem;
+  }
 `;
 
 export const ThumbnailDescription = styled.div`
@@ -87,7 +120,6 @@ export const SpanWrapper = styled.div`
 export const RegisterBtn = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20rem;
   margin-top: 1.5rem;
   button {
     width: 13rem;

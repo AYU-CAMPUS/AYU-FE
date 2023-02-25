@@ -1,3 +1,5 @@
+import { ParsedUrlQuery } from "querystring";
+
 export enum EnumCategory {
   신학대학,
   인문대학,
@@ -51,4 +53,23 @@ export enum EnumFileType {
   기말고사,
   과제,
   요약,
+}
+
+export interface BoardContent {
+  title: string;
+  boardCategory: {
+    category: string;
+    departmentType: string;
+    fileType: string;
+    gradeType: string;
+    subjectName: string;
+    professorName: string;
+  };
+  numberOfFilePages: number;
+  originalFileName: string;
+  content: string;
+}
+
+export interface EditMaterialsPageQuery extends ParsedUrlQuery {
+  boardId: string;
 }

@@ -5,8 +5,13 @@ import { css } from "@emotion/react";
 
 import CategoryModal from "./CategoryModal/CategoryModal";
 import ModalOverlay from "./CategoryModal/ModalOverlay";
-import { EnumCategory, EnumDepartmentType, EnumFileType } from "./types";
-import api, { apiInstance } from "../../api/config";
+import {
+  BoardContent,
+  EnumCategory,
+  EnumDepartmentType,
+  EnumFileType,
+} from "./types";
+import { apiInstance } from "../../api/config";
 
 import * as Styled from "./RegisterForm.style";
 
@@ -14,11 +19,13 @@ function SmallTextInput({
   id,
   placeholder,
   name,
+  value,
   onChange,
 }: {
   id: string;
   placeholder: string;
   name: string;
+  value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
@@ -35,23 +42,21 @@ function SmallTextInput({
       id={id}
       placeholder={placeholder}
       name={name}
+      value={value}
       onChange={onChange}
     />
   );
 }
 
-interface ReqBody {
-  title: string;
-  gradeType: number;
-  subjectName: string;
-  professorName: string;
-  numberOfFilePages: number;
-  content: string;
+interface EditFormProps {
+  boardContent: BoardContent;
 }
 
-function EditForm() {
+function EditForm({ boardContent }: EditFormProps) {
   // 파일 업로드
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<Partial<File>>({
+    name: boardContent.originalFileName,
+  });
   const handleOnChangeFile = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
       return;
@@ -95,14 +100,7 @@ function EditForm() {
     }
   }, [selectedCategories]);
 
-  const [reqBody, setReqBody] = useState<ReqBody>({
-    title: "",
-    content: "",
-    gradeType: 0,
-    subjectName: "",
-    professorName: "",
-    numberOfFilePages: 0,
-  });
+  const [reqBody, setReqBody] = useState<Partial<BoardContent>>(boardContent);
   const handleOnChange = <
     T extends HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
   >(
@@ -139,8 +137,21 @@ function EditForm() {
         }),
     };
     const formData = new FormData();
-    if (!file) {
-      // error handling
+
+    if (
+      // file.name만 존재한다면 기존 파일인 경우
+      file.name === boardContent.originalFileName
+    ) {
+      // string | Blob 서버 파라미터 타입 변경 요청
+      formData.append("file", null);
+    } else if (
+      // 기존과 다른 파일이 선택된 경우
+      file.lastModified &&
+      file.name !== boardContent.originalFileName
+    ) {
+      formData.append("file", file as File);
+    } else {
+      // 파일이 선택되지 않은 경우
       alert("파일을 선택해주세요.");
       return;
     }
@@ -150,25 +161,51 @@ function EditForm() {
       return;
     }
 
-    formData.append("file", file);
+    formData.append("file", file as File);
+
     formData.append(
-      "writeRequest",
+      "modificationRequest",
       new Blob([JSON.stringify(writeRequest)], { type: "application/json" })
     );
     apiInstance
-      .post(`${api}/board`, formData, {
+      .put("/board/modification", formData, {
         headers: {
           "Content-Type": `multipart/form-data`,
         },
       })
-      .then(() => {
-        // 등록 완료 시 메인 페이지로 이동(next.js)
+      .then(res => {
+        console.log(res);
         router.push("/");
       })
       .catch(err => {
         console.error(err);
       });
   };
+
+  useEffect(() => {
+    let categoryType = "0";
+    if (
+      Object.values(EnumCategory).includes(boardContent.boardCategory.category)
+    ) {
+      categoryType = "1";
+    } else if (
+      Object.values(EnumDepartmentType).includes(
+        boardContent.boardCategory.departmentType
+      )
+    ) {
+      categoryType = "2";
+    } else if (
+      Object.values(EnumFileType).includes(boardContent.boardCategory.fileType)
+    ) {
+      categoryType = "3";
+    }
+    setSelectedCategories([
+      categoryType,
+      boardContent.boardCategory.category,
+      boardContent.boardCategory.departmentType,
+      boardContent.boardCategory.fileType,
+    ]);
+  }, [boardContent]);
 
   return (
     <Styled.Container>
@@ -184,6 +221,7 @@ function EditForm() {
               name="title"
               placeholder="제목을 입력해주세요!"
               onChange={handleOnChange}
+              value={reqBody.title}
             />
           </Styled.Col2>
         </Styled.Formrow>
@@ -212,6 +250,7 @@ function EditForm() {
               type="number"
               name="numberOfFilePages"
               onChange={e => handleOnChange<HTMLInputElement>(e)}
+              value={reqBody.numberOfFilePages}
               css={[
                 css`
                   /* inpue type number의 기본 스타일 제거 */
@@ -312,12 +351,14 @@ function EditForm() {
                   id="subject_professor"
                   placeholder="과목명"
                   name="subjectName"
+                  value={reqBody.boardCategory?.subjectName ?? ""}
                   onChange={handleOnChange}
                 />
                 <SmallTextInput
                   id="subject_professor"
                   placeholder="교수명"
                   name="professorName"
+                  value={reqBody.boardCategory?.professorName ?? ""}
                   onChange={handleOnChange}
                 />
               </Styled.Col2>
@@ -344,17 +385,17 @@ function EditForm() {
                     `,
                   ]}
                   id="gradeType"
-                  value={reqBody.gradeType}
+                  value={reqBody.boardCategory?.gradeType}
                   name="gradeType"
                   onChange={e => handleOnChange<HTMLSelectElement>(e)}
                 >
                   <option value="" hidden>
                     Type
                   </option>
-                  <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
+                  <option value="4">4</option>
                 </select>
               </Styled.Col2>
             </Styled.Formrow>
@@ -371,7 +412,7 @@ function EditForm() {
         )}
         <Styled.ButtonWrapper>
           <Styled.ExitButton type="button">취소하기</Styled.ExitButton>
-          <Styled.RegisterButton type="submit">등록하기</Styled.RegisterButton>
+          <Styled.RegisterButton type="submit">수정하기</Styled.RegisterButton>
         </Styled.ButtonWrapper>
       </Styled.Form>
     </Styled.Container>

@@ -7,6 +7,7 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Pagination, PaginationItem } from "@mui/material";
+import { useRouter } from "next/router";
 import { apiInstance } from "../../../../pages/api/setting";
 import * as Styled from "./TableContainer.style";
 import * as S from "./MyPageInfo.style";
@@ -51,6 +52,11 @@ export default function PostMyData() {
     userPostDataAPI();
   }, [currentPage]);
 
+  const router = useRouter();
+  const handleEditRequest = (boardId: number) => {
+    router.push(`/materials/edit/${boardId}`);
+  };
+
   return (
     <S.MyPageInfo>
       <TitleDescription title={title} description={description} />
@@ -93,7 +99,15 @@ export default function PostMyData() {
                 </Link>
 
                 <TableCell align="center">
-                  <Image src="/images/EditBtn.png" width="20px" height="20px" />
+                  <Image
+                    src="/images/EditBtn.png"
+                    width="20px"
+                    height="20px"
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={() => handleEditRequest(data.boardId)}
+                    onClick={() => handleEditRequest(data.boardId)}
+                  />
                 </TableCell>
               </TableRow>
             ))}

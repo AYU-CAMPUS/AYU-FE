@@ -6,7 +6,7 @@ import { css } from "@emotion/react";
 import CategoryModal from "./CategoryModal/CategoryModal";
 import ModalOverlay from "./CategoryModal/ModalOverlay";
 import { EnumCategory, EnumDepartmentType, EnumFileType } from "./types";
-import api, { apiInstance } from "../../api/config";
+import { apiInstance } from "../../api/config";
 
 import * as Styled from "./RegisterForm.style";
 
@@ -138,6 +138,7 @@ function RegisterForm() {
             EnumFileType[selectedCategories[3] as keyof typeof EnumFileType],
         }),
     };
+
     const formData = new FormData();
     if (!file) {
       // error handling
@@ -156,13 +157,13 @@ function RegisterForm() {
       new Blob([JSON.stringify(writeRequest)], { type: "application/json" })
     );
     apiInstance
-      .post(`${api}/board`, formData, {
+      .post("/board", formData, {
         headers: {
           "Content-Type": `multipart/form-data`,
         },
       })
-      .then(() => {
-        // 등록 완료 시 메인 페이지로 이동(next.js)
+      .then(res => {
+        console.log(res);
         router.push("/");
       })
       .catch(err => {
@@ -351,10 +352,10 @@ function RegisterForm() {
                   <option value="" hidden>
                     Type
                   </option>
-                  <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
+                  <option value="4">4</option>
                 </select>
               </Styled.Col2>
             </Styled.Formrow>

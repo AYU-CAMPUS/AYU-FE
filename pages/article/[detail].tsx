@@ -1,6 +1,7 @@
 import React from "react";
-import Detail from "../../components/Article/Detail/Detail";
-import MainLayout from "../../components/Layout/MainLayout";
+
+import Detail from "../../src/components/Article/Detail/Detail";
+import MainLayout from "../../src/components/Layout/MainLayout";
 
 function ArticleDetailPage() {
   return <Detail />;

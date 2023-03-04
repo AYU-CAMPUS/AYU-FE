@@ -1,6 +1,7 @@
 import React from "react";
-import Category from "../../components/Article/Category/Category";
-import MainLayout from "../../components/Layout/MainLayout";
+
+import Category from "../../src/components/Article/Category";
+import MainLayout from "../../src/components/Layout/MainLayout";
 
 function ArticleCategoryPage() {
   return <Category />;

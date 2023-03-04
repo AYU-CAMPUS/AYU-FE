@@ -1,12 +1,12 @@
 import React from "react";
 import MainLayout from "../../src/components/Layout/MainLayout";
 
-function ArticlePage() {
+function LoginPage() {
   return <div>dd</div>;
 }
 
-ArticlePage.getLayout = function getLayout(page: React.ReactElement) {
+LoginPage.getLayout = function getLayout(page: React.ReactElement) {
   return <MainLayout>{page}</MainLayout>;
 };
 
-export default ArticlePage;
+export default LoginPage;

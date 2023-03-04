@@ -1,6 +1,7 @@
 import React from "react";
-import Major from "../../components/Article/Major/Major";
-import MainLayout from "../../components/Layout/MainLayout";
+
+import Major from "../../src/components/Article/Major/Major";
+import MainLayout from "../../src/components/Layout/MainLayout";
 
 function ArticleMajorPage() {
   return <Major />;

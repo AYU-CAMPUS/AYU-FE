@@ -3,8 +3,8 @@ import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { GlobalStyles } from "twin.macro";
 
-import "../styles/reset.css";
-import "../styles/globals.css";
+import "../src/styles/reset.css";
+import "../src/styles/globals.css";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;

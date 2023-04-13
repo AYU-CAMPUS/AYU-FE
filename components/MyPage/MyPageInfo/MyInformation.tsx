@@ -107,7 +107,7 @@ export default function MyInformation() {
             </Styled.DuplicateVerificationBtn>
           </Styled.NickName>
           {isChecked ? (
-            checkMsg === false ? (
+            checkMsg === true ? (
               <p className={`errorMessage ${!checkMsg ? "success" : "error"}`}>
                 사용 가능한 닉네임입니다.
               </p>
@@ -118,7 +118,7 @@ export default function MyInformation() {
             )
           ) : (
             nickName.length > 0 && (
-              <p className={`errorMessage ${isNickName ? "success" : "error"}`}>
+              <p className={`errorMessage ${isNickName ? "error" : "success"}`}>
                 {nickNameMessage}
               </p>
             )

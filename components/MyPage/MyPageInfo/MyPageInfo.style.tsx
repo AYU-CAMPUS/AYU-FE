@@ -31,10 +31,10 @@ export const MyPageInfo = styled.section`
     letter-spacing: -0.05em;
     margin: 1rem 0 0 10rem;
     &.success {
-      color: #26409a;
+      color: #ff2727;
     }
     &.error {
-      color: #ff2727;
+      color: #26409a;
     }
   }
 

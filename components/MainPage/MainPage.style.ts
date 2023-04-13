@@ -9,7 +9,7 @@ export const TitleInputSection = styled.section`
 `;
 
 export const MainTitle = styled.h1`
-  margin: 5.8rem 0 3.8rem 0;
+  margin-top: 5.8rem;
   font-family: "Spoqa Han Sans Neo";
   font-weight: 500;
   font-size: 3.4rem;
@@ -17,47 +17,21 @@ export const MainTitle = styled.h1`
   color: #333333;
 `;
 
-export const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-  button {
-    position: absolute;
-    top: 2rem;
-    right: 3rem;
-  }
-`;
-
 export const BannerSection = styled.div`
-  margin: 4.2rem 0 13rem 0;
-  display: flex;
-  .swiper-button-prev,
-  .swiper-button-next {
-    color: white;
-    width: 6.7rem;
-    height: 6.7rem;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 10rem;
-    position: absolute;
-    margin: 0 26.5rem;
-    top: 100px;
-  }
+  margin: 5rem 0;
 `;
 
 export const DataSection = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: auto;
-  gap: 16rem;
-  margin-bottom: 34rem;
+  gap: 10rem;
+  margin-bottom: 10rem;
   padding: 0 26.5rem;
 `;
 
 export const MajorArticle = styled.article``;
 export const CultureArticle = styled.article``;
 export const CategoryArticle = styled.article``;
-// export const ExchangeArticle = styled(MajorArticle)``;
 
 export const ButtonWrapper = styled.div`
   display: flex;
@@ -118,20 +92,4 @@ export const ImageDescription = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-export const ExchangeBtnWrapper = styled(ButtonWrapper)`
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -ms-overflow-style: none;
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  button {
-    min-width: 20rem;
-    height: 30rem;
-    border-radius: 5px;
-    border: 1px solid red;
-  }
 `;

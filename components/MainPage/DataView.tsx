@@ -8,8 +8,8 @@ interface DataViewProps {
 export default function DataView({ title, description }: DataViewProps) {
   return (
     <Styled.DataViewWrapper>
-      <h2>{title}</h2>
-      <p>{description}</p>
+      <Styled.Title>{title}</Styled.Title>
+      <Styled.Description>{description}</Styled.Description>
     </Styled.DataViewWrapper>
   );
 }

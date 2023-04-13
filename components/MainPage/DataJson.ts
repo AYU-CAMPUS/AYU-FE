@@ -3,6 +3,7 @@ import problemSolvingIcon from "../../public/images/problemSolving.svg";
 import globalIcon from "../../public/images/global.svg";
 import convergencePracticeIcon from "../../public/images/convergencePractice.svg";
 import communicationIcon from "../../public/images/communication.svg";
+import personIcon from "../../public/images/person.svg";
 
 export const CollegeDataList = [
   {
@@ -31,7 +32,7 @@ export const CultureDataList = [
   {
     id: 5,
     description: "인성양성",
-    image: leaderIcon,
+    image: personIcon,
   },
   {
     id: 6,

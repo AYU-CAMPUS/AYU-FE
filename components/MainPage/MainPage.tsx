@@ -1,25 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import * as Styled from "./MainPage.style";
 import DataView from "./DataView";
-import BannerStarbucks from "../../public/images/BannerStarbucks.png";
 import BannerTitle from "../../public/images/BannerTitle.png";
-// import Input from "../Input/Input";
-// import searchIcon from "../../public/images/search.svg";
-import {
-  CollegeDataList,
-  CultureDataList,
-  CategoryDataList,
-  // ExchangeData,
-} from "./DataJson";
-import Header from "../Header/Header";
 
-SwiperCore.use([Navigation, Pagination, Autoplay]);
+import { CollegeDataList, CultureDataList, CategoryDataList } from "./DataJson";
+import Header from "../Header/Header";
 
 export default function MainPage() {
   const MajorTitle = "학과별 전공 자료";
@@ -53,20 +39,7 @@ export default function MainPage() {
         </Styled.TitleInputSection>
 
         <Styled.BannerSection>
-          <Swiper
-            modules={[Navigation, Pagination]}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 2000 }}
-          >
-            <SwiperSlide>
-              <Image src={BannerTitle} />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image src={BannerStarbucks} />
-            </SwiperSlide>
-          </Swiper>
+          <Image src={BannerTitle} />
         </Styled.BannerSection>
 
         <Styled.DataSection>

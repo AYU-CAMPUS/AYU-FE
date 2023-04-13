@@ -1,16 +1,21 @@
 import Script from "next/script";
 import React from "react";
+import styled from "@emotion/styled";
 
-import MainLayout from "../../../components/Layout/MainLayout";
-import RegisterForm from "../../../components/Materials/RegisterForm";
+import MainLayout from "../../../src/components/Layout/MainLayout";
+import RegisterForm from "../../../src/components/Materials/RegisterForm";
 
-import * as Styled from "./Register.style";
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 function RegisterMaterials() {
   return (
-    <Styled.Container>
+    <Container>
       <RegisterForm />
-    </Styled.Container>
+    </Container>
   );
 }
 

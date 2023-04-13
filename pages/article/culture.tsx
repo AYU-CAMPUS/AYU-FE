@@ -1,7 +1,7 @@
 import React from "react";
-import Culture from "../../components/Article/Culture";
 
-import MainLayout from "../../components/Layout/MainLayout";
+import Culture from "../../src/components/Article/Culture";
+import MainLayout from "../../src/components/Layout/MainLayout";
 
 function ArticleCulturePage() {
   return <Culture />;

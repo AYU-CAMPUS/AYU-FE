@@ -1,7 +1,7 @@
 import React from "react";
 
-import MainLayout from "../../../components/Layout/MainLayout";
-import MailAuthForm from "../../../components/SignUp/MailAuthForm";
+import MainLayout from "../../../src/components/Layout/MainLayout";
+import MailAuthForm from "../../../src/components/SignUp/MailAuthForm";
 
 import * as Styled from "./SignUp.style";
 

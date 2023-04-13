@@ -43,6 +43,9 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": "error",
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
+    "sonarjs/no-unused-collection": "off",
+    "no-unsafe-optional-chaining": "off",
+    "no-unused-expressions": "off",
     "react/jsx-filename-extension": [
       1,
       {
@@ -84,5 +87,6 @@ module.exports = {
     // enum issue
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
+    "react/no-unknown-property": ["error", { ignore: ["css"] }],
   },
 };

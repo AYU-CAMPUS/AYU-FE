@@ -1,7 +1,7 @@
 import React from "react";
 
-import MainLayout from "../../../components/Layout/MainLayout";
-import ForgotIdForm from "../../../components/Forgot/ForgotIdForm";
+import MainLayout from "../../../src/components/Layout/MainLayout";
+import ForgotIdForm from "../../../src/components/Forgot/ForgotIdForm";
 
 import * as Styled from "./ForgotId.style";
 

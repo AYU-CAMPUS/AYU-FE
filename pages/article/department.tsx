@@ -1,7 +1,7 @@
 import React from "react";
-import Department from "../../components/Article/Department";
 
-import MainLayout from "../../components/Layout/MainLayout";
+import Department from "../../src/components/Article/Department";
+import MainLayout from "../../src/components/Layout/MainLayout";
 
 function ArticleDepartmentPage() {
   return <Department />;

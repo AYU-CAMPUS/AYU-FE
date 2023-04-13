@@ -17,16 +17,19 @@
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.10.9",
     "@mui/styled-engine-sc": "^5.10.6",
+    "axios": "^1.2.1",
     "css": "^3.0.0",
+    "framer-motion": "^7.10.3",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-tabs": "^5.1.0",
     "react-datepicker": "^4.8.0",
-    "react-router-dom": "^6.4.3",
     "react-hook-form": "^7.37.0",
     "react-horizontal-scrolling-menu": "^3.2.2",
+    "react-router-dom": "^6.4.3",
+    "react-tabs": "^5.1.0",
     "styled-components": "^5.3.6",
+    "sweetalert2": "^11.6.16",
     "swiper": "^8.4.4",
     "twin.macro": "^2.8.2"
   },
@@ -51,8 +54,8 @@
     "husky": "^8.0.1",
     "lint-staged": "^13.0.2",
     "prettier": "^2.7.1",
-    "typescript": "4.7.4",
-    "twin.macro": "^2.8.2"
+    "twin.macro": "^2.8.2",
+    "typescript": "4.7.4"
   },
   "lint-staged": {
     "*.{ts,tsx}": "next lint --fix"

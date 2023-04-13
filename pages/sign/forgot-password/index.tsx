@@ -1,7 +1,7 @@
 import React from "react";
 
-import MainLayout from "../../../components/Layout/MainLayout";
-import ForgotPasswordForm from "../../../components/Forgot/ForgotPasswordForm";
+import MainLayout from "../../../src/components/Layout/MainLayout";
+import ForgotPasswordForm from "../../../src/components/Forgot/ForgotPasswordForm";
 
 import * as Styled from "./ForgotPassword.style";
 

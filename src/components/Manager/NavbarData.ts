@@ -1,8 +1,8 @@
-import DashBoardIcon from "../../public/images/dashBoard.svg";
-import ListIcon from "../../public/images/list.svg";
-import UserManagementIcon from "../../public/images/userManagement.svg";
-import CommentReportIcon from "../../public/images/commentReport.svg";
-import articleReportIcon from "../../public/images/articleReport.svg";
+import DashBoardIcon from "../../../public/images/dashBoard.svg";
+import ListIcon from "../../../public/images/list.svg";
+import UserManagementIcon from "../../../public/images/userManagement.svg";
+import CommentReportIcon from "../../../public/images/commentReport.svg";
+import articleReportIcon from "../../../public/images/articleReport.svg";
 
 export const navbarData = [
   {

@@ -14,7 +14,7 @@ import ExchangeAcceptance from "./MyPageInfo/ExchangeAcceptance";
 // import Notification from "./MyPageInfo/Notification";
 import MyPageNavData from "./MyPageNavData/MyPageNavData";
 import { IComponentProps } from "./MyPageNavData/types";
-import { apiInstance } from "../../../pages/api/setting";
+import { apiInstance } from "../../api/config";
 
 interface IUserInfoProps {
   nickName: string;

@@ -1,24 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import tw from "twin.macro";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import * as Styled from "./MainPage.style";
 import DataView from "./DataView";
-// import Input from "../Input/Input";
-// import searchIcon from "../../public/images/search.svg";
-import {
-  CollegeDataList,
-  CultureDataList,
-  CategoryDataList,
-  // ExchangeData,
-} from "./DataJson";
-import Header from "../Header/Header";
+import BannerTitle from "../../../public/images/BannerTitle.png";
 
-SwiperCore.use([Navigation, Pagination, Autoplay]);
+import { CollegeDataList, CultureDataList, CategoryDataList } from "./DataJson";
+import Header from "../Header/Header";
 
 export default function MainPage() {
   const MajorTitle = "학과별 전공 자료";
@@ -52,32 +39,7 @@ export default function MainPage() {
         </Styled.TitleInputSection>
 
         <Styled.BannerSection>
-          <Swiper
-            modules={[Navigation, Pagination]}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 2000 }}
-          >
-            <SwiperSlide>
-              <div css={[tw` w-[300px] h-[225px]`]}>
-                <Image
-                  src="/images/BannerTitle.png"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div css={[tw`w-[300px] h-[225px]`]}>
-                <Image
-                  src="/images/BannerStarbucks.png"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-            </SwiperSlide>
-          </Swiper>
+          <Image src={BannerTitle} />
         </Styled.BannerSection>
 
         <Styled.DataSection>
@@ -110,12 +72,7 @@ export default function MainPage() {
                   >
                     <Styled.ImageDescriptionWrapper>
                       <div>
-                        <Image
-                          src={Culture.image}
-                          width="100%"
-                          height="100%"
-                          layout="responsive"
-                        />
+                        <Image src={Culture.image} />
                       </div>
                       <p> {Culture.description}</p>
                     </Styled.ImageDescriptionWrapper>

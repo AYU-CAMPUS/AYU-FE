@@ -1,3 +1,10 @@
+import leaderIcon from "../../../public/images/leaderShip.svg";
+import problemSolvingIcon from "../../../public/images/problemSolving.svg";
+import globalIcon from "../../../public/images/global.svg";
+import convergencePracticeIcon from "../../../public/images/convergencePractice.svg";
+import communicationIcon from "../../../public/images/communication.svg";
+import personIcon from "../../../public/images/person.svg";
+
 export const CollegeDataList = [
   {
     id: 0,
@@ -25,32 +32,32 @@ export const CultureDataList = [
   {
     id: 5,
     description: "인성양성",
-    image: "/images/leaderShip.svg",
+    image: personIcon,
   },
   {
     id: 6,
     description: "리더쉽",
-    image: "/images/leaderShip.svg",
+    image: leaderIcon,
   },
   {
     id: 7,
     description: "융합실무",
-    image: "/images/convergencePractice.svg",
+    image: convergencePracticeIcon,
   },
   {
     id: 8,
     description: "문제해결",
-    image: "/images/problemSolving.svg",
+    image: problemSolvingIcon,
   },
   {
     id: 9,
     description: "글로벌",
-    image: "/images/global.svg",
+    image: globalIcon,
   },
   {
     id: 10,
     description: "의사소통",
-    image: "/images/communication.svg",
+    image: communicationIcon,
   },
 ];
 

@@ -37,6 +37,7 @@ export const ArticleSection = styled.section`
 export const ArticleInfoList = styled.dl`
   display: flex;
   flex-direction: column;
+  width: 600px;
 `;
 
 export const ArticleInfoWrapper = styled.div`

@@ -3,17 +3,17 @@ import styled from "@emotion/styled";
 export const MajorSelection = styled.div`
   display: flex;
   gap: 6rem;
-  p {
-    margin-bottom: 11rem;
-  }
 `;
 
 export const MajorWrapper = styled.div`
   display: grid;
+  width: 80%;
   grid-template-columns: 1fr 1fr 1fr;
   div {
     display: flex;
-    gap: 0.4rem;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    align-items: center;
   }
 `;
 

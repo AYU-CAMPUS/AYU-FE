@@ -3,8 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import { apiInstance } from "../../../pages/api/setting";
 import * as Styled from "./Header.style";
+import { apiInstance } from "../../api/config";
 // import Alarm from "../../public/images/alarm.svg";
 // import exchangeAlarm from "../../public/images/exchangeAlarm.svg";
 

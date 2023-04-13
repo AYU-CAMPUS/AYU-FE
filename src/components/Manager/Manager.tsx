@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import AsideNavbar from "./AsideNavbar/AsideNavbar";
 import * as Styled from "./Manager.style";
-import HamburgerIcon from "../../public/images/hamburger.svg";
+import HamburgerIcon from "../../../public/images/hamburger.svg";
 import NavbarTitle from "./NavbarTitle";
 import { navbarData } from "./NavbarData";
 import Dashboard from "./Dashboard/Dashboard";

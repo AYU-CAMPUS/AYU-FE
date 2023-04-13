@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 // import { motion } from "framer-motion";
 import * as Styled from "./Detail.style";
-import thumbnail from "../../../public/images/thumbnail.png";
+import thumbnail from "../../../../public/images/thumbnail.png";
 import Button from "../../Button/Button";
 
 // import Input from "../Input/Input";

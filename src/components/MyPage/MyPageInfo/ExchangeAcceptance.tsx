@@ -9,7 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import * as Styled from "./TableContainer.style";
 import * as S from "./MyPageInfo.style";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
-import { apiInstance } from "../../../../pages/api/setting";
+import { apiInstance } from "../../../api/config";
 
 interface IPostsProps {
   exchangePages: number;

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import styled from "@emotion/styled";
-import dot from "../../../public/images/dot.svg";
+import dot from "../../../../public/images/dot.svg";
 
 interface DateCategoryProps {
   categoryTitle: string;

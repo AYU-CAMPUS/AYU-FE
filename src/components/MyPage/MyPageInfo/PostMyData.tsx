@@ -7,11 +7,10 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Pagination, PaginationItem } from "@mui/material";
-// import { useRouter } from "next/router";
-import { apiInstance } from "../../../../pages/api/setting";
 import * as Styled from "./TableContainer.style";
 import * as S from "./MyPageInfo.style";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
+import { apiInstance } from "../../../api/config";
 
 interface IPostsProps {
   dataPages: number;
@@ -49,12 +48,6 @@ export default function PostMyData() {
   useEffect(() => {
     userPostDataAPI();
   }, [currentPage]);
-
-  // 추후 적용 필요
-  // const router = useRouter();
-  // const handleEditRequest = (boardId: number) => {
-  //   router.push(`/materials/edit/${boardId}`);
-  // };
 
   return (
     <S.MyPageInfo>

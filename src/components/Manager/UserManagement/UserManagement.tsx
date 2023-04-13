@@ -10,7 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import Image from "next/image";
 import * as Styled from "./UserManagement.style";
 import { TableData } from "./TableData";
-import dateIcon from "../../../public/images/date.svg";
+import dateIcon from "../../../../public/images/date.svg";
 
 // const MyDatePicker = styled(DatePicker)`
 //   background: #ffffff;

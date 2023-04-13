@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import styled from "@emotion/styled";
+import dot from "../../../../public/images/dot.svg";
 
 type SectionProps = {
   height?: string;
@@ -71,7 +72,7 @@ export default function CollegeCategoryAside({ ...props }: DateCategoryProps) {
         const isSelected = props.selectDepartmentNav === department;
         return (
           <div key={department}>
-            <Image src="/images/dot.svg" width="100%" height="100%" />
+            <Image src={dot} />
             <button
               type="button"
               style={isSelected ? { color: "#333333" } : undefined}

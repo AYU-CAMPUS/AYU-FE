@@ -9,7 +9,7 @@ import { Pagination, PaginationItem } from "@mui/material";
 import * as Styled from "./TableContainer.style";
 import * as S from "./MyPageInfo.style";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
-import { apiInstance } from "../../../../pages/api/setting";
+import { apiInstance } from "../../../api/config";
 
 interface IPostsProps {
   downloadablePages: number;

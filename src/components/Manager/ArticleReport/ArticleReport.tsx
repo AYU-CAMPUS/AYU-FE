@@ -7,7 +7,7 @@ import Image from "next/image";
 import * as Styled from "./ArticleReport.style";
 import SearchSection from "../SearchSection/SearchSection";
 import { TableData } from "./TableData";
-import dateIcon from "../../../public/images/date.svg";
+import dateIcon from "../../../../public/images/date.svg";
 
 export default function ArticleReport() {
   return (

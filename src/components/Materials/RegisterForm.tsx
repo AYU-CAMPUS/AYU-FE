@@ -6,7 +6,7 @@ import { css } from "@emotion/react";
 import CategoryModal from "./CategoryModal/CategoryModal";
 import ModalOverlay from "./CategoryModal/ModalOverlay";
 import { EnumCategory, EnumDepartmentType, EnumFileType } from "./types";
-import api, { apiInstance } from "../../src/api/config";
+import api, { apiInstance } from "../../api/config";
 
 import * as Styled from "./RegisterForm.style";
 

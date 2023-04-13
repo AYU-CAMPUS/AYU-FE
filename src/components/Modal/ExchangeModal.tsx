@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { Pagination, PaginationItem } from "@mui/material";
 import Button from "../Button/Button";
 import * as Styled from "./ExchangeModal.style";
-import cancel from "../../public/images/cancel.svg";
+import cancel from "../../../public/images/cancel.svg";
 import { apiInstance } from "../../pages/api/setting";
 
 interface ModalProps {

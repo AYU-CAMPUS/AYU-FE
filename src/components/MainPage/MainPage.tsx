@@ -1,25 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import * as Styled from "./MainPage.style";
 import DataView from "./DataView";
-import BannerStarbucks from "../../public/images/BannerStarbucks.png";
-import BannerTitle from "../../public/images/BannerTitle.png";
-// import Input from "../Input/Input";
-// import searchIcon from "../../public/images/search.svg";
-import {
-  CollegeDataList,
-  CultureDataList,
-  CategoryDataList,
-  // ExchangeData,
-} from "./DataJson";
+import BannerTitle from "../../../public/images/BannerTitle.png";
+import { CollegeDataList, CultureDataList, CategoryDataList } from "./DataJson";
 import Header from "../Header/Header";
-
-SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 export default function MainPage() {
   const MajorTitle = "학과별 전공 자료";
@@ -31,10 +16,6 @@ export default function MainPage() {
   const CategoryTitle = "카테고리별 자료";
   const CategoryDescription = "다양한 자료를 모아놨어요!";
 
-  // const [nickName, setNickName] = useState("");
-
-  // const ExchangeTitle = "신청수가 많은 자료";
-
   return (
     <>
       <Header />
@@ -43,30 +24,10 @@ export default function MainPage() {
           <Styled.MainTitle>
             안양대 학생들을 위한 자료 공유 플랫폼!
           </Styled.MainTitle>
-
-          {/* <Styled.InputWrapper>
-            <Input width="101rem" padding="3rem 2.5rem" />
-            <button type="button">
-              <Image src={searchIcon} />
-            </button>
-          </Styled.InputWrapper> */}
         </Styled.TitleInputSection>
 
         <Styled.BannerSection>
-          <Swiper
-            modules={[Navigation, Pagination]}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 2000 }}
-          >
-            <SwiperSlide>
-              <Image src={BannerTitle} />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image src={BannerStarbucks} />
-            </SwiperSlide>
-          </Swiper>
+          <Image src={BannerTitle} />
         </Styled.BannerSection>
 
         <Styled.DataSection>
@@ -125,15 +86,6 @@ export default function MainPage() {
               })}
             </Styled.ButtonWrapper>
           </Styled.CategoryArticle>
-
-          {/* <Styled.ExchangeArticle>
-          <DataView title={ExchangeTitle} />
-          <Styled.ExchangeBtnWrapper>
-            {ExchangeData.map(Exchange => {
-              return <button type="button" key={Exchange.id} />;
-            })}
-          </Styled.ExchangeBtnWrapper>
-        </Styled.ExchangeArticle> */}
         </Styled.DataSection>
       </Styled.MainPageWrapper>
     </>

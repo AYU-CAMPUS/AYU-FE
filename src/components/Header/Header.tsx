@@ -3,10 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import * as Styled from "./Header.style";
-import Logo from "../../public/images/ayu-campus-logo.svg";
+import Logo from "../../../public/images/ayu-campus-logo.svg";
 import { apiInstance } from "../../pages/api/setting";
-// import Alarm from "../../public/images/alarm.svg";
-// import exchangeAlarm from "../../public/images/exchangeAlarm.svg";
 
 function Header() {
   const [nickName, setNickName] = useState<string | null>("");

@@ -2,23 +2,29 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import styled from "@emotion/styled";
-import dot from "../../../public/images/dot.svg";
+import dot from "../../../../public/images/dot.svg";
 
-interface DateCategoryProps {
+type SectionProps = {
+  height?: string;
+};
+
+interface DateCategoryProps extends SectionProps {
   categoryTitle: string;
   categoryNav: string[];
-  selectCultureNav: string | string[];
-  setSelectCultureNav: React.Dispatch<React.SetStateAction<string>>;
+  selectDepartmentNav: string | string[];
+  setSelectDepartmentNav: React.Dispatch<React.SetStateAction<string>>;
+  setSelectDepartment: React.Dispatch<React.SetStateAction<number[]>>;
+  setSelectGrade: React.Dispatch<React.SetStateAction<number[]>>;
   setSelectTest: React.Dispatch<React.SetStateAction<number[]>>;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const NavButtonSection = styled.section`
+export const NavButtonSection = styled.section<SectionProps>`
   display: flex;
   flex-direction: column;
   gap: 3rem;
   min-width: 22.4rem;
-  height: 40.6rem;
+  height: ${props => props.height || "37.3rem"};
   background: #ffffff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -47,30 +53,32 @@ export const NavButtonSection = styled.section`
   }
 `;
 
-export default function CultureCategoryAside({ ...props }: DateCategoryProps) {
+export default function CollegeCategoryAside({ ...props }: DateCategoryProps) {
   const router = useRouter();
 
-  const handleOptionClick = (culture: string) => {
-    props.setSelectCultureNav(culture);
+  const handleOptionClick = (department: string) => {
+    props.setSelectDepartmentNav(department);
+    props.setSelectDepartment([]);
+    props.setSelectGrade([]);
     props.setSelectTest([]);
     props.setCurrentPage(1);
-    router.replace(`/article/culture?category=${culture}`);
+    router.replace(`/article/major?college=${department}`);
   };
 
   return (
-    <NavButtonSection>
+    <NavButtonSection height={props.height}>
       <h2>{props.categoryTitle}</h2>
-      {props.categoryNav.map(culture => {
-        const isSelected = props.selectCultureNav === culture;
+      {props.categoryNav.map(department => {
+        const isSelected = props.selectDepartmentNav === department;
         return (
-          <div key={culture}>
+          <div key={department}>
             <Image src={dot} />
             <button
               type="button"
               style={isSelected ? { color: "#333333" } : undefined}
-              onClick={() => handleOptionClick(culture)}
+              onClick={() => handleOptionClick(department)}
             >
-              {culture}
+              {department}
             </button>
           </div>
         );

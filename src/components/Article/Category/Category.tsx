@@ -12,8 +12,6 @@ import { IPostsProps } from "../Major/Major";
 import * as Styled from "./Category.style";
 import { apiInstance } from "../../../pages/api/setting";
 import CategoryAside from "./CategoryAside";
-// import Input from "../../Input/Input";
-// import searchIcon from "../../public/images/search.svg";
 
 export default function Category() {
   const categoryTitle = "카테고리별 자료";

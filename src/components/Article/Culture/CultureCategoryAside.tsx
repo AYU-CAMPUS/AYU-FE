@@ -2,13 +2,14 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import styled from "@emotion/styled";
-import dot from "../../../public/images/dot.svg";
+import dot from "../../../../public/images/dot.svg";
 
 interface DateCategoryProps {
   categoryTitle: string;
   categoryNav: string[];
   selectCultureNav: string | string[];
   setSelectCultureNav: React.Dispatch<React.SetStateAction<string>>;
+  setSelectTest: React.Dispatch<React.SetStateAction<number[]>>;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
@@ -17,7 +18,7 @@ export const NavButtonSection = styled.section`
   flex-direction: column;
   gap: 3rem;
   min-width: 22.4rem;
-  height: 53.2rem;
+  height: 40.6rem;
   background: #ffffff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -46,13 +47,14 @@ export const NavButtonSection = styled.section`
   }
 `;
 
-export default function CategoryAside({ ...props }: DateCategoryProps) {
+export default function CultureCategoryAside({ ...props }: DateCategoryProps) {
   const router = useRouter();
 
   const handleOptionClick = (culture: string) => {
     props.setSelectCultureNav(culture);
+    props.setSelectTest([]);
     props.setCurrentPage(1);
-    router.replace(`/article/category?list=${culture}`);
+    router.replace(`/article/culture?category=${culture}`);
   };
 
   return (

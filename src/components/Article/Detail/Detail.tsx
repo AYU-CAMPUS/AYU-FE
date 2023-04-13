@@ -3,14 +3,10 @@ import Image from "next/image";
 import { AxiosError } from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
-// import { motion } from "framer-motion";
 import * as Styled from "./Detail.style";
-import thumbnail from "../../../public/images/thumbnail.png";
+import thumbnail from "../../../../public/images/thumbnail.png";
 import Button from "../../Button/Button";
 
-// import Input from "../Input/Input";
-
-// import ProfileImage from "../../public/images/ProfileImage.png";
 import Portal from "../../Modal/Portal/Portal";
 import ExchangeModal from "../../Modal/ExchangeModal";
 import { apiInstance } from "../../../pages/api/setting";
@@ -283,48 +279,6 @@ export default function Detail() {
         <Styled.ArticleDetailTitle>자료 상세정보</Styled.ArticleDetailTitle>
         <p>{posts?.content}</p>
       </Styled.ArticleDetailInfo>
-      {/* <Styled.CommentWrapper>
-        <Styled.CommentTitle>댓글</Styled.CommentTitle>
-        <Styled.CommentRegister>
-          <Image src={ProfileImage} width="44" height="44" />
-          <Input width="85.8rem" padding="1rem 1.5rem" />
-          <Button width="10.2rem" height="4.3rem">
-            등록
-          </Button>
-        </Styled.CommentRegister>
-        <Styled.CommentSection>
-          <Image src={ProfileImage} width="44" height="44" />
-          <Styled.CommentInfo>
-            <Styled.Comment>
-              <Styled.Writer>jason97</Styled.Writer>
-              <Styled.CommentContent>
-                이 자료에 대해 궁금하신 점이 있다면 댓글 주세요.
-              </Styled.CommentContent>
-            </Styled.Comment>
-            <Styled.CommentOption>
-              <Styled.CommentHour>21시간</Styled.CommentHour>
-              <Styled.CommentReply as="button">답글쓰기</Styled.CommentReply>
-              <Styled.CommentReport as="button">댓글신고</Styled.CommentReport>
-            </Styled.CommentOption>
-          </Styled.CommentInfo>
-        </Styled.CommentSection>
-        <Styled.CommentSection>
-          <Image src={ProfileImage} width="44" height="44" />
-          <Styled.CommentInfo>
-            <Styled.Comment>
-              <Styled.Writer>jason97</Styled.Writer>
-              <Styled.CommentContent>
-                이 자료에 대해 궁금하신 점이 있다면 댓글 주세요.
-              </Styled.CommentContent>
-            </Styled.Comment>
-            <Styled.CommentOption>
-              <Styled.CommentHour>21시간</Styled.CommentHour>
-              <Styled.CommentReply as="button">답글쓰기</Styled.CommentReply>
-              <Styled.CommentReport as="button">댓글신고</Styled.CommentReport>
-            </Styled.CommentOption>
-          </Styled.CommentInfo>
-        </Styled.CommentSection>
-      </Styled.CommentWrapper> */}
       {modalIsOpen && (
         <Portal>
           <ExchangeModal handleModalClose={handleModalClose} detail={detail} />

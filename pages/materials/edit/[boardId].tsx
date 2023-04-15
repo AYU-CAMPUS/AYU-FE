@@ -1,15 +1,21 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import styled from "@emotion/styled";
 
 import MainLayout from "../../../src/components/Layout/MainLayout";
 import EditForm from "../../../src/components/Materials/EditForm";
 import { getRegisteredBoardItem } from "../../../src/api/getRegisteredBoardItem";
 
-import * as Styled from "./Edit.style";
 import {
   BoardContent,
   EditMaterialsPageQuery,
 } from "../../../src/components/Materials/types";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default function EditMaterials() {
   const { boardId } = useRouter().query as EditMaterialsPageQuery;
@@ -52,9 +58,9 @@ export default function EditMaterials() {
   }
 
   return (
-    <Styled.Container>
+    <Container>
       <EditForm boardContent={boardContent} />
-    </Styled.Container>
+    </Container>
   );
 }
 

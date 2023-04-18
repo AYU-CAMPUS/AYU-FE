@@ -94,12 +94,9 @@ export default function Culture() {
           </Styled.CategorySection>
 
           <Styled.KeyWordArticleSection>
-            {/* <Styled.InputWrapper>
-            <Input />
-            <button type="button">
-              <Image src={searchIcon} />
-            </button>
-          </Styled.InputWrapper> */}
+            <Styled.GuideLine>
+              *자료명 클릭시 게시물 페이지로 넘어갑니다
+            </Styled.GuideLine>
 
             <Styled.TableContainer>
               <Table aria-label="simple table">

@@ -13,30 +13,24 @@ export const KeyWordArticleSection = styled.section`
   width: 100%;
 `;
 
+export const GuideLine = styled.p`
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-family: "Spoqa Han Sans Neo";
+  margin-top: 24px;
+`;
+
 export const SectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
 `;
 
-export const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-bottom: 2rem;
-  button {
-    width: 2rem;
-    height: 2rem;
-    position: absolute;
-    left: 49.1rem;
-  }
-`;
-
 export const TableContainer = styled.table`
   border-top: 2px solid #abaeaf;
   width: 100%;
   margin-bottom: 1.5rem;
-  margin-top: 12.3rem;
+  margin-top: 3rem;
   td:nth-child(2) {
     color: #26409a;
   }

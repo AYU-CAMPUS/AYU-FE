@@ -37,17 +37,10 @@ export const KeyWordArticleSection = styled.section`
   padding-left: 26.4rem;
 `;
 
-export const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-bottom: 2rem;
-  button {
-    width: 2rem;
-    height: 2rem;
-    position: absolute;
-    left: 49.1rem;
-  }
+export const GuideLine = styled.p`
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-family: "Spoqa Han Sans Neo";
 `;
 
 export const TableContainer = styled.table`

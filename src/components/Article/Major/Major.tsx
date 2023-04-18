@@ -92,8 +92,6 @@ export default function Article() {
     setTotal(result.data.totalPages);
   };
 
-  console.log(articleList);
-
   useEffect(() => {
     boardInquiryAPI();
   }, [category, currentPage, selectDepartment, selectGrade, selectTest]);
@@ -135,13 +133,9 @@ export default function Article() {
       </Styled.SchoolInfo>
 
       <Styled.KeyWordArticleSection>
-        {/* <Styled.InputWrapper>
-          <Input />
-          <button type="button">
-            <Image src={searchIcon} />
-          </button>
-        </Styled.InputWrapper> */}
-
+        <Styled.GuideLine>
+          *자료명 클릭시 게시물 페이지로 넘어갑니다
+        </Styled.GuideLine>
         <Styled.TableContainer>
           <Table aria-label="simple table">
             <TableHead>
@@ -181,7 +175,6 @@ export default function Article() {
             </TableBody>
           </Table>
         </Styled.TableContainer>
-
         {nickName && (
           <Styled.RegisterBtn>
             <div />
@@ -190,7 +183,6 @@ export default function Article() {
             </button>
           </Styled.RegisterBtn>
         )}
-
         <Pagination
           count={total}
           page={currentPage}

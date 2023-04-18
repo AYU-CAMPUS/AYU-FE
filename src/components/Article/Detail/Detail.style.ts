@@ -44,7 +44,10 @@ export const ArticleInfoWrapper = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 1px solid #dedede;
-  padding: 18px 16px;
+  div {
+    display: flex;
+    padding: 18px 16px;
+  }
 `;
 
 export const ArticleInfoTitle = styled.dt`

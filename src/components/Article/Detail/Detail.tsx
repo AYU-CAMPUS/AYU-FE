@@ -42,6 +42,8 @@ export default function Detail() {
 
   const [posts, setPosts] = useState<IPostsProps>();
 
+  console.log(posts);
+
   const ArticleInfoTitle = [
     {
       name: "등록일",
@@ -211,12 +213,16 @@ export default function Detail() {
             {ArticleInfoTitle.map(title => {
               return (
                 <Styled.ArticleInfoWrapper key={title.id}>
-                  <Styled.ArticleInfoTitle>
-                    {title.name}
-                  </Styled.ArticleInfoTitle>
-                  <Styled.ArticleInfoContent>
-                    {title.value}
-                  </Styled.ArticleInfoContent>
+                  {title.value && (
+                    <div>
+                      <Styled.ArticleInfoTitle>
+                        {title.name}
+                      </Styled.ArticleInfoTitle>
+                      <Styled.ArticleInfoContent>
+                        {title.value}
+                      </Styled.ArticleInfoContent>
+                    </div>
+                  )}
                 </Styled.ArticleInfoWrapper>
               );
             })}
@@ -283,48 +289,6 @@ export default function Detail() {
         <Styled.ArticleDetailTitle>자료 상세정보</Styled.ArticleDetailTitle>
         <p>{posts?.content}</p>
       </Styled.ArticleDetailInfo>
-      {/* <Styled.CommentWrapper>
-        <Styled.CommentTitle>댓글</Styled.CommentTitle>
-        <Styled.CommentRegister>
-          <Image src={ProfileImage} width="44" height="44" />
-          <Input width="85.8rem" padding="1rem 1.5rem" />
-          <Button width="10.2rem" height="4.3rem">
-            등록
-          </Button>
-        </Styled.CommentRegister>
-        <Styled.CommentSection>
-          <Image src={ProfileImage} width="44" height="44" />
-          <Styled.CommentInfo>
-            <Styled.Comment>
-              <Styled.Writer>jason97</Styled.Writer>
-              <Styled.CommentContent>
-                이 자료에 대해 궁금하신 점이 있다면 댓글 주세요.
-              </Styled.CommentContent>
-            </Styled.Comment>
-            <Styled.CommentOption>
-              <Styled.CommentHour>21시간</Styled.CommentHour>
-              <Styled.CommentReply as="button">답글쓰기</Styled.CommentReply>
-              <Styled.CommentReport as="button">댓글신고</Styled.CommentReport>
-            </Styled.CommentOption>
-          </Styled.CommentInfo>
-        </Styled.CommentSection>
-        <Styled.CommentSection>
-          <Image src={ProfileImage} width="44" height="44" />
-          <Styled.CommentInfo>
-            <Styled.Comment>
-              <Styled.Writer>jason97</Styled.Writer>
-              <Styled.CommentContent>
-                이 자료에 대해 궁금하신 점이 있다면 댓글 주세요.
-              </Styled.CommentContent>
-            </Styled.Comment>
-            <Styled.CommentOption>
-              <Styled.CommentHour>21시간</Styled.CommentHour>
-              <Styled.CommentReply as="button">답글쓰기</Styled.CommentReply>
-              <Styled.CommentReport as="button">댓글신고</Styled.CommentReport>
-            </Styled.CommentOption>
-          </Styled.CommentInfo>
-        </Styled.CommentSection>
-      </Styled.CommentWrapper> */}
       {modalIsOpen && (
         <Portal>
           <ExchangeModal handleModalClose={handleModalClose} detail={detail} />

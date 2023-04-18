@@ -14,7 +14,7 @@ interface ModalProps {
 
 interface IPostsProps {
   exchangePages: number;
-  exchangeInfos: [
+  myDataInfos: [
     {
       title: string;
       boardId: number;
@@ -89,7 +89,7 @@ function ExchangeModal({ handleModalClose, detail }: ModalProps) {
           </span>
 
           <Styled.RadioSection>
-            {posts?.exchangeInfos.map(data => {
+            {posts?.myDataInfos.map(data => {
               return (
                 <Styled.RadioWrapper key={data.boardId}>
                   <input

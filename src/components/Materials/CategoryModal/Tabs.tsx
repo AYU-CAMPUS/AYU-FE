@@ -17,7 +17,7 @@ const liPadding = "30px 30px 20px";
 
 const optionsOfTab1 = [
   [
-    { label: "예술체육대학", value: "예술쳬육대학", start: 7, end: 11 },
+    { label: "예술체육대학", value: "예술체육대학", start: 7, end: 11 },
     { label: "사회과학대학", value: "사회과학대학", start: 12, end: 14 },
     { label: "창의융합대학", value: "창의융합대학", start: 15, end: 22 },
     { label: "인문대학", value: "인문대학", start: 2, end: 6 },
@@ -520,7 +520,7 @@ export default function TabComponent({
                     valueOfTab[
                       TabIndex["tab1-1"]
                     ] as keyof typeof optionsOfUniversity
-                  ].map(option => (
+                  ]?.map(option => (
                     <RadioInput
                       key={option.label}
                       groupLabel="tab1-2"
@@ -604,6 +604,7 @@ export default function TabComponent({
               `,
             ]}
           >
+            asdf
             {optionsOfTab2[0].map(option => (
               <RadioInput
                 key={option.label}
@@ -643,6 +644,7 @@ export default function TabComponent({
                 `,
               ]}
             >
+              fdsa
               {/* 첫 섹션 선택 시 추가로 보여주는 섹션 */}
               {/*  eslint-disable-next-line sonarjs/no-identical-functions */}
               {optionsOfTab2[1].map(option => (

@@ -143,7 +143,6 @@ function EditForm({ boardContent }: EditFormProps) {
       file.name === boardContent.originalFileName
     ) {
       // string | Blob 서버 파라미터 타입 변경 요청
-      formData.append("file", "");
     } else if (
       // 기존과 다른 파일이 선택된 경우
       file.lastModified &&

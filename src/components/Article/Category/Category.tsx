@@ -1,4 +1,3 @@
-// import Image from "next/image";
 import { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useState } from "react";
 import Link from "next/link";
@@ -12,8 +11,6 @@ import { IPostsProps } from "../Major/Major";
 import * as Styled from "./Category.style";
 import { apiInstance } from "../../../api/config";
 import CategoryAside from "./CategoryAside";
-// import Input from "../../Input/Input";
-// import searchIcon from "../../public/images/search.svg";
 
 export default function Category() {
   const categoryTitle = "카테고리별 자료";
@@ -33,8 +30,8 @@ export default function Category() {
   ];
 
   const defaultSelect = (list || categoryList[0]) as string;
-  const [selectCultureNav, setSelectCultureNav] = useState(defaultSelect);
-  const category = categoryList.indexOf(String(selectCultureNav)) + 5;
+  const [selectCategoryNav, setSelectCategoryNav] = useState(defaultSelect);
+  const category = categoryList.indexOf(String(selectCategoryNav)) + 11;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [articleList, setArticleList] = useState<IPostsProps>();
@@ -77,44 +74,15 @@ export default function Category() {
         <CategoryAside
           categoryTitle={categoryTitle}
           categoryNav={categoryList}
-          selectCultureNav={selectCultureNav}
-          setSelectCultureNav={setSelectCultureNav}
+          selectCategoryNav={selectCategoryNav}
+          setSelectCategoryNav={setSelectCategoryNav}
           setCurrentPage={setCurrentPage}
         />
 
         <Styled.KeyWordArticleSection>
-          {/* <Styled.InputWrapper>
-            <Input />
-            <button type="button">
-              <Image src={searchIcon} />
-            </button>
-          </Styled.InputWrapper> */}
-
-          {/* <Styled.TemplateWrapper>
-            <Styled.ThumbnailDescription>
-              <Styled.Thumbnail />
-              <Styled.Description>
-                <Styled.Title>
-                  활용도가 많은 경제 비즈니스 템플릿입니다. 금융, 비즈니,
-                  포토폴리오
-                </Styled.Title>
-                <Styled.Content>
-                  202012345 홍 길 동 “What is your Dream?” 경영학부 내용을
-                  입력해주세요 . 필요한 내용을 이곳에 입력해 주세요 . 내용을
-                  입력해주세요 . 필요한 내용을 이곳에 입력해 주세요 주요 주제를
-                  입력해 주세요 02 두번째 주제 03 세번째 주재 04 네..
-                </Styled.Content>
-                <Styled.SpanWrapper>
-                  <span>PPT 템플릿</span>
-                  <span>l</span>
-                  <span>58페이지</span>
-                  <span>l</span>
-                  <span>등록일 2022.05.23</span>
-                </Styled.SpanWrapper>
-              </Styled.Description>
-            </Styled.ThumbnailDescription>
-          </Styled.TemplateWrapper> */}
-
+          <Styled.GuideLine>
+            *자료명 클릭시 게시물 페이지로 넘어갑니다
+          </Styled.GuideLine>
           <Styled.TableContainer>
             <Table aria-label="simple table">
               <TableHead>
@@ -150,7 +118,6 @@ export default function Category() {
               </TableBody>
             </Table>
           </Styled.TableContainer>
-
           {nickName && (
             <Styled.RegisterBtn>
               <div />
@@ -159,7 +126,6 @@ export default function Category() {
               </button>
             </Styled.RegisterBtn>
           )}
-
           <Pagination
             count={total}
             page={currentPage}

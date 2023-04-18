@@ -7,8 +7,8 @@ import dot from "../../../../public/images/dot.svg";
 interface DateCategoryProps {
   categoryTitle: string;
   categoryNav: string[];
-  selectCultureNav: string | string[];
-  setSelectCultureNav: React.Dispatch<React.SetStateAction<string>>;
+  selectCategoryNav: string | string[];
+  setSelectCategoryNav: React.Dispatch<React.SetStateAction<string>>;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
@@ -49,26 +49,26 @@ export const NavButtonSection = styled.section`
 export default function CategoryAside({ ...props }: DateCategoryProps) {
   const router = useRouter();
 
-  const handleOptionClick = (culture: string) => {
-    props.setSelectCultureNav(culture);
+  const handleOptionClick = (category: string) => {
+    props.setSelectCategoryNav(category);
     props.setCurrentPage(1);
-    router.replace(`/article/category?list=${culture}`);
+    router.replace(`/article/category?list=${category}`);
   };
 
   return (
     <NavButtonSection>
       <h2>{props.categoryTitle}</h2>
-      {props.categoryNav.map(culture => {
-        const isSelected = props.selectCultureNav === culture;
+      {props.categoryNav.map(category => {
+        const isSelected = props.selectCategoryNav === category;
         return (
-          <div key={culture}>
+          <div key={category}>
             <Image src={dot} />
             <button
               type="button"
               style={isSelected ? { color: "#333333" } : undefined}
-              onClick={() => handleOptionClick(culture)}
+              onClick={() => handleOptionClick(category)}
             >
-              {culture}
+              {category}
             </button>
           </div>
         );

@@ -13,26 +13,11 @@ export const KeyWordArticleSection = styled.section`
   width: 100%;
 `;
 
-// export const InputWrapper = styled.div`
-//   display: flex;
-//   align-items: center;
-//   position: relative;
-//   margin-bottom: 2rem;
-//   button {
-//     width: 2rem;
-//     height: 2rem;
-//     position: absolute;
-//     left: 49.1rem;
-//   }
-// `;
-
-// export const TemplateWrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 1.5rem;
-//   border-top: 1px solid #dedede;
-//   border-bottom: 1px solid #dedede;
-// `;
+export const GuideLine = styled.p`
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-family: "Spoqa Han Sans Neo";
+`;
 
 export const TableContainer = styled.table`
   border-top: 2px solid #abaeaf;

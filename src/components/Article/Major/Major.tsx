@@ -159,7 +159,9 @@ export default function Article() {
                     </TableCell>
 
                     <Link href={`/article/${article.id}`}>
-                      <TableCell align="center">{article.title}</TableCell>
+                      <TableCell align="center" className="articleTitle">
+                        {article.title}
+                      </TableCell>
                     </Link>
 
                     <TableCell align="center">

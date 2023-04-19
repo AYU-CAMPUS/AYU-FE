@@ -41,31 +41,34 @@
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232749695-714fb7a4-93f2-4af7-83b7-412785eb4d38.png)
--사용자는 원하는 카테고리를 선택할 수 있다.
+- 사용자는 원하는 카테고리를 선택할 수 있다.
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232992421-d445851c-35e0-483c-a823-66868eea1265.png)
--사용자는 학과별 전공 자료를 핕터링을 통해 자기가 원하는 자료를 확인할 수 있다.
+- 사용자는 학과별 전공 자료를 필터링을 통해 자기가 원하는 자료를 확인할 수 있다.
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232992709-6bb6e0e1-74f8-4e57-85ee-98297b91027d.png)
--사용자는 교양대학 자료를 핕터링을 통해 자기가 원하는 자료를 확인할 수 있다.
+- 사용자는 교양대학 자료를 필터링을 통해 자기가 원하는 자료를 확인할 수 있다.
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232992837-026e2a5a-4e9d-4753-8128-921c2cabf3d2.png)
--사용자는 카테고리별 자료를 핕터링을 통해 자기가 원하는 자료를 확인할 수 있다.
+- 사용자는 카테고리별 자료를 필터링을 통해 자기가 원하는 자료를 확인할 수 있다.
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232993165-28fe80a4-f7b6-4885-9df8-6e19342684b8.png)
+- 사용자는 자신이 올린 자료는 삭제가 가능하다. 대신에 교환 완료가 되었을 때는 3일 안에 삭제가 불가능하게 처리를 해놓았다.
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232993573-29210aeb-9c83-429f-a9a6-8b0244c95dbf.png)
+- 사용자는 다른 사용자의 자료를 신청할 수 있다. 대신에 자신의 자료가 있어야지 다른 사람의 자료랑 교환이 가능하다.
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232993398-93e5ca9d-be53-4810-8882-d2191c4a2ab3.png)
+- 사용자는 자기가 원하는 자료를 등록할 수 있다.
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232751141-231634ba-e678-4970-8a1e-91b353edb5a8.png)
-- 사용자는 마이페이지에서 정보 변경 
+- 사용자는 마이페이지에서 정보 변경, 내가 올린 자료 확인, 다운로드 가능한 자료 확인, 교환신청 수락이 가능하다 
 <br>
 <br>

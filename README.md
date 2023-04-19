@@ -8,7 +8,7 @@
 
   <br>
   
-[🗳️ AYU-CAMPUS 홈페이지](https://ayucampus.pages.dev/)
+[🗳️ AYU-CAMPUS 홈페이지](https://ayucampus.vercel.app)
   
 </div>
 

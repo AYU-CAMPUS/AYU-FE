@@ -48,6 +48,12 @@ export const MyPageInfo = styled.section`
   }
 `;
 
+export const GuideLine = styled.p`
+  font-size: 16px;
+  font-family: "Spoqa Han Sans Neo";
+  margin-top: 8px;
+`;
+
 export const CheckMessage = styled.p`
   font-family: "Spoqa Han Sans Neo";
   font-style: normal;

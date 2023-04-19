@@ -14,10 +14,10 @@ export const KeyWordArticleSection = styled.section`
 `;
 
 export const GuideLine = styled.p`
-  font-size: 20px;
-  margin-bottom: 8px;
+  font-size: 16px;
   font-family: "Spoqa Han Sans Neo";
-  margin-top: 24px;
+  margin-top: 9.4rem;
+  margin-bottom: 8px;
 `;
 
 export const SectionWrapper = styled.div`
@@ -30,7 +30,6 @@ export const TableContainer = styled.table`
   border-top: 2px solid #abaeaf;
   width: 100%;
   margin-bottom: 1.5rem;
-  margin-top: 3rem;
   td:nth-child(2) {
     color: #26409a;
   }

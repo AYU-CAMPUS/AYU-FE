@@ -14,7 +14,7 @@ export const KeyWordArticleSection = styled.section`
 `;
 
 export const GuideLine = styled.p`
-  font-size: 20px;
+  font-size: 16px;
   margin-bottom: 8px;
   font-family: "Spoqa Han Sans Neo";
 `;

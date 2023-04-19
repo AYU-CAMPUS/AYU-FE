@@ -5,17 +5,26 @@ export const Container = styled.section`
   padding-top: 70px;
 `;
 
+export const HeadingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #abaeaf;
+`;
+
 export const Heading = styled.h1`
   font-style: normal;
   font-weight: 500;
   font-size: 26px;
   line-height: 33px;
-  display: flex;
-  align-items: center;
   letter-spacing: -0.05em;
   color: #000000;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #abaeaf;
+`;
+
+export const GuideLine = styled.p`
+  font-size: 16px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  font-weight: 200;
 `;
 
 export const Form = styled.form``;

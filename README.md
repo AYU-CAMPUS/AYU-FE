@@ -40,23 +40,31 @@
 ![image](https://user-images.githubusercontent.com/79708688/232749649-8d8faaaa-8316-4434-9141-1f40b415b2b8.png)
 <br>
 <br>
-![image](https://user-images.githubusercontent.com/79708688/232749695-714fb7a4-93f2-4af7-83b7-412785eb4d38.png)<br>
+![image](https://user-images.githubusercontent.com/79708688/232749695-714fb7a4-93f2-4af7-83b7-412785eb4d38.png)
+- 사용자는 메인 페이지에서 학과별, 교양별, 카테고리별 자료를 볼 수 있다.
+<br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232749897-f8aaa25a-83a1-4358-bc74-05b12d5c36c5.png)
+- 사용자는 학과별 전공 자료를 필터링을 통해 볼 수 있다.
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232749999-7e3d8344-e348-4e20-855a-2ee707bea31c.png)
+- 사용자는 교양대학 자료를 필터링을 통해 볼 수 있다.
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232750117-c45f7678-fa68-468d-8f4e-4c67adf97d06.png)
+- 사용자는 카테고리 자료를 볼 수 있다.
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232750463-356fc5c6-972a-4b65-9e10-0c823869395c.png)
+- 사용자는 자신이 작성한 게시글이면
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232750875-e5d1f942-ddd9-47b3-9e04-f13a2173fb0d.png)
+- 사용자는 자료등록을 할 수 있다. 자료등록을 하면 관리자의 승인 하에 자료가 올라간다.
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232751141-231634ba-e678-4970-8a1e-91b353edb5a8.png)
+- 사용자는 마이페이지에서 정보 변경, 내가 올린 자료 확인, 다운로드 가능한 자료 확인, 교환신청 수락이 가능하다.
 <br>
 <br>

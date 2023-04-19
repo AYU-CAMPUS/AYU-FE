@@ -173,7 +173,13 @@ function RegisterForm() {
 
   return (
     <Styled.Container>
-      <Styled.Heading>자료등록</Styled.Heading>
+      <Styled.HeadingContainer>
+        <Styled.Heading>자료등록</Styled.Heading>
+        <Styled.GuideLine>
+          *자료 등록시에 2~3일정도 소요될 수 있습니다.
+        </Styled.GuideLine>
+      </Styled.HeadingContainer>
+
       <Styled.Form onSubmit={handleSubmit}>
         <Styled.Formrow>
           <Styled.Col1>

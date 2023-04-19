@@ -81,6 +81,7 @@ export default function MyInformation() {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     ChangeInfoAPI();
+    window.location.reload();
   };
 
   return (
@@ -146,20 +147,6 @@ export default function MyInformation() {
           </Styled.Data>
 
           <Button margin="4rem 0 12rem 9.7rem">저장</Button>
-
-          {/* <Styled.Withdrwal
-            type="button"
-            onClick={() => {
-              setModalIsOpen(true);
-            }}
-          >
-            회원탈퇴
-          </Styled.Withdrwal>
-          {modalIsOpen && (
-            <Portal>
-              <WithdrawlModal handleModalClose={handleModalClose} />
-            </Portal>
-          )} */}
         </form>
       </Styled.FormWrapper>
     </Styled.MyPageInfo>

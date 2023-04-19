@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import Table from "@mui/material/Table";
@@ -51,9 +50,9 @@ export default function PostMyData() {
 
   return (
     <S.MyPageInfo>
-      <TitleDescription title={title} description={description} />
+      <TitleDescription title={title} description={description} />{" "}
+      <S.GuideLine>*자료명 클릭시 게시물 페이지로 넘어갑니다</S.GuideLine>
       <S.BoundaryLine />
-
       <Styled.TableContainer>
         <Table aria-label="simple table">
           <TableHead>
@@ -67,9 +66,9 @@ export default function PostMyData() {
               <TableCell align="center" className="dataName">
                 자료명
               </TableCell>
-              <TableCell align="center" className="edit">
+              {/* <TableCell align="center" className="edit">
                 수정
-              </TableCell>
+              </TableCell> */}
             </TableRow>
           </TableHead>
 
@@ -90,13 +89,13 @@ export default function PostMyData() {
                     </TableCell>
                   </Link>
 
-                  <TableCell align="center">
+                  {/* <TableCell align="center">
                     <Image
                       src="/images/EditBtn.png"
                       width="20px"
                       height="20px"
                     />
-                  </TableCell>
+                  </TableCell> */}
                 </TableRow>
               ))
             ) : (
@@ -110,7 +109,6 @@ export default function PostMyData() {
           </TableBody>
         </Table>
       </Styled.TableContainer>
-
       <Pagination
         count={numPages}
         page={currentPage}

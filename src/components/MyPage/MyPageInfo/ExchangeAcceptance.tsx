@@ -22,6 +22,7 @@ interface IPostsProps {
       title: string;
       requesterBoardId: number;
       boardId: number;
+      myTitle: string;
     }
   ];
 }
@@ -39,6 +40,8 @@ export default function ExchangeAcceptance() {
     setPosts(result.data);
     setTotal(result.data.exchangePages);
   };
+
+  console.log(posts);
 
   const numPages = Math.ceil(total / 2);
 
@@ -107,8 +110,8 @@ export default function ExchangeAcceptance() {
   return (
     <S.MyPageInfo>
       <TitleDescription title={title} description={description} />
+      <S.GuideLine>*자료명 클릭시 게시물 페이지로 넘어갑니다</S.GuideLine>
       <S.BoundaryLine />
-
       <Styled.TableContainer>
         <Table>
           <TableHead className="tableRow">
@@ -120,7 +123,10 @@ export default function ExchangeAcceptance() {
                 신청자
               </TableCell>
               <TableCell align="center" className="dataName">
-                자료명
+                신청자 자료명
+              </TableCell>
+              <TableCell align="center" className="dataName">
+                내 자료명
               </TableCell>
               <TableCell align="center" className="acceptanceStatus">
                 수락 여부
@@ -139,9 +145,15 @@ export default function ExchangeAcceptance() {
                     {data.requesterNickName}
                   </TableCell>
 
-                  <Link href={`/article/${data.boardId}`}>
+                  <Link href={`/article/${data.requesterBoardId}`}>
                     <TableCell align="center" className="dataNameData">
                       {data.title}
+                    </TableCell>
+                  </Link>
+
+                  <Link href={`/article/${data.boardId}`}>
+                    <TableCell align="center" className="dataNameData">
+                      {data.myTitle}
                     </TableCell>
                   </Link>
 
@@ -185,7 +197,6 @@ export default function ExchangeAcceptance() {
           </TableBody>
         </Table>
       </Styled.TableContainer>
-
       <Pagination
         count={numPages}
         page={currentPage}

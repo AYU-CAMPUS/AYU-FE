@@ -42,6 +42,8 @@ export default function DownloadData() {
     setTotal(result.data.downloadablePages);
   };
 
+  console.log(posts);
+
   const userDownloadDataAPI = async (requesterBoardId: number) => {
     const result = await apiInstance.get(`/user/download/${requesterBoardId}`, {
       responseType: "blob",
@@ -79,9 +81,9 @@ export default function DownloadData() {
 
   return (
     <S.MyPageInfo>
-      <TitleDescription title={title} description={description} />
+      <TitleDescription title={title} description={description} />{" "}
+      <S.GuideLine>*자료명 클릭시 게시물 페이지로 넘어갑니다</S.GuideLine>
       <S.BoundaryLine />
-
       <Styled.TableContainer>
         <Table aria-label="simple table">
           <TableHead>
@@ -147,7 +149,6 @@ export default function DownloadData() {
           </TableBody>
         </Table>
       </Styled.TableContainer>
-
       <Pagination
         count={numPages}
         page={currentPage}

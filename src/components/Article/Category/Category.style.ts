@@ -38,6 +38,9 @@ export const TableContainer = styled.table`
   td {
     font-weight: 400;
   }
+  .articleTitle {
+    cursor: pointer;
+  }
   .exchangeStatus {
     display: flex;
     align-items: center;

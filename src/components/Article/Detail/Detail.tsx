@@ -3,37 +3,13 @@ import Image from "next/image";
 import { AxiosError } from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
-// import { motion } from "framer-motion";
 import * as Styled from "./Detail.style";
 import thumbnail from "../../../../public/images/thumbnail.png";
 import Button from "../../Button/Button";
-
-// import Input from "../Input/Input";
-
-// import ProfileImage from "../../public/images/ProfileImage.png";
 import Portal from "../../Modal/Portal/Portal";
 import ExchangeModal from "../../Modal/ExchangeModal";
 import { apiInstance } from "../../../api/config";
-
-interface IPostsProps {
-  content: string;
-  title: string;
-  writer: string;
-  boardCategory: {
-    category: string;
-    departmentType: string;
-    fileType: string;
-    gradeType: string;
-    subjectName: string;
-    professorName: string;
-  };
-  views: number;
-  numberOfFilePages: number;
-  numberOfSuccessfulExchanges: number;
-  createdDate: string;
-  exchangeType: number;
-  desiredData: [string];
-}
+import { IPostsProps } from "./types";
 
 export default function Detail() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -41,8 +17,6 @@ export default function Detail() {
   const [nickName, setNickName] = useState<string | null>("");
 
   const [posts, setPosts] = useState<IPostsProps>();
-
-  console.log(posts);
 
   const ArticleInfoTitle = [
     {
@@ -143,29 +117,29 @@ export default function Detail() {
     }
   };
 
-  const boardModifyAPI = async () => {
-    try {
-      await apiInstance.get(`/board/modifiable/${detail}`);
-      router.push("/materials/register");
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        if (error.response?.status === 422) {
-          Swal.fire({
-            title:
-              "<span style='font-size:18px; line-height: 23px'>최근 교환일이 3일이 경과되거나 교환요청이 없는 경우 <br>수정이 가능해요.</span>",
-            confirmButtonText:
-              "<button style='font-size:18px; width:128px; background: #26409A; height:45px; border-radius: 10px; color: white;'>확인</button>",
-            width: 486,
-            heightAuto: true,
-            color: "#000000",
-            confirmButtonColor: "white",
-          });
-        } else {
-          alert("알수 없는 서버 에러가 발생하였습니다.");
-        }
-      }
-    }
-  };
+  // const boardModifyAPI = async () => {
+  //   try {
+  //     await apiInstance.get(`/board/modifiable/${detail}`);
+  //     router.push("/materials/register");
+  //   } catch (error) {
+  //     if (error instanceof AxiosError) {
+  //       if (error.response?.status === 422) {
+  //         Swal.fire({
+  //           title:
+  //             "<span style='font-size:18px; line-height: 23px'>최근 교환일이 3일이 경과되거나 교환요청이 없는 경우 <br>수정이 가능해요.</span>",
+  //           confirmButtonText:
+  //             "<button style='font-size:18px; width:128px; background: #26409A; height:45px; border-radius: 10px; color: white;'>확인</button>",
+  //           width: 486,
+  //           heightAuto: true,
+  //           color: "#000000",
+  //           confirmButtonColor: "white",
+  //         });
+  //       } else {
+  //         alert("알수 없는 서버 에러가 발생하였습니다.");
+  //       }
+  //     }
+  //   }
+  // };
 
   const handleClickDelete = async () => {
     await Swal.fire({
@@ -191,9 +165,9 @@ export default function Detail() {
     });
   };
 
-  const handleClickModify = () => {
-    boardModifyAPI();
-  };
+  // const handleClickModify = () => {
+  //   boardModifyAPI();
+  // };
 
   useEffect(() => {
     if (detail !== undefined) {
@@ -262,23 +236,21 @@ export default function Detail() {
 
           {nickName && posts?.exchangeType === -1 && (
             <Styled.ButtonWrapper>
-              <Button
-                width="26.6rem"
-                height="6.3rem"
-                margin="4.5rem 0 0 4.7rem"
-                background="#FFFFFF"
-                color="#26409A"
-                onClick={handleClickDelete}
-              >
-                자료 삭제
-              </Button>
-              <Button
+              {/* <Button
                 width="26.6rem"
                 height="6.3rem"
                 margin="4.5rem 0 0 0"
                 onClick={handleClickModify}
               >
                 자료 수정
+              </Button> */}
+              <Button
+                width="26.6rem"
+                height="6.3rem"
+                margin="4.5rem 0 0 33.3rem"
+                onClick={handleClickDelete}
+              >
+                자료 삭제
               </Button>
             </Styled.ButtonWrapper>
           )}

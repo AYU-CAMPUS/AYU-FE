@@ -41,30 +41,31 @@
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232749695-714fb7a4-93f2-4af7-83b7-412785eb4d38.png)
-- 사용자는 메인 페이지에서 학과별, 교양별, 카테고리별 자료를 볼 수 있다.
+-사용자는 원하는 카테고리를 선택할 수 있다.
 <br>
 <br>
-![image](https://user-images.githubusercontent.com/79708688/232749897-f8aaa25a-83a1-4358-bc74-05b12d5c36c5.png)
-- 사용자는 학과별 전공 자료를 필터링을 통해 볼 수 있다.
+![image](https://user-images.githubusercontent.com/79708688/232992421-d445851c-35e0-483c-a823-66868eea1265.png)
+-사용자는 학과별 전공 자료를 핕터링을 통해 자기가 원하는 자료를 확인할 수 있다.
 <br>
 <br>
-![image](https://user-images.githubusercontent.com/79708688/232749999-7e3d8344-e348-4e20-855a-2ee707bea31c.png)
-- 사용자는 교양대학 자료를 필터링을 통해 볼 수 있다.
+![image](https://user-images.githubusercontent.com/79708688/232992709-6bb6e0e1-74f8-4e57-85ee-98297b91027d.png)
+-사용자는 교양대학 자료를 핕터링을 통해 자기가 원하는 자료를 확인할 수 있다.
 <br>
 <br>
-![image](https://user-images.githubusercontent.com/79708688/232750117-c45f7678-fa68-468d-8f4e-4c67adf97d06.png)
-- 사용자는 카테고리 자료를 볼 수 있다.
+![image](https://user-images.githubusercontent.com/79708688/232992837-026e2a5a-4e9d-4753-8128-921c2cabf3d2.png)
+-사용자는 카테고리별 자료를 핕터링을 통해 자기가 원하는 자료를 확인할 수 있다.
 <br>
 <br>
-![image](https://user-images.githubusercontent.com/79708688/232750463-356fc5c6-972a-4b65-9e10-0c823869395c.png)
-- 사용자는 자신이 작성한 게시글이면
+![image](https://user-images.githubusercontent.com/79708688/232993165-28fe80a4-f7b6-4885-9df8-6e19342684b8.png)
 <br>
 <br>
-![image](https://user-images.githubusercontent.com/79708688/232750875-e5d1f942-ddd9-47b3-9e04-f13a2173fb0d.png)
-- 사용자는 자료등록을 할 수 있다. 자료등록을 하면 관리자의 승인 하에 자료가 올라간다.
+![image](https://user-images.githubusercontent.com/79708688/232993573-29210aeb-9c83-429f-a9a6-8b0244c95dbf.png)
+<br>
+<br>
+![image](https://user-images.githubusercontent.com/79708688/232993398-93e5ca9d-be53-4810-8882-d2191c4a2ab3.png)
 <br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232751141-231634ba-e678-4970-8a1e-91b353edb5a8.png)
-- 사용자는 마이페이지에서 정보 변경, 내가 올린 자료 확인, 다운로드 가능한 자료 확인, 교환신청 수락이 가능하다.
+- 사용자는 마이페이지에서 정보 변경 
 <br>
 <br>

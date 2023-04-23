@@ -82,6 +82,9 @@
 
 ![촬영234567](https://user-images.githubusercontent.com/79708688/233823286-9f052df5-aea5-473c-bbfe-4d94a6dfa64e.gif)
 
+## 4️⃣ 마이 페이지
+
+![촬영23456789](https://user-images.githubusercontent.com/79708688/233828753-ed434c10-c29f-4573-8dc8-65b3864cb21c.gif)
 
 ## 🛠️ 사용 기술 및 라이브러리
 

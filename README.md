@@ -84,17 +84,10 @@
 ![촬영234567](https://user-images.githubusercontent.com/79708688/233823286-9f052df5-aea5-473c-bbfe-4d94a6dfa64e.gif)
 
 
-# 🛠️ 사용 기술
+## 🛠️ 사용 기술 및 라이브러리
 
-## 💻 Web Languages / Libraries
-
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-004088.svg?style=for-the-badge&logo=typescript&logoColor=white)
-
-![ReactRouterDom](https://img.shields.io/badge/React%20Router%20DOM-4A154B.svg?style=for-the-badge&logo=react&logoColor=white) ![Suspense](https://img.shields.io/badge/Suspense-1A2C34.svg?style=for-the-badge&logo=react&logoColor=white)
-
-![StyledComponents](https://img.shields.io/badge/Styled%20Components-DB7093.svg?style=for-the-badge&logo=styled-components&logoColor=white)
-<br>
-
+- Typescript,Next.js, Axios, sweetalert2, react-tabs
+- styled-components
 
 ## 📜 트러블 슈팅
 

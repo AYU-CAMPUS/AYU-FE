@@ -85,8 +85,8 @@
 
 ## 🛠️ 사용 기술 및 라이브러리
 
-- Typescript,Next.js, Axios, sweetalert2, react-tabs
-- styled-components
+- `Typescript`, `Next.js`,`Axios`, `sweetalert2`, `react-tabs`
+- `styled-components`
 
 ## 📜 트러블 슈팅
 

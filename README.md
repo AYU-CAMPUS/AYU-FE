@@ -58,3 +58,50 @@
 - 사용자는 마이페이지에서 정보 변경, 내가 올린 자료 확인, 다운로드 가능한 자료 확인, 교환신청 수락이 가능하다 
 <br>
 <br>
+
+
+  ## 🗳️ 목차
+
+1. [🖥️ 프로젝트 화면](#%EF%B8%8F-프로젝트-화면)
+2. [🛠️ 사용 기술](#%EF%B8%8F-사용-기술)
+3. [🗂️ 프로젝트 구조](#%EF%B8%8F-프로젝트-구조)
+4. [📜 트러블 슈팅](#-트러블-슈팅)
+
+    <br>
+
+# 🖥️ 프로젝트 화면
+
+## 1️⃣ 메인
+
+![Animation](https://user-images.githubusercontent.com/79708688/231338965-72246fd1-63e5-4396-9e19-ecfecead4dcd.gif)
+
+## 2️⃣ 가게페이지 및 결제 페이지
+
+![촬영2](https://user-images.githubusercontent.com/79708688/232289740-27e53296-45e2-48b2-bf5c-3cc4cb5a3756.gif)
+
+## 3️⃣ 검색 페이지
+
+![촬영23](https://user-images.githubusercontent.com/79708688/232290184-cf4d4826-b5ba-4cd7-acc6-797c196fb92b.gif)
+
+## 4️⃣ 마이 페이지
+
+![촬영234](https://user-images.githubusercontent.com/79708688/232310522-90edc36a-625c-46d1-a730-970b881c595b.gif)
+
+# 🛠️ 사용 기술
+
+## 💻 Web Languages / Libraries
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-004088.svg?style=for-the-badge&logo=typescript&logoColor=white)
+
+![ReactRouterDom](https://img.shields.io/badge/React%20Router%20DOM-4A154B.svg?style=for-the-badge&logo=react&logoColor=white) ![Suspense](https://img.shields.io/badge/Suspense-1A2C34.svg?style=for-the-badge&logo=react&logoColor=white)
+
+![StyledComponents](https://img.shields.io/badge/Styled%20Components-DB7093.svg?style=for-the-badge&logo=styled-components&logoColor=white)
+<br>
+
+## 🗂️ 프로젝트 구조
+
+## 📜 트러블 슈팅
+
+[📜이슈 목록](https://www.notion.so/4d7ac5b9af814d369a3dc95edd4e88c5)
+
+<br>

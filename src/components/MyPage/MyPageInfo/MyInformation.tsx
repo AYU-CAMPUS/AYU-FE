@@ -27,9 +27,6 @@ export default function MyInformation() {
 
   const [checkMsg, setCheckMsg] = useState();
 
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const handleModalClose = () => setModalIsOpen(false);
-
   const handleCheck = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
@@ -74,14 +71,14 @@ export default function MyInformation() {
         window.location.reload();
       }
     } catch (err) {
-      console.error(err);
+      throw new Error("정보 변경에 실패했습니다.");
     }
   };
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     ChangeInfoAPI();
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (

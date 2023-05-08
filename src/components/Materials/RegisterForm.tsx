@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, MouseEvent, useEffect, useState } from "react";
 import tw from "twin.macro";
 import { useRouter } from "next/router";
 import { css } from "@emotion/react";
-
+import { AxiosError } from "axios";
 import CategoryModal from "./CategoryModal/CategoryModal";
 import ModalOverlay from "./CategoryModal/ModalOverlay";
 import { EnumCategory, EnumDepartmentType, EnumFileType } from "./types";
@@ -98,9 +98,9 @@ function RegisterForm() {
   const [reqBody, setReqBody] = useState<ReqBody>({
     title: "",
     content: "",
-    gradeType: 0,
-    subjectName: "",
-    professorName: "",
+    gradeType: 1,
+    subjectName: "" || " ",
+    professorName: "" || " ",
     numberOfFilePages: 0,
   });
   const handleOnChange = <
@@ -118,6 +118,8 @@ function RegisterForm() {
   const router = useRouter();
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    console.log(selectedCategories);
 
     const writeRequest = {
       ...reqBody,
@@ -137,7 +139,14 @@ function RegisterForm() {
           fileType:
             EnumFileType[selectedCategories[3] as keyof typeof EnumFileType],
         }),
+      ...(Number(selectedCategories[0]) === 2 &&
+        selectedCategories[2] && {
+          fileType:
+            EnumFileType[selectedCategories[2] as keyof typeof EnumFileType],
+        }),
     };
+
+    console.log("게시물 정보 : ", writeRequest);
 
     const formData = new FormData();
     if (!file) {
@@ -167,7 +176,12 @@ function RegisterForm() {
         router.push("/");
       })
       .catch(err => {
-        console.error(err);
+        if (err instanceof AxiosError && err.response?.status === 422) {
+          alert("게시물 에러");
+        }
+        if (err instanceof AxiosError && err.response?.status === 413) {
+          alert("파일 용량 초과 에러");
+        }
       });
   };
 
@@ -308,7 +322,7 @@ function RegisterForm() {
           </Styled.Col2>
         </Styled.Formrow>
         {/* 1. 학과별 전공자료 선택시 보여줄 추가 UI */}
-        {selectedCategories[0] === "1" && (
+        {(selectedCategories[0] === "1" || selectedCategories[0] === "2") && (
           <>
             <Styled.Formrow>
               <Styled.Col1>
@@ -367,6 +381,7 @@ function RegisterForm() {
             </Styled.Formrow>
           </>
         )}
+
         {/* 카테고리 선택을 위한 dialog */}
         {isOpenCategoryDialog && (
           <ModalOverlay closeCategoryDialog={closeCategoryDialog}>

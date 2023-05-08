@@ -51,8 +51,7 @@ export enum EnumDepartmentType {
 export enum EnumFileType {
   중간고사,
   기말고사,
-  과제,
-  요약,
+  필기요약,
 }
 
 export interface BoardContent {

@@ -7,9 +7,7 @@ import React, {
 } from "react";
 import * as Styled from "./MyPageInfo.style";
 import TitleDescription from "../MyPageNavTitle/TitleDescription";
-// import Portal from "../../Modal/Portal/Portal";
 import Button from "../../Button/Button";
-// import WithdrawlModal from "../../Modal/WithdrawlModal";
 import { apiInstance } from "../../../api/config";
 
 export default function MyInformation() {

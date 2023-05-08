@@ -36,7 +36,7 @@ export const CultureDataList = [
   },
   {
     id: 6,
-    description: "리더쉽",
+    description: "리더십",
     image: leaderIcon,
   },
   {

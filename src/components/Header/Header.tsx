@@ -57,9 +57,6 @@ function Header() {
               <button onClick={handleLogOutClick} type="button">
                 로그아웃
               </button>
-
-              {/* <Image src={exchangeAlarm} width="37px" height="37px" />
-              <Image src={Alarm} width="37px" height="37px" /> */}
             </div>
           ) : (
             <div>

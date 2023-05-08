@@ -87,7 +87,7 @@ const optionsOfUniversity = {
 const optionsOfTab2 = [
   [
     { label: "인성양성", value: "인성양성" },
-    { label: "리더쉽", value: "리더쉽" },
+    { label: "리더십", value: "리더십" },
     { label: "융합실무", value: "융합실무" },
     { label: "문제해결", value: "문제해결" },
     { label: "글로벌", value: "글로벌" },
@@ -109,7 +109,6 @@ const optionsOfTab3 = [
     { label: "이력서", value: "이력서" },
     { label: "PPT 템플릿", value: "PPT 템플릿" },
     { label: "논문", value: "논문" },
-    { label: "산업기사", value: "산업기사" },
   ],
   [
     { label: "중간고사", value: "중간고사" },
@@ -604,7 +603,6 @@ export default function TabComponent({
               `,
             ]}
           >
-            asdf
             {optionsOfTab2[0].map(option => (
               <RadioInput
                 key={option.label}
@@ -644,7 +642,6 @@ export default function TabComponent({
                 `,
               ]}
             >
-              fdsa
               {/* 첫 섹션 선택 시 추가로 보여주는 섹션 */}
               {/*  eslint-disable-next-line sonarjs/no-identical-functions */}
               {optionsOfTab2[1].map(option => (

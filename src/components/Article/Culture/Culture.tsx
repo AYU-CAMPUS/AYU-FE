@@ -23,7 +23,7 @@ export default function Culture() {
 
   const cultureList = [
     "인성양성",
-    "리더쉽",
+    "리더십",
     "융합실무",
     "문제해결",
     "글로벌",

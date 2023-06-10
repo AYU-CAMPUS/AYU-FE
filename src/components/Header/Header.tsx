@@ -2,11 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 import * as Styled from "./Header.style";
 import { apiInstance } from "../../api/config";
-// import Alarm from "../../public/images/alarm.svg";
-// import exchangeAlarm from "../../public/images/exchangeAlarm.svg";
 
 function Header() {
   const [nickName, setNickName] = useState<string | null>("");
@@ -14,18 +13,18 @@ function Header() {
   const url = process.env.NEXT_PUBLIC_APP_BASE_URL;
 
   const loginAPI = async () => {
-    try {
-      const result = await apiInstance.get("/user/notification");
-      localStorage.setItem("nickName", result.data.nickName);
-      setNickName(localStorage.getItem("nickName"));
-    } catch (error) {
-      console.log(error);
-    }
+    const result = await apiInstance.get("/user/notification");
+    localStorage.setItem("nickName", result.data.nickName);
+    setNickName(localStorage.getItem("nickName"));
+    return result.data.nickName;
   };
 
   useEffect(() => {
     loginAPI();
   }, []);
+
+  const { data } = useQuery(["login"], loginAPI);
+  console.log(data);
 
   const logoutAPI = async () => {
     await apiInstance.get("/user/logout");

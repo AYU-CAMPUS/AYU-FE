@@ -9,24 +9,20 @@ import { CollegeDataList, CultureDataList, CategoryDataList } from "./DataJson";
 import Header from "../Header/Header";
 import { apiInstance } from "../../api/config";
 
-export async function getServerSideProps() {
-  const res = await await apiInstance.get("/user/notification");
-  const data = res.data.nickName;
-  return {
-    props: { data },
-  };
-}
-
-interface IMainPageProps {
-  data: string;
-}
-
-export default function MainPage({ data }: IMainPageProps) {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("nickName", data);
+export default function MainPage() {
+  const loginAPI = async () => {
+    try {
+      const result = await apiInstance.get("/user/notification");
+      localStorage.setItem("nickName", result.data.nickName);
+    } catch (error) {
+      console.log(error);
     }
+  };
+
+  useEffect(() => {
+    loginAPI();
   }, []);
+
   const MajorTitle = "학과별 전공 자료";
   const MajorDescription = "학과별 자료를 모아놨어요!";
 

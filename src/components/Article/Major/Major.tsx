@@ -1,12 +1,6 @@
-// import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-// import {
-//   EnumCategory,
-//   EnumDepartmentType,
-//   EnumFileType,
-// } from "../Materials/types";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -15,8 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Pagination, PaginationItem } from "@mui/material";
 import * as Styled from "./Major.style";
-// import Input from "../Input/Input";
-// import searchIcon from "../../public/images/search.svg";
+
 import CollegeCategoryAside from "./CollegeCategoryAside";
 import { selectDepartmentList } from "../data";
 import MajorSelection from "../FillterSelection/MajorSelection";

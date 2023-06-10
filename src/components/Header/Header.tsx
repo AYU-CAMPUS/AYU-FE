@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import * as Styled from "./Header.style";
 import { apiInstance } from "../../api/config";
@@ -9,23 +9,23 @@ import { apiInstance } from "../../api/config";
 // import exchangeAlarm from "../../public/images/exchangeAlarm.svg";
 
 function Header() {
-  const [nickName, setNickName] = useState<string | null>("");
+  const [nickName] = useState<string | null>("");
   const router = useRouter();
   const url = process.env.NEXT_PUBLIC_APP_BASE_URL;
 
-  const loginAPI = async () => {
-    try {
-      const result = await apiInstance.get("/user/notification");
-      localStorage.setItem("nickName", result.data.nickName);
-      setNickName(localStorage.getItem("nickName"));
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const loginAPI = async () => {
+  //   try {
+  //     const result = await apiInstance.get("/user/notification");
+  //     localStorage.setItem("nickName", result.data.nickName);
+  //     setNickName(localStorage.getItem("nickName"));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    loginAPI();
-  }, []);
+  // useEffect(() => {
+  //   loginAPI();
+  // }, []);
 
   const logoutAPI = async () => {
     await apiInstance.get("/user/logout");

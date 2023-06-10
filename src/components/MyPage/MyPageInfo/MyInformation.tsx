@@ -2,6 +2,7 @@ import React, {
   ChangeEvent,
   FormEvent,
   useCallback,
+  useEffect,
   useRef,
   useState,
 } from "react";
@@ -10,6 +11,16 @@ import TitleDescription from "../MyPageNavTitle/TitleDescription";
 import Button from "../../Button/Button";
 import { apiInstance } from "../../../api/config";
 
+interface IUserInfoProps {
+  nickName: string;
+  profileImage: string;
+  exchangeSuccessCount: number;
+  myDataCount: number;
+  downloadCount: number;
+  exchangeRequestCount: number;
+  desiredData: string[];
+}
+
 export default function MyInformation() {
   const title = "내 정보";
   const description = "회원님의 정보를 한 눈에 볼 수 있어요";
@@ -17,6 +28,7 @@ export default function MyInformation() {
   const refTwo = useRef<HTMLInputElement>(null);
   const refThree = useRef<HTMLInputElement>(null);
 
+  const [userInfo, setUserInfo] = useState<IUserInfoProps>();
   const [nickName, setNickName] = useState<string>("");
 
   const [nickNameMessage, setNickNameMessage] = useState<string>("");
@@ -37,6 +49,19 @@ export default function MyInformation() {
       console.log("네트워크 에러");
     }
   };
+
+  const userAPI = async () => {
+    try {
+      const result = await apiInstance.get("/user");
+      setUserInfo(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    userAPI();
+  }, []);
 
   const handleChangeNickName = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -126,17 +151,20 @@ export default function MyInformation() {
               <input
                 type="text"
                 placeholder="1. 인간관계론 기말고사 자료"
+                value={userInfo?.desiredData[0]}
                 ref={refOne}
               />
             </div>
             <input
               type="text"
               placeholder="2. 컴퓨터개론 기말고사 자료"
+              value={userInfo?.desiredData[1]}
               ref={refTwo}
             />
             <input
               type="text"
               placeholder="3. 기독교개론 기말고사 자료"
+              value={userInfo?.desiredData[2]}
               ref={refThree}
             />
           </Styled.Data>

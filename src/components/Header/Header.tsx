@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import * as Styled from "./Header.style";
@@ -18,10 +18,6 @@ function Header() {
     setNickName(localStorage.getItem("nickName"));
     return result.data.nickName;
   };
-
-  useEffect(() => {
-    loginAPI();
-  }, []);
 
   const { data } = useQuery(["login"], loginAPI);
   console.log(data);

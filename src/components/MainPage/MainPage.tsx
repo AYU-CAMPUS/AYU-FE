@@ -1,13 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 import * as Styled from "./MainPage.style";
 import DataView from "./DataView";
 import BannerTitle from "../../../public/images/BannerTitle.png";
 
 import { CollegeDataList, CultureDataList, CategoryDataList } from "./DataJson";
 import Header from "../Header/Header";
+import { apiInstance } from "../../api/config";
 
-export default function MainPage() {
+export async function getServerSideProps() {
+  const res = await await apiInstance.get("/user/notification");
+  const data = res.data.nickName;
+  return {
+    props: { data },
+  };
+}
+
+interface IMainPageProps {
+  data: string;
+}
+
+export default function MainPage({ data }: IMainPageProps) {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("nickName", data);
+    }
+  }, []);
   const MajorTitle = "학과별 전공 자료";
   const MajorDescription = "학과별 자료를 모아놨어요!";
 
@@ -17,10 +36,6 @@ export default function MainPage() {
   const CategoryTitle = "카테고리별 자료";
   const CategoryDescription = "다양한 자료를 모아놨어요!";
 
-  // const [nickName, setNickName] = useState("");
-
-  // const ExchangeTitle = "신청수가 많은 자료";
-
   return (
     <>
       <Header />
@@ -29,13 +44,6 @@ export default function MainPage() {
           <Styled.MainTitle>
             안양대 학생들을 위한 자료 공유 플랫폼!
           </Styled.MainTitle>
-
-          {/* <Styled.InputWrapper>
-            <Input width="101rem" padding="3rem 2.5rem" />
-            <button type="button">
-              <Image src={searchIcon} />
-            </button>
-          </Styled.InputWrapper> */}
         </Styled.TitleInputSection>
 
         <Styled.BannerSection>

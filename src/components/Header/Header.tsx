@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 
 import * as Styled from "./Header.style";
 import { apiInstance } from "../../api/config";
@@ -12,15 +11,13 @@ function Header() {
   const router = useRouter();
   const url = process.env.NEXT_PUBLIC_APP_BASE_URL;
 
-  const loginAPI = async () => {
-    const result = await apiInstance.get("/user/notification");
-    localStorage.setItem("nickName", result.data.nickName);
-    setNickName(localStorage.getItem("nickName"));
-    return result.data.nickName;
-  };
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setNickName(localStorage.getItem("nickName"));
+    }
+  }, []);
 
-  const { data } = useQuery(["login"], loginAPI);
-  console.log(data);
+  console.log(nickName);
 
   const logoutAPI = async () => {
     await apiInstance.get("/user/logout");
